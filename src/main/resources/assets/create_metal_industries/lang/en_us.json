@@ -1,0 +1,19 @@
+{
+  "item.create_metal_industries.sapphire": "Sapphire",
+  "item.create_metal_industries.raw_sapphire": "Raw Sapphire",
+
+  "item.create_metal_industries.soap_water_bucket": "Soap Water Bucket",
+
+  "item.create_metal_industries.molten_brass_bucket": "Molten Brass Bucket",
+  "item.create_metal_industries.molten_copper_bucket": "Molten Copper Bucket",
+  "item.create_metal_industries.molten_gold_bucket": "Molten Gold Bucket",
+  "item.create_metal_industries.molten_iron_bucket": "Molten Iron Bucket",
+  "item.create_metal_industries.molten_netherite_bucket": "Molten Netherite Bucket",
+  "item.create_metal_industries.molten_zinc_bucket": "Molten Zinc Bucket",
+
+  "block.create_metal_industries.sapphire_block": "Block of Sapphire",
+  "block.create_metal_industries.raw_sapphire_block": "Block of Raw Sapphire",
+
+  "creativetab.liquids_tab": "Liquids",
+  "creativetab.create_metal_industries_tab": "Create: Metal Industries"
+}

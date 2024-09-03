@@ -1,0 +1,9 @@
+{
+  "variants":
+  {
+    "":
+    {
+      "model": "create_metal_industries:block/sapphire_block"
+    }
+  }
+}
