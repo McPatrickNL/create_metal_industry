@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "create_metal_industries:ingot_mold/uncooked_ingot_mold"
+  },
+  "result": "create_metal_industries:ingot_mold/empty_ingot_mold"
+}

@@ -1,7 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures":
-  {
-    "layer0": "create_metal_industries:item/iron_ingot_mold"
-  }
-}

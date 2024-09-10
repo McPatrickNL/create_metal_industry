@@ -2,7 +2,7 @@
   "type": "create:filling",
   "ingredients": [
     {
-      "item": "create_metal_industries:empty_ingot_mold"
+      "item": "create_metal_industries:ingot_mold/empty_ingot_mold"
     },
     {
       "amount": 90,
@@ -12,7 +12,7 @@
   ],
   "results": [
     {
-      "item": "create_metal_industries:molten_iron_ingot_mold"
+      "item": "create_metal_industries:ingot_mold/molten_iron_ingot_mold"
     }
   ]
 }

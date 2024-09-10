@@ -45,15 +45,44 @@ public class ModItems
     
     
     // Ingot molds
-    public static final RegistryObject<Item> EMPTY_INGOT_MOLD = ITEMS.register ("empty_ingot_mold",
+    private static String ingotMold(String str)
+    {
+        return "ingot_mold/" + str + "_ingot_mold";
+    }
+    private static String moltenIngotMold(String str)
+    {
+        return "ingot_mold/molten_" + str + "_ingot_mold";
+    }
+    
+    public static final RegistryObject<Item> UNCOOKED_INGOT_MOLD = ITEMS.register (ingotMold("uncooked"),
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> EMPTY_INGOT_MOLD = ITEMS.register (ingotMold("empty"),
             () -> new Item(new Item.Properties()));
     
-    public static final RegistryObject<Item> IRON_INGOT_MOLD = ITEMS.register ("iron_ingot_mold",
+    public static final RegistryObject<Item> BRASS_INGOT_MOLD = ITEMS.register (ingotMold("brass"),
             () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> MOLTEN_IRON_INGOT_MOLD = ITEMS.register ("molten_iron_ingot_mold",
+    public static final RegistryObject<Item> MOLTEN_BRASS_INGOT_MOLD = ITEMS.register (moltenIngotMold("brass"),
             () -> new Item(new Item.Properties()));
-    
-    
+    public static final RegistryObject<Item> COPPER_INGOT_MOLD = ITEMS.register (ingotMold("copper"),
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> MOLTEN_COPPER_INGOT_MOLD = ITEMS.register (moltenIngotMold("copper"),
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> GOLD_INGOT_MOLD = ITEMS.register (ingotMold("gold"),
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> MOLTEN_GOLD_INGOT_MOLD = ITEMS.register (moltenIngotMold("gold"),
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> IRON_INGOT_MOLD = ITEMS.register (ingotMold("iron"),
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> MOLTEN_IRON_INGOT_MOLD = ITEMS.register (moltenIngotMold("iron"),
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> NETHERITE_INGOT_MOLD = ITEMS.register (ingotMold("netherite"),
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> MOLTEN_NETHERITE_INGOT_MOLD = ITEMS.register (moltenIngotMold("netherite"),
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> ZINC_INGOT_MOLD = ITEMS.register (ingotMold("zinc"),
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> MOLTEN_ZINC_INGOT_MOLD = ITEMS.register (moltenIngotMold("zinc"),
+            () -> new Item(new Item.Properties()));
     
     
     public static void register(IEventBus eventBus)

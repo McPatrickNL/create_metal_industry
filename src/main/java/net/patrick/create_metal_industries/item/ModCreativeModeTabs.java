@@ -64,10 +64,20 @@ public class ModCreativeModeTabs
                         pOutput.accept(Items.TROPICAL_FISH_BUCKET);
                         
                         // Item molds
-                        
+                        pOutput.accept(ModItems.UNCOOKED_INGOT_MOLD.get());
                         pOutput.accept(ModItems.EMPTY_INGOT_MOLD.get());
+                        pOutput.accept(ModItems.BRASS_INGOT_MOLD.get());
+                        pOutput.accept(ModItems.MOLTEN_BRASS_INGOT_MOLD.get());
+                        pOutput.accept(ModItems.COPPER_INGOT_MOLD.get());
+                        pOutput.accept(ModItems.MOLTEN_COPPER_INGOT_MOLD.get());
+                        pOutput.accept(ModItems.GOLD_INGOT_MOLD.get());
+                        pOutput.accept(ModItems.MOLTEN_GOLD_INGOT_MOLD.get());
                         pOutput.accept(ModItems.IRON_INGOT_MOLD.get());
                         pOutput.accept(ModItems.MOLTEN_IRON_INGOT_MOLD.get());
+                        pOutput.accept(ModItems.NETHERITE_INGOT_MOLD.get());
+                        pOutput.accept(ModItems.MOLTEN_NETHERITE_INGOT_MOLD.get());
+                        pOutput.accept(ModItems.ZINC_INGOT_MOLD.get());
+                        pOutput.accept(ModItems.MOLTEN_ZINC_INGOT_MOLD.get());
                     })
                     .build());
     
