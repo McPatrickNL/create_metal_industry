@@ -1,9 +1,13 @@
 {
+
+  "######## EXAMPLE MOD ########": "",
   "item.create_metal_industries.sapphire": "Sapphire",
   "item.create_metal_industries.raw_sapphire": "Raw Sapphire",
-
   "item.create_metal_industries.soap_water_bucket": "Soap Water Bucket",
+  "block.create_metal_industries.sapphire_block": "Block of Sapphire",
+  "block.create_metal_industries.raw_sapphire_block": "Block of Raw Sapphire",
 
+  "######## BUCKETS ########": "",
   "item.create_metal_industries.molten_brass_bucket": "Molten Brass Bucket",
   "item.create_metal_industries.molten_copper_bucket": "Molten Copper Bucket",
   "item.create_metal_industries.molten_gold_bucket": "Molten Gold Bucket",
@@ -11,8 +15,28 @@
   "item.create_metal_industries.molten_netherite_bucket": "Molten Netherite Bucket",
   "item.create_metal_industries.molten_zinc_bucket": "Molten Zinc Bucket",
 
-  "block.create_metal_industries.sapphire_block": "Block of Sapphire",
-  "block.create_metal_industries.raw_sapphire_block": "Block of Raw Sapphire",
+  "######## MOLDS ########": "",
+  "item.create_metal_industries.empty_ingot_mold": "Empty Clay Ingot Mold",
+  "item.create_metal_industries.brass_ingot_mold": "Brass Ingot in Clay Mold",
+  "item.create_metal_industries.molten_brass_ingot_mold": "Molten Brass Ingot in Clay Mold",
+  "item.create_metal_industries.copper_ingot_mold": "Copper Ingot in Clay Mold",
+  "item.create_metal_industries.molten_copper_ingot_mold": "Molten Copper Ingot in Clay Mold",
+  "item.create_metal_industries.gold_ingot_mold": "Gold Ingot in Clay Mold",
+  "item.create_metal_industries.molten_gold_ingot_mold": "Molten Gold Ingot in Clay Mold",
+  "item.create_metal_industries.iron_ingot_mold": "Iron Ingot in Clay Mold",
+  "item.create_metal_industries.molten_iron_ingot_mold": "Molten Iron Ingot in Clay Mold",
+  "item.create_metal_industries.netherite_ingot_mold": "Netherite Ingot in Clay Mold",
+  "item.create_metal_industries.molten_netherite_ingot_mold": "Molten Netherite Ingot in Clay Mold",
+  "item.create_metal_industries.iron_zinc_mold": "Zinc Ingot in Clay Mold",
+  "item.create_metal_industries.molten_zinc_ingot_mold": "Molten Zinc Ingot in Clay Mold",
+
+  "######## FLUIDS ########": "",
+  "fluid_type.create_metal_industries.molten_brass_fluid": "Molten Brass",
+  "fluid_type.create_metal_industries.molten_copper_fluid": "Molten Copper",
+  "fluid_type.create_metal_industries.molten_gold_fluid": "Molten Gold",
+  "fluid_type.create_metal_industries.molten_iron_fluid": "Molten Iron",
+  "fluid_type.create_metal_industries.molten_netherite_fluid": "Molten Netherite",
+  "fluid_type.create_metal_industries.molten_zinc_fluid": "Molten Zinc",
 
   "creativetab.liquids_tab": "Liquids",
   "creativetab.create_metal_industries_tab": "Create: Metal Industries"

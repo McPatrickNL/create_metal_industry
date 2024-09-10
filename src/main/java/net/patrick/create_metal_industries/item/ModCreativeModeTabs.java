@@ -62,6 +62,12 @@ public class ModCreativeModeTabs
                         pOutput.accept(Items.SALMON_BUCKET);
                         pOutput.accept(Items.COD_BUCKET);
                         pOutput.accept(Items.TROPICAL_FISH_BUCKET);
+                        
+                        // Item molds
+                        
+                        pOutput.accept(ModItems.EMPTY_INGOT_MOLD.get());
+                        pOutput.accept(ModItems.IRON_INGOT_MOLD.get());
+                        pOutput.accept(ModItems.MOLTEN_IRON_INGOT_MOLD.get());
                     })
                     .build());
     

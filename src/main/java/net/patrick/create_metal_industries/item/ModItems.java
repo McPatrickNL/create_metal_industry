@@ -44,6 +44,16 @@ public class ModItems
             () -> new BucketItem(ModFluids.SOURCE_MOLTEN_ZINC, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
     
     
+    // Ingot molds
+    public static final RegistryObject<Item> EMPTY_INGOT_MOLD = ITEMS.register ("empty_ingot_mold",
+            () -> new Item(new Item.Properties()));
+    
+    public static final RegistryObject<Item> IRON_INGOT_MOLD = ITEMS.register ("iron_ingot_mold",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> MOLTEN_IRON_INGOT_MOLD = ITEMS.register ("molten_iron_ingot_mold",
+            () -> new Item(new Item.Properties()));
+    
+    
     
     
     public static void register(IEventBus eventBus)

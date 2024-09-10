@@ -1,0 +1,13 @@
+{
+  "type": "create:splashing",
+  "ingredients": [
+    {
+      "item": "create_metal_industries:molten_iron_ingot_mold"
+    }
+  ],
+  "results": [
+    {
+      "item": "create_metal_industries:iron_ingot_mold"
+    }
+  ]
+}
