@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "create_metal_industries:item/ingot_mold/copper_ingot_mold"
+  }
+}
