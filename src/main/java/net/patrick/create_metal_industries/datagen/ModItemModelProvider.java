@@ -22,12 +22,22 @@ public class ModItemModelProvider extends ItemModelProvider
     @Override
     protected void registerModels()
     {
+        //////////////////////////////////////////////////
+        //  WHEN ADDING NEW ELEMENTS TO THE BELOW LIST  //
+        //  MAKE SURE TO ALSO RUN THE "runData" GRADLE  //
+        //////////////////////////////////////////////////
+        
         simpleItem(ModItems.MOLTEN_BRASS_BUCKET); // 7:45
         simpleItem(ModItems.MOLTEN_COPPER_BUCKET);
         simpleItem(ModItems.MOLTEN_GOLD_BUCKET);
         simpleItem(ModItems.MOLTEN_IRON_BUCKET);
         simpleItem(ModItems.MOLTEN_NETHERITE_BUCKET);
         simpleItem(ModItems.MOLTEN_ZINC_BUCKET);
+        
+        //////////////////////////////////////////////////
+        //  WHEN ADDING NEW ELEMENTS TO THE BELOW LIST  //
+        //  MAKE SURE TO ALSO RUN THE "runData" GRADLE  //
+        //////////////////////////////////////////////////
     }
     
     private ItemModelBuilder simpleItem(RegistryObject<Item> item)

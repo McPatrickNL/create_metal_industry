@@ -1,7 +1,6 @@
 {
-  "parent": "item/generated",
-  "textures":
-  {
+  "parent": "minecraft:item/generated",
+  "textures": {
     "layer0": "create_metal_industries:item/molten_brass_bucket"
   }
 }
