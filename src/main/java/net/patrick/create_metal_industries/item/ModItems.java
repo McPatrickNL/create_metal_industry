@@ -14,15 +14,6 @@ public class ModItems
 {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, CreateMetalIndustries.MOD_ID);
     
-    //public static final RegistryObject<Item> SAPPHIRE = ITEMS.register("sapphire",
-    //        () -> new Item(new Item.Properties()));
-    //public static final RegistryObject<Item> RAW_SAPPHIRE = ITEMS.register("raw_sapphire",
-    //        () -> new Item(new Item.Properties()));
-    
-    // Bucket Items
-    //public static final RegistryObject<Item> SOAP_WATER_BUCKET = ITEMS.register("soap_water_bucket",
-    //        () -> new BucketItem(ModFluids.SOURCE_SOAP_WATER, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
-    
     // Molten metals
     // todo x copy this
     private static String bucket(String str)    {return "molten_" + str + "_bucket";}
@@ -79,6 +70,7 @@ public class ModItems
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> MOLTEN_ZINC_INGOT_MOLD = ITEMS.register (moltenIngotMold("zinc"),
             () -> new Item(new Item.Properties()));
+    
     
     
     public static void register(IEventBus eventBus)

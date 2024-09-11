@@ -1,6 +1,7 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "create_metal_industries:item/ingot_mold/molten_iron_ingot_mold"
+    "layer0": "create_metal_industries:item/fluid/molten_iron_fluid",
+    "layer1": "create_metal_industries:item/mold/empty_ingot_mold"
   }
 }
