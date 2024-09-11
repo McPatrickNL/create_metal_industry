@@ -9,24 +9,49 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import net.patrick.create_metal_industries.CreateMetalIndustries;
-import net.patrick.create_metal_industries.block.ModBlocks;
 
 public class ModCreativeModeTabs
 {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, CreateMetalIndustries.MOD_ID);
     
-    public static final RegistryObject<CreativeModeTab> NEW_TAB = CREATIVE_MODE_TABS.register("create_metal_industries_tab",
+    public static final RegistryObject<CreativeModeTab> CREATE_METAL_INDUSTRIES_TAB = CREATIVE_MODE_TABS.register("create_metal_industries_tab",
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.MOLTEN_ZINC_BUCKET.get()))
                     .title(Component.translatable("creativetab.create_metal_industries_tab"))
                     .displayItems((pParameters, pOutput) ->
                     {
-                        //pOutput.accept(ModItems.SAPPHIRE.get());
-                        //pOutput.accept(ModItems.RAW_SAPPHIRE.get());
+                        // Empty bucket
+                        pOutput.accept(Items.BUCKET);
                         
-                        //pOutput.accept(ModBlocks.SAPPHIRE_BLOCK.get());
-                        //pOutput.accept(ModBlocks.RAW_SAPPHIRE_BLOCK.get());
+                        // Vanilla items
+                        pOutput.accept(Items.WATER_BUCKET);
+                        pOutput.accept(Items.LAVA_BUCKET);
+                        pOutput.accept(Items.MILK_BUCKET);
+                        pOutput.accept(Items.POWDER_SNOW_BUCKET);
                         
-                        pOutput.accept(Items.DIAMOND);
+                        // Molten Metal Buckets
+                        // todo x copy this
+                        pOutput.accept(ModItems.MOLTEN_BRASS_BUCKET.get());
+                        pOutput.accept(ModItems.MOLTEN_COPPER_BUCKET.get());
+                        pOutput.accept(ModItems.MOLTEN_GOLD_BUCKET.get());
+                        pOutput.accept(ModItems.MOLTEN_IRON_BUCKET.get());
+                        pOutput.accept(ModItems.MOLTEN_NETHERITE_BUCKET.get());
+                        pOutput.accept(ModItems.MOLTEN_ZINC_BUCKET.get());
+                        
+                        // Item molds
+                        pOutput.accept(ModItems.UNCOOKED_INGOT_MOLD.get());
+                        pOutput.accept(ModItems.EMPTY_INGOT_MOLD.get());
+                        pOutput.accept(ModItems.BRASS_INGOT_MOLD.get());
+                        pOutput.accept(ModItems.MOLTEN_BRASS_INGOT_MOLD.get());
+                        pOutput.accept(ModItems.COPPER_INGOT_MOLD.get());
+                        pOutput.accept(ModItems.MOLTEN_COPPER_INGOT_MOLD.get());
+                        pOutput.accept(ModItems.GOLD_INGOT_MOLD.get());
+                        pOutput.accept(ModItems.MOLTEN_GOLD_INGOT_MOLD.get());
+                        pOutput.accept(ModItems.IRON_INGOT_MOLD.get());
+                        pOutput.accept(ModItems.MOLTEN_IRON_INGOT_MOLD.get());
+                        pOutput.accept(ModItems.NETHERITE_INGOT_MOLD.get());
+                        pOutput.accept(ModItems.MOLTEN_NETHERITE_INGOT_MOLD.get());
+                        pOutput.accept(ModItems.ZINC_INGOT_MOLD.get());
+                        pOutput.accept(ModItems.MOLTEN_ZINC_INGOT_MOLD.get());
                     })
                     .build());
     
