@@ -25,34 +25,30 @@ public class ModItems
     
     // Molten metals
     // todo x copy this
-    public static final RegistryObject<Item> MOLTEN_BRASS_BUCKET = ITEMS.register("molten_brass_bucket",
+    private static String bucket(String str)    {return "molten_" + str + "_bucket";}
+    
+    public static final RegistryObject<Item> MOLTEN_BRASS_BUCKET = ITEMS.register(bucket("brass"),
             () -> new BucketItem(ModFluids.SOURCE_MOLTEN_BRASS, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
     
-    public static final RegistryObject<Item> MOLTEN_COPPER_BUCKET = ITEMS.register("molten_copper_bucket",
+    public static final RegistryObject<Item> MOLTEN_COPPER_BUCKET = ITEMS.register(bucket("copper"),
             () -> new BucketItem(ModFluids.SOURCE_MOLTEN_COPPER, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
     
-    public static final RegistryObject<Item> MOLTEN_GOLD_BUCKET = ITEMS.register("molten_gold_bucket",
+    public static final RegistryObject<Item> MOLTEN_GOLD_BUCKET = ITEMS.register(bucket("gold"),
             () -> new BucketItem(ModFluids.SOURCE_MOLTEN_GOLD, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
     
-    public static final RegistryObject<Item> MOLTEN_IRON_BUCKET = ITEMS.register("molten_iron_bucket",
+    public static final RegistryObject<Item> MOLTEN_IRON_BUCKET = ITEMS.register(bucket("iron"),
             () -> new BucketItem(ModFluids.SOURCE_MOLTEN_IRON, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
     
-    public static final RegistryObject<Item> MOLTEN_NETHERITE_BUCKET = ITEMS.register("molten_netherite_bucket",
+    public static final RegistryObject<Item> MOLTEN_NETHERITE_BUCKET = ITEMS.register(bucket("netherite"),
             () -> new BucketItem(ModFluids.SOURCE_MOLTEN_NETHERITE, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
     
-    public static final RegistryObject<Item> MOLTEN_ZINC_BUCKET = ITEMS.register("molten_zinc_bucket",
+    public static final RegistryObject<Item> MOLTEN_ZINC_BUCKET = ITEMS.register(bucket("zinc"),
             () -> new BucketItem(ModFluids.SOURCE_MOLTEN_ZINC, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
     
     
     // Ingot molds
-    private static String ingotMold(String str)
-    {
-        return "ingot_mold/" + str + "_ingot_mold";
-    }
-    private static String moltenIngotMold(String str)
-    {
-        return "ingot_mold/molten_" + str + "_ingot_mold";
-    }
+    private static String ingotMold(String str)         {return str + "_ingot_mold";}
+    private static String moltenIngotMold(String str)   {return "molten_" + str + "_ingot_mold";}
     
     public static final RegistryObject<Item> UNCOOKED_INGOT_MOLD = ITEMS.register (ingotMold("uncooked"),
             () -> new Item(new Item.Properties()));

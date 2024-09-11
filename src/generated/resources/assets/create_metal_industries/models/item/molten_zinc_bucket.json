@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "create_metal_industries:item/molten_zinc_bucket"
+    "layer0": "create_metal_industries:item/bucket/molten_zinc_bucket"
   }
 }
