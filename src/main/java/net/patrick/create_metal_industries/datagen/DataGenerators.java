@@ -26,6 +26,7 @@ public class DataGenerators
         generator.addProvider(event.includeServer(), new ModRecipeProvider(packOutput));
         
         generator.addProvider(event.includeClient(), new ModItemModelProvider(packOutput, existingFileHelper));
+        //generator.addProvider(event.includeClient(), new ModToolModelProvider(packOutput, existingFileHelper));
         
     }
 }

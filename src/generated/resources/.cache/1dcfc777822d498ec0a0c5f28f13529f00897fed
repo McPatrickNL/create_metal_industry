@@ -1,5 +1,10 @@
-// 1.20.1	2024-09-11T12:10:11.0590405	Item Models: create_metal_industries
+// 1.20.1	2024-09-11T21:33:13.9513965	Item Models: create_metal_industries
+083953dad1ff71c8347f6d5db00b7365aa4cdb82 assets/create_metal_industries/models/item/brass_axe.json
+0114d15ef4eb97479fad76d15447cd6b76b1c93b assets/create_metal_industries/models/item/brass_hoe.json
 1595e15adad8f0ffcdccf4736cc3debdf7674cf1 assets/create_metal_industries/models/item/brass_ingot_mold.json
+8c09c4fbb6437b399edb50816b39cf8ca7012dde assets/create_metal_industries/models/item/brass_pickaxe.json
+649e1638a34626bef2a73372b917f2095ab0ccbb assets/create_metal_industries/models/item/brass_shovel.json
+21a4bd1c73281809f2c8474e5a872f9cfbdc62e1 assets/create_metal_industries/models/item/brass_sword.json
 7df7447d9bceeed1501d58549d6709da5027d2d1 assets/create_metal_industries/models/item/copper_ingot_mold.json
 e643830831c8eb78cb155d77e1d715a7dca42c35 assets/create_metal_industries/models/item/empty_ingot_mold.json
 02f78d55b8a9accae6bdc119eb292ec6672a8ef2 assets/create_metal_industries/models/item/gold_ingot_mold.json

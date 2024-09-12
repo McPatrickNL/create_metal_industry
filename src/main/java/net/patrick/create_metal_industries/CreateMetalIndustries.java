@@ -5,7 +5,6 @@ import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.common.CreativeModeTabRegistry;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -20,6 +19,7 @@ import net.patrick.create_metal_industries.fluid.ModFluidTypes;
 import net.patrick.create_metal_industries.fluid.ModFluids;
 import net.patrick.create_metal_industries.item.ModCreativeModeTabs;
 import net.patrick.create_metal_industries.item.ModItems;
+import net.patrick.create_metal_industries.item.ModToolItems;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -42,6 +42,7 @@ public class CreateMetalIndustries
         ModBlocks.register(modEventBus);
         // Register the Deferred Register to the mod event bus so items get registered
         ModItems.register(modEventBus);
+        ModToolItems.register(modEventBus);
         // Register the Deferred Register to the mod event bus so tabs get registered
         ModCreativeModeTabs.register(modEventBus);
         // Register Fluids

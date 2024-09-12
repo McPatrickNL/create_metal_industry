@@ -3,7 +3,6 @@ package net.patrick.create_metal_industries.datagen;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
@@ -11,8 +10,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 import net.patrick.create_metal_industries.CreateMetalIndustries;
 import net.patrick.create_metal_industries.item.ModItems;
-
-import java.util.Objects;
+import net.patrick.create_metal_industries.item.ModToolItems;
 
 // https://youtu.be/enzKJWq0vNI?t=406
 public class ModItemModelProvider extends ItemModelProvider
@@ -54,6 +52,11 @@ public class ModItemModelProvider extends ItemModelProvider
         liquidIngotMoldItem(ModItems.MOLTEN_NETHERITE_INGOT_MOLD, "netherite");
         liquidIngotMoldItem(ModItems.MOLTEN_ZINC_INGOT_MOLD, "zinc");
         
+        handheldItem(ModToolItems.BRASS_SWORD);
+        handheldItem(ModToolItems.BRASS_PICKAXE);
+        handheldItem(ModToolItems.BRASS_AXE);
+        handheldItem(ModToolItems.BRASS_SHOVEL);
+        handheldItem(ModToolItems.BRASS_HOE);
         
         //////////////////////////////////////////////////
         //  WHEN ADDING NEW ELEMENTS TO THE BELOW LIST  //
@@ -110,6 +113,12 @@ public class ModItemModelProvider extends ItemModelProvider
         return withExistingParent(item.getId().getPath(),
                 new ResourceLocation("item/generated")).texture("layer0",
                 new ResourceLocation(CreateMetalIndustries.MOD_ID,"item/bucket/" + item.getId().getPath()));
+    }
+    
+    private ItemModelBuilder handheldItem(RegistryObject<Item> item) {
+        return withExistingParent(item.getId().getPath(),
+                new ResourceLocation("item/handheld")).texture("layer0",
+                new ResourceLocation(CreateMetalIndustries.MOD_ID,"item/" + item.getId().getPath()));
     }
     
 }

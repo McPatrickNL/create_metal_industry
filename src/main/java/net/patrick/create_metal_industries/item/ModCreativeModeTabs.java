@@ -55,6 +55,20 @@ public class ModCreativeModeTabs
                     })
                     .build());
     
+    public static final RegistryObject<CreativeModeTab> CREATE_METAL_INDUSTRIES_TOOLS_TAB = CREATIVE_MODE_TABS.register("create_metal_industries_tools_tab",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModToolItems.BRASS_PICKAXE.get()))
+                    .title(Component.translatable("creativetab.create_metal_industries_tools_tab"))
+                    .displayItems((pParameters, pOutput) ->
+                    {
+                        // Tools
+                        pOutput.accept(ModToolItems.BRASS_SWORD.get());
+                        pOutput.accept(ModToolItems.BRASS_PICKAXE.get());
+                        pOutput.accept(ModToolItems.BRASS_AXE.get());
+                        pOutput.accept(ModToolItems.BRASS_SHOVEL.get());
+                        pOutput.accept(ModToolItems.BRASS_HOE.get());
+                    })
+                    .build());
+    
     public static final RegistryObject<CreativeModeTab> LIQUIDS_TAB = CREATIVE_MODE_TABS.register("liquids_tab",
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(Items.BUCKET))
                     .title(Component.translatable("creativetab.liquids_tab"))
@@ -87,22 +101,6 @@ public class ModCreativeModeTabs
                         pOutput.accept(Items.SALMON_BUCKET);
                         pOutput.accept(Items.COD_BUCKET);
                         pOutput.accept(Items.TROPICAL_FISH_BUCKET);
-                        
-                        // Item molds
-                        pOutput.accept(ModItems.UNCOOKED_INGOT_MOLD.get());
-                        pOutput.accept(ModItems.EMPTY_INGOT_MOLD.get());
-                        pOutput.accept(ModItems.BRASS_INGOT_MOLD.get());
-                        pOutput.accept(ModItems.MOLTEN_BRASS_INGOT_MOLD.get());
-                        pOutput.accept(ModItems.COPPER_INGOT_MOLD.get());
-                        pOutput.accept(ModItems.MOLTEN_COPPER_INGOT_MOLD.get());
-                        pOutput.accept(ModItems.GOLD_INGOT_MOLD.get());
-                        pOutput.accept(ModItems.MOLTEN_GOLD_INGOT_MOLD.get());
-                        pOutput.accept(ModItems.IRON_INGOT_MOLD.get());
-                        pOutput.accept(ModItems.MOLTEN_IRON_INGOT_MOLD.get());
-                        pOutput.accept(ModItems.NETHERITE_INGOT_MOLD.get());
-                        pOutput.accept(ModItems.MOLTEN_NETHERITE_INGOT_MOLD.get());
-                        pOutput.accept(ModItems.ZINC_INGOT_MOLD.get());
-                        pOutput.accept(ModItems.MOLTEN_ZINC_INGOT_MOLD.get());
                     })
                     .build());
     

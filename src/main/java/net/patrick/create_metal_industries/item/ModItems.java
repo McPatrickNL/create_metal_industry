@@ -12,7 +12,8 @@ import net.patrick.create_metal_industries.fluid.ModFluids;
 
 public class ModItems
 {
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, CreateMetalIndustries.MOD_ID);
+    public static final DeferredRegister<Item> ITEMS =
+            DeferredRegister.create(ForgeRegistries.ITEMS, CreateMetalIndustries.MOD_ID);
     
     // Molten metals
     // todo x copy this

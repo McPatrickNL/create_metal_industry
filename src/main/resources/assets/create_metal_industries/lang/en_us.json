@@ -39,6 +39,14 @@
   "fluid_type.create_metal_industries.molten_netherite_fluid": "Molten Netherite",
   "fluid_type.create_metal_industries.molten_zinc_fluid": "Molten Zinc",
 
+  "######## TOOLS ########": "",
+  "item.create_metal_industries.brass_sword": "Brass Sword",
+  "item.create_metal_industries.brass_pickaxe": "Brass Pickaxe",
+  "item.create_metal_industries.brass_axe": "Brass Axe",
+  "item.create_metal_industries.brass_shovel": "Brass Shovel",
+  "item.create_metal_industries.brass_hoe": "Brass Hoe",
+
   "creativetab.liquids_tab": "Liquids",
-  "creativetab.create_metal_industries_tab": "Create: Metal Industries"
+  "creativetab.create_metal_industries_tab": "Create: Metal Industries",
+  "creativetab.create_metal_industries_tools_tab": "Create: Metal Industries Tools"
 }

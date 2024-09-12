@@ -12,7 +12,7 @@ public class ModTags
 {
     public static class Blocks
     {
-        public static final TagKey<Block> DUMMY_FOR_TESTING = tag("dummy_for_testing");
+        public static final TagKey<Block> NEEDS_BRASS_TOOL = tag("needs_brass_tool");
         
         private static TagKey<Block> tag(String name)
         {

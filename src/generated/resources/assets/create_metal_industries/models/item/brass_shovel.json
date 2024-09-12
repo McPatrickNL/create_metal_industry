@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "create_metal_industries:item/brass_shovel"
+  }
+}
