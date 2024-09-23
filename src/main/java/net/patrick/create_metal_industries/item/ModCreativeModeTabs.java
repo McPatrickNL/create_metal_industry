@@ -2,9 +2,7 @@ package net.patrick.create_metal_industries.item;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -55,6 +53,8 @@ public class ModCreativeModeTabs
                     })
                     .build());
     
+    
+    
     public static final RegistryObject<CreativeModeTab> CREATE_METAL_INDUSTRIES_TOOLS_TAB = CREATIVE_MODE_TABS.register("create_metal_industries_tools_tab",
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModToolItems.BRASS_PICKAXE.get()))
                     .title(Component.translatable("creativetab.create_metal_industries_tools_tab"))
@@ -66,6 +66,13 @@ public class ModCreativeModeTabs
                         pOutput.accept(ModToolItems.BRASS_AXE.get());
                         pOutput.accept(ModToolItems.BRASS_SHOVEL.get());
                         pOutput.accept(ModToolItems.BRASS_HOE.get());
+                        
+                        int iNumberRods = new ModToolData().iNumberRods;
+                        int iNumberHeads = new ModToolData().iNumberHeads;
+                        int iNumberCoatings = new ModToolData().iNumberCoatings;
+                        
+                        ModToolItems toolManager = new ModToolItems();
+                        addToolsToTab(toolManager.Swords, pOutput);
                     })
                     .build());
     
@@ -103,6 +110,17 @@ public class ModCreativeModeTabs
                         pOutput.accept(Items.TROPICAL_FISH_BUCKET);
                     })
                     .build());
+    
+    // Helper method to add tools from a 3D ModTool array to the creative tab
+    private static void addToolsToTab(ModTool[][][] toolsArray, Consumer<ItemStack> pOutput) {
+        for (ModTool[][] toolType : toolsArray) {
+            for (ModTool[] toolSet : toolType) {
+                for (ModTool tool : toolSet) {
+                    pOutput.accept(new ItemStack(tool.oTool.get()));  // Add each tool's Item to the creative tab
+                }
+            }
+        }
+    }
     
     public static void register(IEventBus eventBus)
     {

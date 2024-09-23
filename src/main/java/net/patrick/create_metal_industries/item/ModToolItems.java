@@ -30,34 +30,82 @@ public class ModToolItems
     //public static final RegistryObject<Item> UNCOOKED_INGOT_MOLD = ITEMS.register (ingotMold("uncooked"),
     //        () -> new Item(new Item.Properties()));
     
-    int iRods = 10;
-    int iHead = 8;
-    int iCoating = 7;
+    int iNumberRods = new ModToolData().iNumberRods;
+    int iNumberHeads = new ModToolData().iNumberHeads;
+    int iNumberCoatings = new ModToolData().iNumberCoatings;
+    ModTool[][][] Swords = new ModTool[iNumberRods][iNumberHeads][iNumberCoatings];
+    ModTool[][][] Pickaxes = new ModTool[iNumberRods][iNumberHeads][iNumberCoatings];
+    ModTool[][][] Axes = new ModTool[iNumberRods][iNumberHeads][iNumberCoatings];
+    ModTool[][][] Shovels = new ModTool[iNumberRods][iNumberHeads][iNumberCoatings];
+    ModTool[][][] Hoes = new ModTool[iNumberRods][iNumberHeads][iNumberCoatings];
+    ModToolData[][][] ToolData = new ModToolData[iNumberRods][iNumberHeads][iNumberCoatings];
     
-    //public static RegistryObject<Item> createTool("bla")
-    
-    public Object createTool(String toolType)
+    public ModToolItems ()
     {
-        for(int x=0; x < iRods; x++)
+        CreateTools(Swords, ToolData, "sword");
+        CreateTools(Pickaxes, ToolData, "pickaxe");
+        CreateTools(Axes, ToolData, "axe");
+        CreateTools(Shovels, ToolData, "shovel");
+        CreateTools(Hoes, ToolData, "hoe");
+    }
+    
+    public void CreateTools(ModTool[][][] currentTool, ModToolData[][][] currentToolData, String currentToolName)
+    {
+        for(int iRod = 0; iRod < iNumberRods; iRod++)
         {
-            for(int y=0; y < iHead; y++)
+            for(int iHead = 0; iHead < iNumberHeads; iHead++)
             {
-                for(int z=0; z < iCoating; z++)
+                for(int iCoating = 0; iCoating < iNumberCoatings; iCoating++)
                 {
-                    addTools(toolType, x, y, z);
+                    currentTool[iRod][iHead][iRod] = new ModTool();
+                    currentTool[iRod][iHead][iCoating].sRodMaterial = currentToolData[iRod][iHead][iCoating].sRodMaterials[iRod];
+                    currentTool[iRod][iHead][iCoating].sHeadMaterial = currentToolData[iRod][iHead][iCoating].sHeadMaterials[iHead];
+                    currentTool[iRod][iHead][iCoating].sCoatingMaterial = currentToolData[iRod][iHead][iCoating].sCoatingMaterials[iCoating];
+                    currentTool[iRod][iHead][iCoating].sToolName =
+                            currentToolData[iRod][iHead][iCoating].sHeadMaterials[iHead]
+                            +"_"+currentToolName+"_with_"+
+                            currentToolData[iRod][iHead][iCoating].sRodMaterials[iRod]
+                            +"_rod_and_"+
+                            currentToolData[iRod][iHead][iCoating].sCoatingMaterials[iCoating]
+                            +"_coating";
+                    if (currentToolName.equals("sword"))
+                    {
+                        currentTool[iRod][iHead][iCoating].oTool = TOOLS.register(currentTool[iRod][iHead][iCoating].sToolName,
+                                () -> new SwordItem(ModToolTiers.BRASS, 0, 0, new Item.Properties()));
+                    }
+                    if (currentToolName.equals("pickaxe"))
+                    {
+                        currentTool[iRod][iHead][iCoating].oTool = TOOLS.register(currentTool[iRod][iHead][iCoating].sToolName,
+                                () -> new PickaxeItem(ModToolTiers.BRASS, 0, 0, new Item.Properties()));
+                    }
+                    if (currentToolName.equals("axe"))
+                    {
+                        currentTool[iRod][iHead][iCoating].oTool = TOOLS.register(currentTool[iRod][iHead][iCoating].sToolName,
+                                () -> new AxeItem(ModToolTiers.BRASS, 0, 0, new Item.Properties()));
+                    }
+                    if (currentToolName.equals("shovel"))
+                    {
+                        currentTool[iRod][iHead][iCoating].oTool = TOOLS.register(currentTool[iRod][iHead][iCoating].sToolName,
+                                () -> new ShovelItem(ModToolTiers.BRASS, 0, 0, new Item.Properties()));
+                    }
+                    if (currentToolName.equals("hoe"))
+                    {
+                        currentTool[iRod][iHead][iCoating].oTool = TOOLS.register(currentTool[iRod][iHead][iCoating].sToolName,
+                                () -> new HoeItem(ModToolTiers.BRASS, 0, 0, new Item.Properties()));
+                    }
+                    
                 }
             }
         }
-        return true;
     }
     
-    ModTool[][][] Tools = new ModTool[iRods][iHead][iCoating];
     
-    public static void addTools(String toolType, int iRod, int iHead, int iCoating)
-    {
-        // empty still
-        final RegistryObject<Item> BRASS_HOE = TOOLS.register("brass_hoe",
-                () -> new HoeItem(ModToolTiers.BRASS, 0, 0, new Item.Properties()));
+    // Simulated method to register a tool and return a RegistryObject<Item>
+    private RegistryObject<Item> registerTool(String toolName) {
+        // Simulate the registration process for each tool and return the corresponding RegistryObject<Item>
+        // In actual code, this would use the Minecraft Forge registry system to register tools.
+        return RegistryObject.of("somewhere", Item.class);
+        
     }
     
     public static void register(IEventBus eventBus)

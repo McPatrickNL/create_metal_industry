@@ -9,6 +9,7 @@ import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 import net.patrick.create_metal_industries.CreateMetalIndustries;
+import net.patrick.create_metal_industries.item.ModTool;
 import net.patrick.create_metal_industries.item.ModToolItems;
 
 // https://youtu.be/enzKJWq0vNI?t=406
@@ -32,6 +33,21 @@ public class ModToolModelProvider extends ItemModelProvider
         handheldItem(ModToolItems.BRASS_AXE);
         handheldItem(ModToolItems.BRASS_SHOVEL);
         handheldItem(ModToolItems.BRASS_HOE);
+        
+        //for loop here!
+        
+        ModToolItems
+        
+        for(int iRod = 0; iRod < iNumberRods; iRod++)
+        {
+            for(int iHead = 0; iHead < iNumberHeads; iHead++)
+            {
+                for(int iCoating = 0; iCoating < iNumberCoatings; iCoating++)
+                {
+                
+                }
+            }
+        }
         
         //////////////////////////////////////////////////
         //  WHEN ADDING NEW ELEMENTS TO THE BELOW LIST  //
