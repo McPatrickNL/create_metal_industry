@@ -9,6 +9,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.patrick.create_metal_industries.CreateMetalIndustries;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.concurrent.CompletableFuture;
 
 // https://youtu.be/enzKJWq0vNI?t=1178
@@ -26,6 +27,7 @@ public class DataGenerators
         generator.addProvider(event.includeServer(), new ModRecipeProvider(packOutput));
         
         generator.addProvider(event.includeClient(), new ModItemModelProvider(packOutput, existingFileHelper));
+        
         //generator.addProvider(event.includeClient(), new ModToolModelProvider(packOutput, existingFileHelper));
         
     }

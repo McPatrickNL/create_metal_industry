@@ -18,4 +18,5 @@ public class ModToolTiers
             new ForgeTier(3, 1500, 5f, 4f,25,
                     ModTags.Blocks.NEEDS_BRASS_TOOL, ()-> Ingredient.of(ModItems.UNCOOKED_INGOT_MOLD.get())),
             new ResourceLocation(CreateMetalIndustries.MOD_ID, "brass"), List.of(Tiers.IRON), List.of(Tiers.DIAMOND));//diamond might have to be netherite
+    
 }

@@ -2,13 +2,14 @@ package net.patrick.create_metal_industries.item;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import net.patrick.create_metal_industries.CreateMetalIndustries;
+import net.patrick.create_metal_industries.item.material.ModToolCombinations;
+
+import java.util.Map;
 
 public class ModCreativeModeTabs
 {
@@ -66,6 +67,14 @@ public class ModCreativeModeTabs
                         pOutput.accept(ModToolItems.BRASS_AXE.get());
                         pOutput.accept(ModToolItems.BRASS_SHOVEL.get());
                         pOutput.accept(ModToolItems.BRASS_HOE.get());
+                        
+                        // Generated Tools
+                        for (Map.Entry<String, RegistryObject<Item>> entry : ModToolItems.REGISTERED_TOOLS.entrySet())
+                        {
+                            //System.out.println("wa");
+                            pOutput.accept(entry.getValue().get());
+                        }
+                        
                     })
                     .build());
     
