@@ -7,7 +7,6 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import net.patrick.create_metal_industries.CreateMetalIndustries;
-import net.patrick.create_metal_industries.item.material.ModToolCombinations;
 
 import java.util.Map;
 
