@@ -9,7 +9,9 @@ import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 import net.patrick.create_metal_industries.CreateMetalIndustries;
+import net.patrick.create_metal_industries.item.ModTool;
 import net.patrick.create_metal_industries.item.ModToolItems;
+import net.patrick.create_metal_industries.item.material.ModToolCombinations;
 
 // https://youtu.be/enzKJWq0vNI?t=406
 public class ModToolModelProvider extends ItemModelProvider
@@ -33,8 +35,16 @@ public class ModToolModelProvider extends ItemModelProvider
         handheldItem(ModToolItems.BRASS_SHOVEL);
         handheldItem(ModToolItems.BRASS_HOE);
         
+        for (ModTool tool : ModToolCombinations.tools) {
+            withExistingParent(tool.codeName, modLoc("item/cmi_pickaxe"))
+                    .texture("rod", modLoc(tool.rodTexture))
+                    .texture("head", modLoc(tool.headTexture))
+                    .texture("coating", modLoc(tool.coatingTexture))
+                    .texture("decoration", modLoc(tool.decorationTexture));
+        }
+        
         //////////////////////////////////////////////////
-        //  WHEN ADDING NEW ELEMENTS TO THE BELOW LIST  //
+        //  WHEN ADDING NEW ELEMENTS TO THE ABOVE LIST  //
         //  MAKE SURE TO ALSO RUN THE "runData" GRADLE  //
         //////////////////////////////////////////////////
     }

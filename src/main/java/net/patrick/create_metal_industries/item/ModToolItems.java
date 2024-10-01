@@ -33,19 +33,9 @@ public class ModToolItems
     
     
     // Test to add items to a list
-//    public ModToolItems()
-//    {
-//        System.out.println("Test1");
-//        ModToolCombinations.createToolCombinations();
-//        registerTools(); // My own interpretation of where ot place this. Which is after creating the list.
-//    }
     
     // Method to register tools dynamically
     public static void registerTools() {
-        
-//        RegistryObject<Item> registeredToolTest = TOOLS.register("a_pickaxe",
-//                () -> new PickaxeItem(ModToolTiers.BRASS, 1, 1, new Item.Properties()));
-//        REGISTERED_TOOLS.put("a_pickaxe", registeredToolTest);
         
         for (ModTool toolData : ModToolCombinations.tools) {  // Iterate over tools in the list
 

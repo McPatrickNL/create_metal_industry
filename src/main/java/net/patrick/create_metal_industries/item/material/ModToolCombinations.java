@@ -36,6 +36,10 @@ public class ModToolCombinations
     {
         String codeName = CodeName(rod, head, coating, decoration);
         String inGameName = InGameName(rod, head, coating, decoration);
+        String rodTexture = rod.texture;
+        String headTexture = head.texture;
+        String coatingTexture = coating.texture;
+        String decorationTexture = decoration.texture;
         int miningLevel = MiningLevel(rod, head, coating, decoration);
         int durability = Durability(rod, head, coating, decoration);
         int miningSpeed = MiningSpeed(rod, head, coating, decoration);
@@ -44,7 +48,7 @@ public class ModToolCombinations
         double attackSpeedModifier = AttackSpeedModifier(rod, head, coating, decoration);
         
         System.out.println(inGameName);
-        tools.add(new ModTool(codeName, inGameName, miningLevel, durability, miningSpeed, durabilityModifier,
+        tools.add(new ModTool(codeName, inGameName, rodTexture, headTexture, coatingTexture, decorationTexture, miningLevel, durability, miningSpeed, durabilityModifier,
                 miningSpeedModifier, attackSpeedModifier));
     }
     
