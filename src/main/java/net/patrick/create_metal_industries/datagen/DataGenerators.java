@@ -9,10 +9,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.patrick.create_metal_industries.CreateMetalIndustries;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.concurrent.CompletableFuture;
 
-// https://youtu.be/enzKJWq0vNI?t=1178
 @Mod.EventBusSubscriber(modid = CreateMetalIndustries.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class DataGenerators
 {
@@ -28,6 +26,7 @@ public class DataGenerators
         
         generator.addProvider(event.includeClient(), new ModItemModelProvider(packOutput, existingFileHelper));
         
+        //can't have two item model providers
         //generator.addProvider(event.includeClient(), new ModToolModelProvider(packOutput, existingFileHelper));
         
     }

@@ -1,5 +1,6 @@
 package net.patrick.create_metal_industries.item.material;
 
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Tier;
 
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ public class ModToolMaterial
     // Move some of those to the child tool material classes. Just generic ones should stay here.
     public String codeName;
     public String inGameName;
-    public String texture;
+    public ResourceLocation texture;
     //public String materialType;
     //public String fluidSourceMaterial; // "none" would be for example for diamond
     //public String recipeType;
@@ -23,7 +24,7 @@ public class ModToolMaterial
     public int veinMinerMaxDepth; // 1 would be every adjacent block of the block that is being mined.
     public Tier Level;
     
-    public ModToolMaterial(String codeName, String inGameName, String texture,
+    public ModToolMaterial(String codeName, String inGameName, ResourceLocation texture,
                            int miningLevel, int baseDurability, int miningSpeed,
                            double durabilityModifier, double miningSpeedModifier)
     {

@@ -13,7 +13,6 @@ import net.patrick.create_metal_industries.item.ModTool;
 import net.patrick.create_metal_industries.item.ModToolItems;
 import net.patrick.create_metal_industries.item.ModToolCombinations;
 
-// https://youtu.be/enzKJWq0vNI?t=406
 public class ModToolModelProvider extends ItemModelProvider
 {
     public ModToolModelProvider(PackOutput output, ExistingFileHelper existingFileHelper)
@@ -29,18 +28,21 @@ public class ModToolModelProvider extends ItemModelProvider
         //  MAKE SURE TO ALSO RUN THE "runData" GRADLE  //
         //////////////////////////////////////////////////
         
-        handheldItem(ModToolItems.BRASS_SWORD);
-        handheldItem(ModToolItems.BRASS_PICKAXE);
-        handheldItem(ModToolItems.BRASS_AXE);
-        handheldItem(ModToolItems.BRASS_SHOVEL);
-        handheldItem(ModToolItems.BRASS_HOE);
+//        Left out for now.
+//        handheldItem(ModToolItems.BRASS_SWORD);
+//        handheldItem(ModToolItems.BRASS_PICKAXE);
+//        handheldItem(ModToolItems.BRASS_AXE);
+//        handheldItem(ModToolItems.BRASS_SHOVEL);
+//        handheldItem(ModToolItems.BRASS_HOE);
+        System.out.println("TEST5: " + ModToolItems.BRASS_HOE);
         
         for (ModTool tool : ModToolCombinations.tools) {
-            withExistingParent(tool.codeName, modLoc("item/cmi_pickaxe"))
-                    .texture("rod", modLoc(tool.rodTexture))
-                    .texture("head", modLoc(tool.headTexture))
-                    .texture("coating", modLoc(tool.coatingTexture))
-                    .texture("decoration", modLoc(tool.decorationTexture));
+            System.out.println("TEST6: " + tool.codeName);
+            withExistingParent(tool.codeName, modLoc("item/pickaxe/cmi_pickaxe"))
+                    .texture("rod", tool.rodTexture)
+                    .texture("head", tool.headTexture)
+                    .texture("coating", tool.coatingTexture)
+                    .texture("decoration", tool.decorationTexture);
         }
         
         //////////////////////////////////////////////////

@@ -1,13 +1,15 @@
 package net.patrick.create_metal_industries.item;
 
+import net.minecraft.resources.ResourceLocation;
+
 public class ModTool
 {
     public String codeName;
     public String inGameName;
-    public String rodTexture;
-    public String headTexture;
-    public String coatingTexture;
-    public String decorationTexture;
+    public ResourceLocation rodTexture;
+    public ResourceLocation headTexture;
+    public ResourceLocation coatingTexture;
+    public ResourceLocation decorationTexture;
     public int miningLevel;
     public int durability;
     public int miningSpeed;
@@ -16,7 +18,7 @@ public class ModTool
     public double attackSpeedModifier;
     
     public ModTool(String codeName, String inGameName,
-                   String rodTexture, String headTexture, String coatingTexture, String decorationTexture,
+                   ResourceLocation rodTexture, ResourceLocation headTexture, ResourceLocation coatingTexture, ResourceLocation decorationTexture,
                    int miningLevel, int durability, int miningSpeed,
                    double durabilityModifier, double miningSpeedModifier, double attackSpeedModifier)
     {

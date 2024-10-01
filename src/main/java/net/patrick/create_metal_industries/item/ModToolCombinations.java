@@ -1,5 +1,6 @@
 package net.patrick.create_metal_industries.item;
 
+import net.minecraft.resources.ResourceLocation;
 import net.patrick.create_metal_industries.item.material.*;
 
 import java.util.ArrayList;
@@ -11,19 +12,21 @@ public class ModToolCombinations
     
     public static ArrayList<ModTool> tools = new ArrayList<ModTool>(List.of());
     
-    static String woodTexture = "minecraft:block/stripped_spruce_log";
-    static String stoneTexture = "minecraft:block/smooth_stone";
-    static String goldTexture = "minecraft:block/gold_block";
-    static String zincTexture = "create:block/zinc_block";
-    static String copperTexture = "minecraft:block/copper_block";
-    static String ironTexture = "minecraft:block/iron_block";
-    static String brassTexture = "create:block/brass_block";
-    static String netheriteTexture = "minecraft:block/netherite_block";
-    static String noTexture = "create_metal_industries:item/empty";
-    static String netherQuartzTexture = "minecraft:item/quartz";
-    static String emeraldTexture = "minecraft:item/emerald";
-    static String diamondTexture = "minecraft:item/diamond";
-    static String amethystTexture = "minecraft:item/amethyst_shard";
+    static ResourceLocation woodTexture = new ResourceLocation("minecraft","block/stripped_spruce_log");
+    static ResourceLocation stoneTexture = new ResourceLocation("minecraft","block/smooth_stone");
+    static ResourceLocation goldTexture = new ResourceLocation("minecraft","block/gold_block");
+    //static ResourceLocation zincTexture = new ResourceLocation("create","block/zinc_block");
+    static ResourceLocation zincTexture = new ResourceLocation("minecraft","block/iron_block");
+    static ResourceLocation copperTexture = new ResourceLocation("minecraft","block/copper_block");
+    static ResourceLocation ironTexture = new ResourceLocation("minecraft","block/iron_block");
+    //static ResourceLocation brassTexture = new ResourceLocation("create","block/brass_block");
+    static ResourceLocation brassTexture = new ResourceLocation("minecraft","block/gold_block");
+    static ResourceLocation netheriteTexture = new ResourceLocation("minecraft","block/netherite_block");
+    static ResourceLocation noTexture = new ResourceLocation("create_metal_industries","item/empty");
+    static ResourceLocation netherQuartzTexture = new ResourceLocation("minecraft","item/quartz");
+    static ResourceLocation emeraldTexture = new ResourceLocation("minecraft","item/emerald");
+    static ResourceLocation diamondTexture = new ResourceLocation("minecraft","item/diamond");
+    static ResourceLocation amethystTexture = new ResourceLocation("minecraft","item/amethyst_shard");
     
     // modifiers and such still have to be changed...
     static ModToolMaterialRod woodRod = new ModToolMaterialRod(
@@ -169,10 +172,10 @@ public class ModToolCombinations
     {
         String codeName = CodeName(rod, head, coating, decoration);
         String inGameName = InGameName(rod, head, coating, decoration);
-        String rodTexture = rod.texture;
-        String headTexture = head.texture;
-        String coatingTexture = coating.texture;
-        String decorationTexture = decoration.texture;
+        ResourceLocation rodTexture = rod.texture;
+        ResourceLocation headTexture = head.texture;
+        ResourceLocation coatingTexture = coating.texture;
+        ResourceLocation decorationTexture = decoration.texture;
         int miningLevel = MiningLevel(rod, head, coating, decoration);
         int durability = Durability(rod, head, coating, decoration);
         int miningSpeed = MiningSpeed(rod, head, coating, decoration);
