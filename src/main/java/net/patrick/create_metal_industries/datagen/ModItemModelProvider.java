@@ -9,10 +9,10 @@ import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 import net.patrick.create_metal_industries.CreateMetalIndustries;
-import net.patrick.create_metal_industries.item.ModItems;
-import net.patrick.create_metal_industries.item.ModTool;
-import net.patrick.create_metal_industries.item.ModToolCombinations;
-import net.patrick.create_metal_industries.item.ModToolItems;
+import net.patrick.create_metal_industries.item.Items;
+import net.patrick.create_metal_industries.item.ToolItems;
+import net.patrick.create_metal_industries.item.tool.Tool;
+import net.patrick.create_metal_industries.item.tool.Tools;
 
 // https://youtu.be/enzKJWq0vNI?t=406
 public class ModItemModelProvider extends ItemModelProvider
@@ -30,43 +30,43 @@ public class ModItemModelProvider extends ItemModelProvider
         //  MAKE SURE TO ALSO RUN THE "runData" GRADLE  //
         //////////////////////////////////////////////////
         
-        bucketItem(ModItems.MOLTEN_BRASS_BUCKET, "brass"); // 7:45
-        bucketItem(ModItems.MOLTEN_COPPER_BUCKET, "copper");
-        bucketItem(ModItems.MOLTEN_GOLD_BUCKET, "gold");
-        bucketItem(ModItems.MOLTEN_IRON_BUCKET, "iron");
-        bucketItem(ModItems.MOLTEN_NETHERITE_BUCKET, "netherite");
-        bucketItem(ModItems.MOLTEN_ZINC_BUCKET, "zinc");
+        bucketItem(Items.MOLTEN_BRASS_BUCKET, "brass"); // 7:45
+        bucketItem(Items.MOLTEN_COPPER_BUCKET, "copper");
+        bucketItem(Items.MOLTEN_GOLD_BUCKET, "gold");
+        bucketItem(Items.MOLTEN_IRON_BUCKET, "iron");
+        bucketItem(Items.MOLTEN_NETHERITE_BUCKET, "netherite");
+        bucketItem(Items.MOLTEN_ZINC_BUCKET, "zinc");
         
-        liquidIngotMoldItem(ModItems.UNCOOKED_INGOT_MOLD, "uncooked");
-        liquidIngotMoldItem(ModItems.EMPTY_INGOT_MOLD, "empty");
+        liquidIngotMoldItem(Items.UNCOOKED_INGOT_MOLD, "uncooked");
+        liquidIngotMoldItem(Items.EMPTY_INGOT_MOLD, "empty");
         
-        ingotMoldItem(ModItems.BRASS_INGOT_MOLD, "brass");
-        ingotMoldItem(ModItems.COPPER_INGOT_MOLD, "copper");
-        ingotMoldItem(ModItems.GOLD_INGOT_MOLD, "gold");
-        ingotMoldItem(ModItems.IRON_INGOT_MOLD, "iron");
-        ingotMoldItem(ModItems.NETHERITE_INGOT_MOLD, "netherite");
-        ingotMoldItem(ModItems.ZINC_INGOT_MOLD, "zinc");
+        ingotMoldItem(Items.BRASS_INGOT_MOLD, "brass");
+        ingotMoldItem(Items.COPPER_INGOT_MOLD, "copper");
+        ingotMoldItem(Items.GOLD_INGOT_MOLD, "gold");
+        ingotMoldItem(Items.IRON_INGOT_MOLD, "iron");
+        ingotMoldItem(Items.NETHERITE_INGOT_MOLD, "netherite");
+        ingotMoldItem(Items.ZINC_INGOT_MOLD, "zinc");
         
-        liquidIngotMoldItem(ModItems.MOLTEN_BRASS_INGOT_MOLD, "brass");
-        liquidIngotMoldItem(ModItems.MOLTEN_COPPER_INGOT_MOLD, "copper");
-        liquidIngotMoldItem(ModItems.MOLTEN_GOLD_INGOT_MOLD, "gold");
-        liquidIngotMoldItem(ModItems.MOLTEN_IRON_INGOT_MOLD, "iron");
-        liquidIngotMoldItem(ModItems.MOLTEN_NETHERITE_INGOT_MOLD, "netherite");
-        liquidIngotMoldItem(ModItems.MOLTEN_ZINC_INGOT_MOLD, "zinc");
+        liquidIngotMoldItem(Items.MOLTEN_BRASS_INGOT_MOLD, "brass");
+        liquidIngotMoldItem(Items.MOLTEN_COPPER_INGOT_MOLD, "copper");
+        liquidIngotMoldItem(Items.MOLTEN_GOLD_INGOT_MOLD, "gold");
+        liquidIngotMoldItem(Items.MOLTEN_IRON_INGOT_MOLD, "iron");
+        liquidIngotMoldItem(Items.MOLTEN_NETHERITE_INGOT_MOLD, "netherite");
+        liquidIngotMoldItem(Items.MOLTEN_ZINC_INGOT_MOLD, "zinc");
         
-        handheldItem(ModToolItems.BRASS_SWORD);
-        handheldItem(ModToolItems.BRASS_PICKAXE);
-        handheldItem(ModToolItems.BRASS_AXE);
-        handheldItem(ModToolItems.BRASS_SHOVEL);
-        handheldItem(ModToolItems.BRASS_HOE);
+        handheldItem(ToolItems.BRASS_SWORD);
+        handheldItem(ToolItems.BRASS_PICKAXE);
+        handheldItem(ToolItems.BRASS_AXE);
+        handheldItem(ToolItems.BRASS_SHOVEL);
+        handheldItem(ToolItems.BRASS_HOE);
         
-        for (ModTool tool : ModToolCombinations.tools) {
-            System.out.println("TEST6: " + tool.codeName);
-            withExistingParent(tool.codeName, modLoc("item/cmi_pickaxe"))
-                    .texture("rod", tool.rodTexture)
-                    .texture("head", tool.headTexture)
-                    .texture("coating", tool.coatingTexture)
-                    .texture("decoration", tool.decorationTexture);
+        for (Tool pickaxe : Tools.pickaxes) {
+            System.out.println("TEST6: " + pickaxe.codeName);
+            withExistingParent(pickaxe.codeName, new ResourceLocation(CreateMetalIndustries.MOD_ID,"item/cmi_pickaxe"))
+                    .texture("rod", pickaxe.rodMaterial.texture)
+                    .texture("head", pickaxe.headMaterial.texture)
+                    .texture("coating", pickaxe.coatingMaterial.texture)
+                    .texture("decoration", pickaxe.decorationMaterial.texture);
         }
         
         //////////////////////////////////////////////////

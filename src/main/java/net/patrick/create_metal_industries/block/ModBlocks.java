@@ -5,7 +5,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
-import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -13,7 +12,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.patrick.create_metal_industries.CreateMetalIndustries;
 import net.patrick.create_metal_industries.fluid.ModFluids;
-import net.patrick.create_metal_industries.item.ModItems;
+import net.patrick.create_metal_industries.item.Items;
 
 import java.util.function.Supplier;
 
@@ -70,7 +69,7 @@ public class ModBlocks
     
     private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block)
     {
-        return ModItems.ITEMS.register(name, ()-> new BlockItem(block.get(), new Item.Properties()));
+        return Items.ITEMS.register(name, ()-> new BlockItem(block.get(), new Item.Properties()));
     }
     
     public static void register(IEventBus eventBus)

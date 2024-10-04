@@ -9,7 +9,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.patrick.create_metal_industries.CreateMetalIndustries;
 import net.patrick.create_metal_industries.block.ModBlocks;
-import net.patrick.create_metal_industries.item.ModItems;
+import net.patrick.create_metal_industries.item.Items;
 
 public class ModFluids
 {
@@ -67,37 +67,37 @@ public class ModFluids
             ModFluidTypes.MOLTEN_BRASS_FLUID_TYPE, SOURCE_MOLTEN_BRASS, FLOWING_MOLTEN_BRASS)
             /* de slope number is how much the height decreases. 1 is the longest flow, higher is shorter */
             .slopeFindDistance(2).levelDecreasePerBlock(2).block(ModBlocks.MOLTEN_BRASS_BLOCK)
-            .bucket(ModItems.MOLTEN_BRASS_BUCKET);
+            .bucket(Items.MOLTEN_BRASS_BUCKET);
     
     public static final ForgeFlowingFluid.Properties MOLTEN_COPPER_PROPERTIES = new ForgeFlowingFluid.Properties(
             ModFluidTypes.MOLTEN_COPPER_FLUID_TYPE, SOURCE_MOLTEN_COPPER, FLOWING_MOLTEN_COPPER)
             /* de slope number is how much the height decreases. 1 is the longest flow, higher is shorter */
             .slopeFindDistance(2).levelDecreasePerBlock(2).block(ModBlocks.MOLTEN_COPPER_BLOCK)
-            .bucket(ModItems.MOLTEN_COPPER_BUCKET);
+            .bucket(Items.MOLTEN_COPPER_BUCKET);
     
     public static final ForgeFlowingFluid.Properties MOLTEN_GOLD_PROPERTIES = new ForgeFlowingFluid.Properties(
             ModFluidTypes.MOLTEN_GOLD_FLUID_TYPE, SOURCE_MOLTEN_GOLD, FLOWING_MOLTEN_GOLD)
             /* de slope number is how much the height decreases. 1 is the longest flow, higher is shorter */
             .slopeFindDistance(2).levelDecreasePerBlock(2).block(ModBlocks.MOLTEN_GOLD_BLOCK)
-            .bucket(ModItems.MOLTEN_GOLD_BUCKET);
+            .bucket(Items.MOLTEN_GOLD_BUCKET);
     
     public static final ForgeFlowingFluid.Properties MOLTEN_IRON_PROPERTIES = new ForgeFlowingFluid.Properties(
             ModFluidTypes.MOLTEN_IRON_FLUID_TYPE, SOURCE_MOLTEN_IRON, FLOWING_MOLTEN_IRON)
             /* de slope number is how much the height decreases. 1 is the longest flow, higher is shorter */
             .slopeFindDistance(2).levelDecreasePerBlock(2).block(ModBlocks.MOLTEN_IRON_BLOCK)
-            .bucket(ModItems.MOLTEN_IRON_BUCKET);
+            .bucket(Items.MOLTEN_IRON_BUCKET);
     
     public static final ForgeFlowingFluid.Properties MOLTEN_NETHERITE_PROPERTIES = new ForgeFlowingFluid.Properties(
             ModFluidTypes.MOLTEN_NETHERITE_FLUID_TYPE, SOURCE_MOLTEN_NETHERITE, FLOWING_MOLTEN_NETHERITE)
             /* de slope number is how much the height decreases. 1 is the longest flow, higher is shorter */
             .slopeFindDistance(2).levelDecreasePerBlock(2).block(ModBlocks.MOLTEN_NETHERITE_BLOCK)
-            .bucket(ModItems.MOLTEN_NETHERITE_BUCKET);
+            .bucket(Items.MOLTEN_NETHERITE_BUCKET);
     
     public static final ForgeFlowingFluid.Properties MOLTEN_ZINC_PROPERTIES = new ForgeFlowingFluid.Properties(
             ModFluidTypes.MOLTEN_ZINC_FLUID_TYPE, SOURCE_MOLTEN_ZINC, FLOWING_MOLTEN_ZINC)
             /* de slope number is how much the height decreases. 1 is the longest flow, higher is shorter */
             .slopeFindDistance(2).levelDecreasePerBlock(2).block(ModBlocks.MOLTEN_ZINC_BLOCK)
-            .bucket(ModItems.MOLTEN_ZINC_BUCKET);
+            .bucket(Items.MOLTEN_ZINC_BUCKET);
     
     
     public static void register(IEventBus eventBus) {

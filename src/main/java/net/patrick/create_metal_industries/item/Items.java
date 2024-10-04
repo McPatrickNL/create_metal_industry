@@ -2,7 +2,6 @@ package net.patrick.create_metal_industries.item;
 
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -10,7 +9,7 @@ import net.minecraftforge.registries.RegistryObject;
 import net.patrick.create_metal_industries.CreateMetalIndustries;
 import net.patrick.create_metal_industries.fluid.ModFluids;
 
-public class ModItems
+public class Items
 {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, CreateMetalIndustries.MOD_ID);
@@ -20,22 +19,22 @@ public class ModItems
     private static String bucket(String str)    {return "molten_" + str + "_bucket";}
     
     public static final RegistryObject<Item> MOLTEN_BRASS_BUCKET = ITEMS.register(bucket("brass"),
-            () -> new BucketItem(ModFluids.SOURCE_MOLTEN_BRASS, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+            () -> new BucketItem(ModFluids.SOURCE_MOLTEN_BRASS, new Item.Properties().craftRemainder(net.minecraft.world.item.Items.BUCKET).stacksTo(1)));
     
     public static final RegistryObject<Item> MOLTEN_COPPER_BUCKET = ITEMS.register(bucket("copper"),
-            () -> new BucketItem(ModFluids.SOURCE_MOLTEN_COPPER, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+            () -> new BucketItem(ModFluids.SOURCE_MOLTEN_COPPER, new Item.Properties().craftRemainder(net.minecraft.world.item.Items.BUCKET).stacksTo(1)));
     
     public static final RegistryObject<Item> MOLTEN_GOLD_BUCKET = ITEMS.register(bucket("gold"),
-            () -> new BucketItem(ModFluids.SOURCE_MOLTEN_GOLD, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+            () -> new BucketItem(ModFluids.SOURCE_MOLTEN_GOLD, new Item.Properties().craftRemainder(net.minecraft.world.item.Items.BUCKET).stacksTo(1)));
     
     public static final RegistryObject<Item> MOLTEN_IRON_BUCKET = ITEMS.register(bucket("iron"),
-            () -> new BucketItem(ModFluids.SOURCE_MOLTEN_IRON, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+            () -> new BucketItem(ModFluids.SOURCE_MOLTEN_IRON, new Item.Properties().craftRemainder(net.minecraft.world.item.Items.BUCKET).stacksTo(1)));
     
     public static final RegistryObject<Item> MOLTEN_NETHERITE_BUCKET = ITEMS.register(bucket("netherite"),
-            () -> new BucketItem(ModFluids.SOURCE_MOLTEN_NETHERITE, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+            () -> new BucketItem(ModFluids.SOURCE_MOLTEN_NETHERITE, new Item.Properties().craftRemainder(net.minecraft.world.item.Items.BUCKET).stacksTo(1)));
     
     public static final RegistryObject<Item> MOLTEN_ZINC_BUCKET = ITEMS.register(bucket("zinc"),
-            () -> new BucketItem(ModFluids.SOURCE_MOLTEN_ZINC, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+            () -> new BucketItem(ModFluids.SOURCE_MOLTEN_ZINC, new Item.Properties().craftRemainder(net.minecraft.world.item.Items.BUCKET).stacksTo(1)));
     
     
     // Ingot molds

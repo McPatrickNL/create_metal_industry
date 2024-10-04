@@ -3,25 +3,22 @@ package net.patrick.create_metal_industries;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.patrick.create_metal_industries.block.ModBlocks;
 import net.patrick.create_metal_industries.fluid.ModFluidTypes;
 import net.patrick.create_metal_industries.fluid.ModFluids;
-import net.patrick.create_metal_industries.item.ModCreativeModeTabs;
-import net.patrick.create_metal_industries.item.ModItems;
-import net.patrick.create_metal_industries.item.ModToolItems;
+import net.patrick.create_metal_industries.item.CreativeModeTabs;
+import net.patrick.create_metal_industries.item.Items;
+import net.patrick.create_metal_industries.item.ToolItems;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -45,11 +42,11 @@ public class CreateMetalIndustries
         // Register the Deferred Register to the mod event bus so blocks get registered
         ModBlocks.register(modEventBus);
         // Register the Deferred Register to the mod event bus so items get registered
-        ModItems.register(modEventBus);
+        Items.register(modEventBus);
         // Create Tool items and Register them
-        ModToolItems.register(modEventBus);
+        ToolItems.register(modEventBus);
         // Register the Deferred Register to the mod event bus so tabs get registered
-        ModCreativeModeTabs.register(modEventBus);
+        CreativeModeTabs.register(modEventBus);
         // Register Fluids
         ModFluids.register(modEventBus);
         ModFluidTypes.register(modEventBus);
@@ -87,7 +84,7 @@ public class CreateMetalIndustries
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
-        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS)
+        if(event.getTabKey() == net.minecraft.world.item.CreativeModeTabs.INGREDIENTS)
         {
             //event.accept(ModItems.SAPPHIRE);
             //event.accept(ModItems.RAW_SAPPHIRE);
