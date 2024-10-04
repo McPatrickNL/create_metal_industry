@@ -1,20 +1,29 @@
 package net.patrick.create_metal_industries.item.tool;
 
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.PickaxeItem;
 import net.patrick.create_metal_industries.item.tool.material.Material;
 
-public class Pickaxe extends Tool
+public class Pickaxe extends PickaxeItem
 {
+    public Tool getToolData()
+    {
+        return toolData;
+    }
+    
+    private final Tool toolData;
+    
     public String toolTypeName = "Pickaxe";
     public boolean veinMiner;
     public int veinMinerMaxDepth; // 1 would be every adjacent block of the block that is being mined.
     
-    public Pickaxe(Material rodMaterial, Material headMaterial, Material coatingMaterial, Material decorationMaterial)
+    public Pickaxe(Tool toolData, Material rodMaterial, Material headMaterial, Material coatingMaterial, Material decorationMaterial, Item.Properties properties)
     {
-        super(rodMaterial, headMaterial, coatingMaterial, decorationMaterial);
-        
-        this.codeName = CodeName(rodMaterial, headMaterial, coatingMaterial, decorationMaterial);
-        this.inGameName = InGameName(rodMaterial, headMaterial, coatingMaterial, decorationMaterial);
+        super(toolData.tier, toolData.attackDamage, toolData.attackSpeedModifier, properties);
+        this.toolData = toolData;
+        this.getToolData().codeName = CodeName(rodMaterial, headMaterial, coatingMaterial, decorationMaterial);
+        this.getToolData().inGameName = InGameName(rodMaterial, headMaterial, coatingMaterial, decorationMaterial);
     }
     
     private String CodeName(Material rodMaterial, Material headMaterial, Material coatingMaterial, Material decorationMaterial)

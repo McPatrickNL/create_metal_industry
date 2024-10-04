@@ -14,8 +14,8 @@ public class Material
     public int baseDurability;          // no actual use, this is part of the tier
     public int miningSpeed;             // no actual use, this is part of the tier
     public double durabilityModifier;
-    public double miningSpeedModifier;
-    public double attackSpeedModifier;
+    public int attackDamage;
+    public float attackSpeedModifier;
     public double toolRangeModifier;    // no actual use yet
     public Tier tier;
     
@@ -42,8 +42,8 @@ public class Material
     //public String recipeType;
     
     public Material(String codeName, String inGameNameGeneric, String inGameNameCoated, ResourceLocation texture,
-                    int miningLevel, int baseDurability, int miningSpeed,
-                    double durabilityModifier, double miningSpeedModifier, double attackSpeedModifier, double toolRangeModifier,
+                    int miningLevel, int baseDurability, int miningSpeed, int attackDamage,
+                    double durabilityModifier, float attackSpeedModifier, double toolRangeModifier,
                     Tier tier)
     {
         this.codeName = codeName;
@@ -53,8 +53,8 @@ public class Material
         this.miningLevel = miningLevel;
         this.baseDurability = baseDurability;
         this.miningSpeed = miningSpeed;
+        this.attackDamage = attackDamage;
         this.durabilityModifier = durabilityModifier;
-        this.miningSpeedModifier = miningSpeedModifier;
         this.attackSpeedModifier = attackSpeedModifier;
         this.toolRangeModifier = toolRangeModifier;
         this.tier = tier;

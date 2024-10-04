@@ -30,63 +30,63 @@ public class Materials
     
     static Material none = new Material(
             "no", "no ", "", noTexture,
-            1, 100, 1, 0.8, 0.2, 2,
+            1, 100, 1, 1, 0.2, 2,
             1, Tiers.WOOD);
     
     static Material wood = new Material(
             "wood", "Wooden ", "Holded ", woodTexture,
-            1, 100, 1, 0.8, 0.2, 2,
+            1, 100, 1, 1, 0.2, 2,
             1,  Tiers.WOOD);
     static Material stone = new Material(
             "stone", "Stone ", "Petrified ", stoneTexture,
-            1, 100, 1, 0.8, 0.2, 2,
+            1, 100, 1, 1, 0.2, 2,
             1,  Tiers.STONE);
     static Material gold = new Material(
             "gold", "Gold ", "Gilded ", goldTexture,
-            1, 100, 1, 0.8, 0.2, 2,
+            1, 100, 1, 18, 0.2, 2,
             1,  Tiers.GOLD);
     static Material zinc = new Material(
             "zinc", "Zinc ", "Galvanized ", zincTexture,
-            1, 100, 1, 0.8, 0.2, 2,
+            1, 100, 1, 1, 0.2, 2,
             1,  Tiers.GOLD);
     static Material copper = new Material(
             "copper", "Copper ", "Cupred ", copperTexture,
-            1, 100, 1, 0.8, 0.2, 2,
+            1, 100, 1, 1, 0.2, 2,
             1,  Tiers.IRON);
     static Material iron = new Material(
             "iron", "Iron ", "Ferred ", ironTexture,
-            1, 100, 1, 0.8, 0.2, 2,
+            1, 100, 1, 1, 0.2, 2,
             1,  Tiers.IRON);
     static Material brass = new Material(
             "brass", "Brass ", "Brazed ", brassTexture,
-            1, 100, 1, 0.8, 0.2, 2,
+            1, 100, 1, 1, 0.2, 2,
             1,  ToolTiers.BRASS);
     static Material netherite = new Material(
             "netherite", "Netherite ", "Tainted ", netheriteTexture,
-            1, 100, 1, 0.8, 0.2, 2,
+            1, 100, 1, 1, 0.2, 2,
             1,  Tiers.NETHERITE);
     // todo add Mithril properly
     // todo set Mithril texture
     static Material mithril = new Material(
             "mithril", "Mithril ", "Enriched ", netheriteTexture,
-            1, 100, 1, 0.8, 0.2, 2,
+            1, 100, 1, 1, 0.2, 2,
             1,  Tiers.NETHERITE);
     
     static Material netherQuartz = new Material(
             "nether_quartz", "Nether Quartz ", "Spiked ", netherQuartzTexture,
-            1, 100, 1, 0.8, 0.2, 2,
+            1, 100, 1, 1, 0.2, 2,
             1,  Tiers.DIAMOND);
     static Material emerald = new Material(
             "emerald", "Emerald ", "Emered ", emeraldTexture,
-            1, 100, 1, 0.8, 0.2, 2,
+            1, 100, 1, 1, 0.2, 2,
             1,  Tiers.DIAMOND);
     static Material diamond = new Material(
             "diamond", "Diamond ", "Expensive ", diamondTexture,
-            1, 100, 1, 0.8, 0.2, 2,
+            1, 100, 1, 1, 0.2, 2,
             1,  Tiers.DIAMOND);
     static Material amethyst = new Material(
             "amethyst", "Amethyst ", "Athysted ", amethystTexture,
-            1, 100, 1, 0.8, 0.2, 2,
+            1, 100, 1, 1, 0.2, 2,
             1,  Tiers.DIAMOND);
     
     private ArrayList<Material> rodMaterials;

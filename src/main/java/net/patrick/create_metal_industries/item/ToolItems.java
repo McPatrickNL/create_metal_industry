@@ -6,6 +6,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.patrick.create_metal_industries.CreateMetalIndustries;
+import net.patrick.create_metal_industries.item.tool.Pickaxe;
 import net.patrick.create_metal_industries.item.tool.Tool;
 import net.patrick.create_metal_industries.item.tool.Tools;
 import net.patrick.create_metal_industries.item.tool.ToolTiers;
@@ -39,9 +40,9 @@ public class ToolItems
     // Method to register tools dynamically
     public static void registerTools() {
         
-        for (Tool toolData : Tools.pickaxes) {  // Iterate over tools in the list
+        for (Pickaxe toolData : Tools.pickaxes) {  // Iterate over tools in the list
 
-            String toolName = toolData.codeName;  // "brass_pickaxe"  // Use codeName as the registry name
+            String toolName = toolData.getToolData().codeName;  // "brass_pickaxe"  // Use codeName as the registry name
             System.out.println("TEST4: " + toolName);
             // Register the tool and store it in the map for future reference
             RegistryObject<Item> registeredTool = TOOLS.register(

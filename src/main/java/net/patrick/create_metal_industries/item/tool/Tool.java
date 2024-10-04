@@ -1,10 +1,11 @@
 package net.patrick.create_metal_industries.item.tool;
 
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Tier;
 import net.patrick.create_metal_industries.item.tool.material.Material;
 
-public abstract class Tool
+public class Tool
 {
     public String codeName;
     public String inGameName;
@@ -19,8 +20,8 @@ public abstract class Tool
     public int miningLevel; // no use - see tiers
     public int durability; // no use - see tiers
     public int miningSpeed; // no use - see tiers
-    public double miningSpeedModifier;
-    public double attackSpeedModifier;
+    public int attackDamage;
+    public float attackSpeedModifier;
     public Tier tier; ////// todo is this the right import?.
     
     public Tool(Material rodMaterial, Material headMaterial, Material coatingMaterial, Material decorationMaterial)
@@ -38,15 +39,17 @@ public abstract class Tool
         this.decorationTexture = decorationMaterial.texture;
         
         // Attributes
-        this.miningSpeedModifier = MiningSpeed(rodMaterial, headMaterial, coatingMaterial, decorationMaterial);
+        //this.miningSpeedModifier = MiningSpeed(rodMaterial, headMaterial, coatingMaterial, decorationMaterial);
         this.attackSpeedModifier = AttackSpeed(rodMaterial, headMaterial, coatingMaterial, decorationMaterial);
+        this.attackDamage = AttackDamage(rodMaterial, headMaterial, coatingMaterial, decorationMaterial);
+        //Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Item.Properties pProperties
         
         // Tier
         // todo function to determine the highest tier amongst the applied materials, decoration excluded
         this.tier = rodMaterial.tier;
     }
     
-    private double AttackSpeed(Material rodMaterial, Material headMaterial, Material coatingMaterial, Material decorationMaterial)
+    private float AttackSpeed(Material rodMaterial, Material headMaterial, Material coatingMaterial, Material decorationMaterial)
     {
         // All values multiplied and multiplied again by the highest factor
         return rodMaterial.attackSpeedModifier*
@@ -59,17 +62,29 @@ public abstract class Tool
                                 decorationMaterial.attackSpeedModifier));
     }
     
-    private double MiningSpeed(Material rodMaterial, Material headMaterial, Material coatingMaterial, Material decorationMaterial)
+//    private double MiningSpeed(Material rodMaterial, Material headMaterial, Material coatingMaterial, Material decorationMaterial)
+//    {
+//        // All values multiplied and multiplied again by the highest factor
+//        return rodMaterial.attackDamageModifier *
+//                headMaterial.attackDamageModifier *
+//                coatingMaterial.attackDamageModifier *
+//                decorationMaterial.attackDamageModifier *
+//                Math.max(Math.max(rodMaterial.attackDamageModifier,
+//                                headMaterial.attackDamageModifier),
+//                        Math.max(coatingMaterial.attackDamageModifier,
+//                                decorationMaterial.attackDamageModifier));
+//    }
+    
+    private int AttackDamage(Material rodMaterial, Material headMaterial, Material coatingMaterial, Material decorationMaterial)
     {
-        // All values multiplied and multiplied again by the highest factor
-        return rodMaterial.miningSpeedModifier*
-                headMaterial.miningSpeedModifier*
-                coatingMaterial.miningSpeedModifier*
-                decorationMaterial.miningSpeedModifier*
-                Math.max(Math.max(rodMaterial.miningSpeedModifier,
-                                headMaterial.miningSpeedModifier),
-                        Math.max(coatingMaterial.miningSpeedModifier,
-                                decorationMaterial.miningSpeedModifier));
+        return rodMaterial.attackDamage *
+                headMaterial.attackDamage *
+                coatingMaterial.attackDamage *
+                decorationMaterial.attackDamage *
+                Math.max(Math.max(rodMaterial.attackDamage,
+                                headMaterial.attackDamage),
+                        Math.max(coatingMaterial.attackDamage,
+                                decorationMaterial.attackDamage));
     }
     
 }

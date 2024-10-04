@@ -11,6 +11,7 @@ import net.minecraftforge.registries.RegistryObject;
 import net.patrick.create_metal_industries.CreateMetalIndustries;
 import net.patrick.create_metal_industries.item.Items;
 import net.patrick.create_metal_industries.item.ToolItems;
+import net.patrick.create_metal_industries.item.tool.Pickaxe;
 import net.patrick.create_metal_industries.item.tool.Tool;
 import net.patrick.create_metal_industries.item.tool.Tools;
 
@@ -60,13 +61,13 @@ public class ModItemModelProvider extends ItemModelProvider
         handheldItem(ToolItems.BRASS_SHOVEL);
         handheldItem(ToolItems.BRASS_HOE);
         
-        for (Tool pickaxe : Tools.pickaxes) {
-            System.out.println("TEST6: " + pickaxe.codeName);
-            withExistingParent(pickaxe.codeName, new ResourceLocation(CreateMetalIndustries.MOD_ID,"item/cmi_pickaxe"))
-                    .texture("rod", pickaxe.rodMaterial.texture)
-                    .texture("head", pickaxe.headMaterial.texture)
-                    .texture("coating", pickaxe.coatingMaterial.texture)
-                    .texture("decoration", pickaxe.decorationMaterial.texture);
+        for (Pickaxe pickaxe : Tools.pickaxes) {
+            System.out.println("TEST6: " + pickaxe.getToolData().codeName);
+            withExistingParent(pickaxe.getToolData().codeName, new ResourceLocation(CreateMetalIndustries.MOD_ID,"item/cmi_pickaxe"))
+                    .texture("rod", pickaxe.getToolData().rodMaterial.texture)
+                    .texture("head", pickaxe.getToolData().headMaterial.texture)
+                    .texture("coating", pickaxe.getToolData().coatingMaterial.texture)
+                    .texture("decoration", pickaxe.getToolData().decorationMaterial.texture);
         }
         
         //////////////////////////////////////////////////

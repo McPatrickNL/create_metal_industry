@@ -1,6 +1,7 @@
 package net.patrick.create_metal_industries.item.tool;
 
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.patrick.create_metal_industries.item.tool.material.*;
 
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ import java.util.List;
 public class Tools
 {
     
-    public static ArrayList<Tool> pickaxes = new ArrayList<Tool>(List.of());
+    public static ArrayList<Pickaxe> pickaxes = new ArrayList<Pickaxe>(List.of());
     public static Materials rod;
     public static Materials head;
     public static Materials coating;
@@ -59,7 +60,8 @@ public class Tools
         double attackSpeedModifier = AttackSpeedModifier(rod, head, coating, decoration);
         
         System.out.println(inGameName);
-        pickaxes.add(new Pickaxe(rod, head, coating, decoration));
+        Tool toolData = new Tool(rod, head, coating, decoration);
+        pickaxes.add(new Pickaxe(toolData, rod, head, coating, decoration, new Item.Properties()));
     }
     
     public static String InGameName(Material rod, Material head, Material coating,
