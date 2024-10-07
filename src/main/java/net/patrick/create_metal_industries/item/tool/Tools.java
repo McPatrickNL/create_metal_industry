@@ -1,79 +1,37 @@
 package net.patrick.create_metal_industries.item.tool;
 
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.patrick.create_metal_industries.item.tool.material.*;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class Tools
 {
+    public static ArrayList<Pickaxe> pickaxes = new ArrayList<Pickaxe>();
     
-    public static ArrayList<Pickaxe> pickaxes = new ArrayList<Pickaxe>(List.of());
-    public static Materials rod;
-    public static Materials head;
-    public static Materials coating;
-    public static Materials decoration;
-    
-    public static void createToolCombinations()
+    // method:
+    public static ArrayList<Pickaxe> createPickaxeCombinations(ArrayList<Material> rods, ArrayList<Material> heads,
+                                                               ArrayList<Material> coatings, ArrayList<Material> decorations)
     {
-        rod = new Materials();
-        head = new Materials();
-        coating = new Materials();
-        decoration = new Materials();
-        ArrayList<Material> rods = rod.getRodMaterials();
-        ArrayList<Material> heads = head.getHeadMaterials();
-        ArrayList<Material> coatings = coating.getCoatingMaterials();
-        ArrayList<Material> decorations = decoration.getDecorationMaterials();
-        
         System.out.println("Number of tools: " + rods.size()*heads.size()*coatings.size()*
                 decorations.size());
+        System.out.println("TEST8: 1st rod: " + rods.get(0).codeName);
         
         rods.forEach( rod ->
                 heads.forEach( head ->
                         coatings.forEach( coating ->
                                 decorations.forEach( decoration ->
-                                        addToolCombination(rod, head, coating, decoration)
+                                        {
+                                            System.out.println("spam");
+                                            pickaxes.add(new Pickaxe(new Tool(rod, head, coating, decoration), new Item.Properties()));
+                                        }
                                 )
                         )
                 )
         );
         
-    }
-    
-    public static void addToolCombination(Material rod, Material head, Material coating,
-                                          Material decoration)
-    {
-        String codeName = CodeName(rod, head, coating, decoration);
-        String inGameName = InGameName(rod, head, coating, decoration);
-        ResourceLocation rodTexture = rod.texture;
-        ResourceLocation headTexture = head.texture;
-        ResourceLocation coatingTexture = coating.texture;
-        ResourceLocation decorationTexture = decoration.texture;
-        int miningLevel = MiningLevel(rod, head, coating, decoration);
-        int durability = Durability(rod, head, coating, decoration);
-        int miningSpeed = MiningSpeed(rod, head, coating, decoration);
-        double durabilityModifier = DurabilityModifier(rod, head, coating, decoration);
-        double miningSpeedModifier = MiningSpeedModifer(rod, head, coating, decoration);
-        double attackSpeedModifier = AttackSpeedModifier(rod, head, coating, decoration);
-        
-        System.out.println(inGameName);
-        Tool toolData = new Tool(rod, head, coating, decoration);
-        pickaxes.add(new Pickaxe(toolData, rod, head, coating, decoration, new Item.Properties()));
-    }
-    
-    public static String InGameName(Material rod, Material head, Material coating,
-                                    Material decoration)
-    {
-        return "ToolTest: " + head.inGameNameGeneric + " pickaxe with " + rod.inGameNameGeneric + " rod, " + coating.inGameNameGeneric +
-                " coating and " + decoration.inGameNameGeneric + " decoration.";
-    }
-    
-    private static String CodeName(Material rod, Material head, Material coating, Material decoration)
-    {
-        return "pickaxe_" + rod.codeName + "_" + head.codeName + "_" + coating.codeName + "_" + decoration.codeName;
+        return pickaxes;
     }
     
     private static int MiningLevel(Material rod, Material head, Material coating, Material decoration)
@@ -96,12 +54,12 @@ public class Tools
         return 1;
     }
     
-    private static double MiningSpeedModifer(Material rod, Material head, Material coating, Material decoration)
+    private static double MiningSpeedModifier(Material rod, Material head, Material coating, Material decoration)
     {
         return 1;
     }
     
-    private static double AttackSpeedModifier(Material rod, Material head, Material coating, Material decoration)
+    private static float AttackSpeedModifier(Material rod, Material head, Material coating, Material decoration)
     {
         return 1;
     }

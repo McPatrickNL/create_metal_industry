@@ -7,7 +7,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.patrick.create_metal_industries.CreateMetalIndustries;
 import net.patrick.create_metal_industries.item.tool.Pickaxe;
-import net.patrick.create_metal_industries.item.tool.Tool;
 import net.patrick.create_metal_industries.item.tool.Tools;
 import net.patrick.create_metal_industries.item.tool.ToolTiers;
 
@@ -38,12 +37,14 @@ public class ToolItems
     // Test to add items to a list
     
     // Method to register tools dynamically
-    public static void registerTools() {
-        
-        for (Pickaxe toolData : Tools.pickaxes) {  // Iterate over tools in the list
+    static
+    {
+        System.out.println("test static block");
+        for (Pickaxe pickaxe : Tools.pickaxes) {  // Iterate over tools in the list
 
-            String toolName = toolData.getToolData().codeName;  // "brass_pickaxe"  // Use codeName as the registry name
+            String toolName = pickaxe.getToolData().codeName;  // "brass_pickaxe"  // Use codeName as the registry name
             System.out.println("TEST4: " + toolName);
+            
             // Register the tool and store it in the map for future reference
             RegistryObject<Item> registeredTool = TOOLS.register(
                     toolName,  // The tool's codeName is used for registration
@@ -65,8 +66,8 @@ public class ToolItems
     public static void register(IEventBus eventBus)
     {
         System.out.println("Test1");
-        Tools.createToolCombinations();
-        registerTools(); // My own interpretation of where ot place this. Which is after creating the list.
+        // old place for:  // Tools.createToolCombinations();
         TOOLS.register(eventBus);
+        //registerTools(); // My own interpretation of where ot place this. Which is after creating the list.
     }
 }

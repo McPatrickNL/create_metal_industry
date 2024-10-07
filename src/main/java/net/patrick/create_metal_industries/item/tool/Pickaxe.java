@@ -14,37 +14,38 @@ public class Pickaxe extends PickaxeItem
     
     private final Tool toolData;
     
-    public String toolTypeName = "Pickaxe";
+    public String toolTypeName = "pickaxe";
     public boolean veinMiner;
     public int veinMinerMaxDepth; // 1 would be every adjacent block of the block that is being mined.
     
-    public Pickaxe(Tool toolData, Material rodMaterial, Material headMaterial, Material coatingMaterial, Material decorationMaterial, Item.Properties properties)
+    public Pickaxe(Tool toolData, Item.Properties properties)
     {
         super(toolData.tier, toolData.attackDamage, toolData.attackSpeedModifier, properties);
         this.toolData = toolData;
-        this.getToolData().codeName = CodeName(rodMaterial, headMaterial, coatingMaterial, decorationMaterial);
-        this.getToolData().inGameName = InGameName(rodMaterial, headMaterial, coatingMaterial, decorationMaterial);
+        this.getToolData().codeName = CodeName(toolData);
+        this.getToolData().inGameName = InGameName(toolData);
     }
     
-    private String CodeName(Material rodMaterial, Material headMaterial, Material coatingMaterial, Material decorationMaterial)
+    private String CodeName(Tool toolData)
     {
-        return rodMaterial.codeName + "_" +
-            headMaterial.codeName + "_" +
-            coatingMaterial.codeName + "_" +
-            decorationMaterial.codeName;
+        // todo add a variable to indicate the type of tool created
+        return toolData.rodMaterial.codeName + "_" +
+                toolData.headMaterial.codeName + "_" +
+                toolData.coatingMaterial.codeName + "_" +
+                toolData.decorationMaterial.codeName;
     }
     
-    private String InGameName(Material rodMaterial, Material headMaterial, Material coatingMaterial, Material decorationMaterial)
+    private String InGameName(Tool toolData)
     {
         // I hope line breaks work in a tool name.....
-        return coatingMaterial.inGameNameCoated +       // "Tainted " or "" if none
-                headMaterial.inGameNameGeneric +        // "Iron "
-                toolTypeName +                          // "Pickaxe"
-                "\nwith " +                             // new line "with "
-                rodMaterial.inGameNameGeneric +         // "Copper "
-                "Rod\nand " +                           // "Rod" new line "and "
-                decorationMaterial.inGameNameGeneric +  // "no "
-                "Decorations";                          // "Decorations"
+        return toolData.coatingMaterial.inGameNameCoated +          // "Tainted " or "" if none
+                toolData.headMaterial.inGameNameGeneric +           // "Iron "
+                toolTypeName +                                      // "Pickaxe"
+                "with " +                                           // new line "with "
+                toolData.rodMaterial.inGameNameGeneric +            // "Copper "
+                "Rod and " +                                        // "Rod" new line "and "
+                toolData.decorationMaterial.inGameNameGeneric +     // "no "
+                "Decorations";                                      // "Decorations"
                 
     }
     

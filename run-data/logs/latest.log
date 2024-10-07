@@ -1,21 +1,21 @@
-[04okt.2024 16:22:59.605] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatauserdev, --assetIndex, 5, --assetsDir, C:\Users\Patrick\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.3.7, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mod, create_metal_industries, --all, --output, F:\Projects\create_metal_industry\src\generated\resources, --existing, F:\Projects\create_metal_industry\src\main\resources]
-[04okt.2024 16:22:59.612] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.12 by Eclipse Adoptium; OS Windows 11 arch amd64 version 10.0
-[04okt.2024 16:22:59.724] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatauserdev
-[04okt.2024 16:22:59.763] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/Patrick/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23128!/ Service=ModLauncher Env=CLIENT
-[04okt.2024 16:23:00.005] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Patrick\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.3.7\5d72a04334eea2494912f0d91216648462bb32c3\javafmllanguage-1.20.1-47.3.7.jar is missing mods.toml file
-[04okt.2024 16:23:00.010] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Patrick\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.3.7\74fd0ee16e74766d45d2efe7c74b6d0e121677df\lowcodelanguage-1.20.1-47.3.7.jar is missing mods.toml file
-[04okt.2024 16:23:00.012] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Patrick\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.3.7\cf753f5bc19311c127ea07e1ee43d5f9477df22b\mclanguage-1.20.1-47.3.7.jar is missing mods.toml file
-[04okt.2024 16:23:00.014] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Patrick\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.3.7\b6a4840dfdc56e2ae2eccdd1bf233959493d11ea\fmlcore-1.20.1-47.3.7.jar is missing mods.toml file
-[04okt.2024 16:23:00.092] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
-[04okt.2024 16:23:01.629] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
-[04okt.2024 16:23:01.634] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatauserdev' with arguments [--gameDir, ., --assetsDir, C:\Users\Patrick\.gradle\caches\forge_gradle\assets, --assetIndex, 5, --mod, create_metal_industries, --all, --output, F:\Projects\create_metal_industry\src\generated\resources, --existing, F:\Projects\create_metal_industry\src\main\resources]
-[04okt.2024 16:23:01.893] [main/INFO] [mixin/]: Remapping refMap flywheel.refmap.json using F:\Projects\create_metal_industry/build/createSrgToMcp/output.srg
-[04okt.2024 16:23:01.913] [main/INFO] [mixin/]: Remapping refMap flywheel.refmap.json using F:\Projects\create_metal_industry/build/createSrgToMcp/output.srg
-[04okt.2024 16:23:01.915] [main/INFO] [mixin/]: Remapping refMap create.refmap.json using F:\Projects\create_metal_industry/build/createSrgToMcp/output.srg
-[04okt.2024 16:23:02.691] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [create_metal_industries]
-[04okt.2024 16:23:06.087] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.3.7, for MC 1.20.1 with MCP 20230612.114412
-[04okt.2024 16:23:06.089] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.3.7 Initialized
-[04okt.2024 16:23:06.120] [modloading-worker-0/ERROR] [net.minecraftforge.fml.javafmlmod.FMLModContainer/LOADING]: Failed to create mod instance. ModID: create_metal_industries, class net.patrick.create_metal_industries.CreateMetalIndustries
+[07okt.2024 09:40:28.338] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatauserdev, --assetIndex, 5, --assetsDir, C:\Users\Patrick\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.3.7, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mod, create_metal_industries, --all, --output, F:\Projects\create_metal_industry\src\generated\resources, --existing, F:\Projects\create_metal_industry\src\main\resources]
+[07okt.2024 09:40:28.342] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.12 by Eclipse Adoptium; OS Windows 11 arch amd64 version 10.0
+[07okt.2024 09:40:28.473] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatauserdev
+[07okt.2024 09:40:28.506] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/Patrick/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23128!/ Service=ModLauncher Env=CLIENT
+[07okt.2024 09:40:28.754] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Patrick\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.3.7\5d72a04334eea2494912f0d91216648462bb32c3\javafmllanguage-1.20.1-47.3.7.jar is missing mods.toml file
+[07okt.2024 09:40:28.756] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Patrick\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.3.7\74fd0ee16e74766d45d2efe7c74b6d0e121677df\lowcodelanguage-1.20.1-47.3.7.jar is missing mods.toml file
+[07okt.2024 09:40:28.758] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Patrick\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.3.7\cf753f5bc19311c127ea07e1ee43d5f9477df22b\mclanguage-1.20.1-47.3.7.jar is missing mods.toml file
+[07okt.2024 09:40:28.760] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Patrick\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.3.7\b6a4840dfdc56e2ae2eccdd1bf233959493d11ea\fmlcore-1.20.1-47.3.7.jar is missing mods.toml file
+[07okt.2024 09:40:28.832] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
+[07okt.2024 09:40:30.294] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
+[07okt.2024 09:40:30.302] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatauserdev' with arguments [--gameDir, ., --assetsDir, C:\Users\Patrick\.gradle\caches\forge_gradle\assets, --assetIndex, 5, --mod, create_metal_industries, --all, --output, F:\Projects\create_metal_industry\src\generated\resources, --existing, F:\Projects\create_metal_industry\src\main\resources]
+[07okt.2024 09:40:30.606] [main/INFO] [mixin/]: Remapping refMap flywheel.refmap.json using F:\Projects\create_metal_industry/build/createSrgToMcp/output.srg
+[07okt.2024 09:40:30.624] [main/INFO] [mixin/]: Remapping refMap flywheel.refmap.json using F:\Projects\create_metal_industry/build/createSrgToMcp/output.srg
+[07okt.2024 09:40:30.626] [main/INFO] [mixin/]: Remapping refMap create.refmap.json using F:\Projects\create_metal_industry/build/createSrgToMcp/output.srg
+[07okt.2024 09:40:31.242] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [create_metal_industries]
+[07okt.2024 09:40:34.437] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.3.7, for MC 1.20.1 with MCP 20230612.114412
+[07okt.2024 09:40:34.438] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.3.7 Initialized
+[07okt.2024 09:40:34.474] [modloading-worker-0/ERROR] [net.minecraftforge.fml.javafmlmod.FMLModContainer/LOADING]: Failed to create mod instance. ModID: create_metal_industries, class net.patrick.create_metal_industries.CreateMetalIndustries
 java.lang.IllegalStateException: Registry is already frozen
 	at net.minecraftforge.registries.NamespacedWrapper.validateWrite(NamespacedWrapper.java:271) ~[forge-1.20.1-47.3.7_mapped_parchment_2023.09.03-1.20.1.jar%23190%23197!/:?]
 	at net.minecraftforge.registries.NamespacedWrapper.createIntrusiveHolder(NamespacedWrapper.java:365) ~[forge-1.20.1-47.3.7_mapped_parchment_2023.09.03-1.20.1.jar%23190%23197!/:?]
@@ -24,18 +24,16 @@ java.lang.IllegalStateException: Registry is already frozen
 	at net.minecraft.world.item.DiggerItem.<init>(DiggerItem.java:24) ~[forge-1.20.1-47.3.7_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
 	at net.minecraft.world.item.PickaxeItem.<init>(PickaxeItem.java:7) ~[forge-1.20.1-47.3.7_mapped_parchment_2023.09.03-1.20.1.jar%23191!/:?]
 	at net.patrick.create_metal_industries.item.tool.Pickaxe.<init>(Pickaxe.java:23) ~[%23196!/:?]
-	at net.patrick.create_metal_industries.item.tool.Tools.addToolCombination(Tools.java:64) ~[%23196!/:?]
-	at net.patrick.create_metal_industries.item.tool.Tools.lambda$createToolCombinations$0(Tools.java:38) ~[%23196!/:?]
+	at net.patrick.create_metal_industries.item.tool.Tools.lambda$createToolCombinations$0(Tools.java:28) ~[%23196!/:?]
 	at java.util.ArrayList.forEach(ArrayList.java:1511) ~[?:?]
-	at net.patrick.create_metal_industries.item.tool.Tools.lambda$createToolCombinations$1(Tools.java:37) ~[%23196!/:?]
+	at net.patrick.create_metal_industries.item.tool.Tools.lambda$createToolCombinations$1(Tools.java:25) ~[%23196!/:?]
 	at java.util.ArrayList.forEach(ArrayList.java:1511) ~[?:?]
-	at net.patrick.create_metal_industries.item.tool.Tools.lambda$createToolCombinations$2(Tools.java:36) ~[%23196!/:?]
+	at net.patrick.create_metal_industries.item.tool.Tools.lambda$createToolCombinations$2(Tools.java:24) ~[%23196!/:?]
 	at java.util.ArrayList.forEach(ArrayList.java:1511) ~[?:?]
-	at net.patrick.create_metal_industries.item.tool.Tools.lambda$createToolCombinations$3(Tools.java:35) ~[%23196!/:?]
+	at net.patrick.create_metal_industries.item.tool.Tools.lambda$createToolCombinations$3(Tools.java:23) ~[%23196!/:?]
 	at java.util.ArrayList.forEach(ArrayList.java:1511) ~[?:?]
-	at net.patrick.create_metal_industries.item.tool.Tools.createToolCombinations(Tools.java:34) ~[%23196!/:?]
-	at net.patrick.create_metal_industries.item.ToolItems.register(ToolItems.java:68) ~[%23196!/:?]
-	at net.patrick.create_metal_industries.CreateMetalIndustries.<init>(CreateMetalIndustries.java:47) ~[%23196!/:?]
+	at net.patrick.create_metal_industries.item.tool.Tools.createToolCombinations(Tools.java:22) ~[%23196!/:?]
+	at net.patrick.create_metal_industries.CreateMetalIndustries.<init>(CreateMetalIndustries.java:100) ~[%23196!/:?]
 	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:?]
 	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77) ~[?:?]
 	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:?]
@@ -50,7 +48,7 @@ java.lang.IllegalStateException: Registry is already frozen
 	at java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[?:?]
 	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[?:?]
 	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[?:?]
-[04okt.2024 16:23:06.184] [modloading-worker-0/INFO] [com.jozufozu.flywheel.backend.Backend/]: No shaders mod detected.
-[04okt.2024 16:23:06.293] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager...
-[04okt.2024 16:23:06.298] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager took 2.973 ms
-[04okt.2024 16:23:07.331] [main/FATAL] [net.minecraftforge.fml.ModLoader/LOADING]: Failed to complete lifecycle event CONSTRUCT, 1 errors found
+[07okt.2024 09:40:34.579] [modloading-worker-0/INFO] [com.jozufozu.flywheel.backend.Backend/]: No shaders mod detected.
+[07okt.2024 09:40:34.681] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager...
+[07okt.2024 09:40:34.691] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager took 6.905 ms
+[07okt.2024 09:40:35.636] [main/FATAL] [net.minecraftforge.fml.ModLoader/LOADING]: Failed to complete lifecycle event CONSTRUCT, 1 errors found

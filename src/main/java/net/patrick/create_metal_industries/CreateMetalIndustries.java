@@ -19,21 +19,89 @@ import net.patrick.create_metal_industries.fluid.ModFluids;
 import net.patrick.create_metal_industries.item.CreativeModeTabs;
 import net.patrick.create_metal_industries.item.Items;
 import net.patrick.create_metal_industries.item.ToolItems;
+import net.patrick.create_metal_industries.item.tool.Pickaxe;
+import net.patrick.create_metal_industries.item.tool.Tools;
+import net.patrick.create_metal_industries.item.tool.material.Material;
+import net.patrick.create_metal_industries.item.tool.material.Materials;
 import org.slf4j.Logger;
+
+import java.util.ArrayList;
+import java.util.List;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(CreateMetalIndustries.MOD_ID)
 public class CreateMetalIndustries
 {
+    // ========================================================================== //
+    //
+    //  VARIABLE DECLARATION
+    //  Tell the class about the existence of those variables
+    //
+    // ========================================================================== //
+    
     // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "create_metal_industries";
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
     
+    public static ArrayList<Material> rods;
+    public static ArrayList<Material> heads;
+    public static ArrayList<Material> coatings;
+    public static ArrayList<Material> decorations;
+    public static ArrayList<Pickaxe> pickaxes;
+//    public static ArrayList<Axe> axes;
+//    public static ArrayList<Shovel> shovels;
+//    public static ArrayList<Hoe> hoes;
+//    public static ArrayList<Sword> swords;
+    
+    // ========================================================================== //
+    //
+    //  STATIC INITIALIZERS
+    //  Initializes ones at class initialization
+    //
+    // ========================================================================== //
+//    static
+//    {
+//
+//    }
+    
+    // ========================================================================== //
+    //
+    //  INSTANCE INITIALIZERS
+    //  Initializes every time an object is initialized
+    //
+    // ========================================================================== //
+    
+//    {
+//        System.out.println("Instance initialization.");
+//        // empty
+//    }
+    
+    // ========================================================================== //
+    //
+    //  CONSTRUCTORS
+    //
+    // ========================================================================== //
     public CreateMetalIndustries()
     {
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         
+        System.out.println("Class: CreateMetalIndustries - Static initialization.");
+        System.out.println("Generate rods");
+        rods = new Materials().getRodMaterials();
+        System.out.println("Generate ");
+        heads = new Materials().getHeadMaterials();
+        System.out.println("Generate ");
+        coatings = new Materials().getCoatingMaterials();
+        System.out.println("Generate ");
+        decorations = new Materials().getDecorationMaterials();
+        System.out.println("Generate " + decorations.get(2).codeName);
+        
+        pickaxes = new ArrayList<Pickaxe>(List.of());
+        pickaxes = Tools.createPickaxeCombinations(rods, heads, coatings, decorations);
+        
+        System.out.println("Test9 " + pickaxes.get(4).getToolData().codeName);
+        
+        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
@@ -66,6 +134,11 @@ public class CreateMetalIndustries
         //ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
     
+    // ========================================================================== //
+    //
+    //  METHODS
+    //
+    // ========================================================================== //
     private void commonSetup(final FMLCommonSetupEvent event)
     {
         /*
@@ -98,7 +171,14 @@ public class CreateMetalIndustries
         // Do something when the server starts
         //LOGGER.info("HELLO from server starting");
     }
-
+    
+    
+    // ========================================================================== //
+    //
+    //  INNER CLASSES
+    //
+    // ========================================================================== //
+    
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents

@@ -12,7 +12,6 @@ import net.patrick.create_metal_industries.CreateMetalIndustries;
 import net.patrick.create_metal_industries.item.Items;
 import net.patrick.create_metal_industries.item.ToolItems;
 import net.patrick.create_metal_industries.item.tool.Pickaxe;
-import net.patrick.create_metal_industries.item.tool.Tool;
 import net.patrick.create_metal_industries.item.tool.Tools;
 
 // https://youtu.be/enzKJWq0vNI?t=406
@@ -60,6 +59,8 @@ public class ModItemModelProvider extends ItemModelProvider
         handheldItem(ToolItems.BRASS_AXE);
         handheldItem(ToolItems.BRASS_SHOVEL);
         handheldItem(ToolItems.BRASS_HOE);
+        
+        System.out.println("TEST7: got there");
         
         for (Pickaxe pickaxe : Tools.pickaxes) {
             System.out.println("TEST6: " + pickaxe.getToolData().codeName);
