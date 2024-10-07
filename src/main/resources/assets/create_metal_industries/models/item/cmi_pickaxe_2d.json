@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "create_metal_industries:item/pickaxe_rod",
+    "layer1": "create_metal_industries:item/pickaxe_head",
+    "layer2": "create_metal_industries:item/pickaxe_coating",
+    "layer3": "create_metal_industries:item/pickaxe_decoration"
+  }
+}

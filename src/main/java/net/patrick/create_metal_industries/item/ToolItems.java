@@ -6,8 +6,9 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.patrick.create_metal_industries.CreateMetalIndustries;
-import net.patrick.create_metal_industries.item.tool.Tool;
-import net.patrick.create_metal_industries.item.tool.Tools;
+import net.patrick.create_metal_industries.item.tool.CMIPickaxeItem;
+import net.patrick.create_metal_industries.item.tool.ToolData;
+import net.patrick.create_metal_industries.item.tool.ToolDataSets;
 import net.patrick.create_metal_industries.item.tool.ToolTiers;
 
 import java.util.HashMap;
@@ -19,7 +20,11 @@ public class ToolItems
             DeferredRegister.create(ForgeRegistries.ITEMS, CreateMetalIndustries.MOD_ID);
     
     // Map to store the registered tools for future reference
-    public static final Map<String, RegistryObject<Item>> REGISTERED_TOOLS = new HashMap<>();
+    public static final Map<String, RegistryObject<Item>> REGISTERED_PICKAXES = new HashMap<>();
+    public static final Map<String, Integer> REGISTERED_PICKAXE_ROD_COLORS = new HashMap<>();
+    public static final Map<String, Integer> REGISTERED_PICKAXE_HEAD_COLORS = new HashMap<>();
+    public static final Map<String, Integer> REGISTERED_PICKAXE_COATING_COLORS = new HashMap<>();
+    public static final Map<String, Integer> REGISTERED_PICKAXE_DECORATION_COLORS = new HashMap<>();
     
     
     public static final RegistryObject<Item> BRASS_SWORD = TOOLS.register("brass_sword",
@@ -39,32 +44,33 @@ public class ToolItems
     // Method to register tools dynamically
     public static void registerTools() {
         
-        for (Tool toolData : Tools.pickaxes) {  // Iterate over tools in the list
+        // todo convert tool dataset into a list of actual tools first, extending the PickaxeItem class etc.
+        
+        for (ToolData toolData : ToolDataSets.pickaxeDataSets) {  // Iterate over tools in the list
 
             String toolName = toolData.codeName;  // "brass_pickaxe"  // Use codeName as the registry name
             System.out.println("TEST4: " + toolName);
             // Register the tool and store it in the map for future reference
-            RegistryObject<Item> registeredTool = TOOLS.register(
-                    toolName,  // The tool's codeName is used for registration
-                    () -> new PickaxeItem(
-                            ToolTiers.BRASS,  // Using netherite for everything now. I will implement my own system at some point.
-                            1,  // Dynamic mining speed
-                            -2.8f,  // Default attack speed (adjust if needed)
-                            new Item.Properties()  // Default properties, can be expanded
-                    )
+            RegistryObject<Item> registeredTool = TOOLS.register(toolName,
+                    () -> new CMIPickaxeItem(ToolTiers.BRASS, 1,
+                            -2.8f,
+                            0xFF0000, 0x00FF00, 0x0000FF, 0xFFFFFF,
+                            new Item.Properties())
             );
 
             // Store the registered tool in the map for later access
-            REGISTERED_TOOLS.put(toolName, registeredTool);
+            REGISTERED_PICKAXES.put(toolName, registeredTool);
+            REGISTERED_PICKAXE_ROD_COLORS.put(toolName, toolData.rodMaterial.color);
+            REGISTERED_PICKAXE_HEAD_COLORS.put(toolName, toolData.headMaterial.color);
+            REGISTERED_PICKAXE_COATING_COLORS.put(toolName, toolData.coatingMaterial.color);
+            REGISTERED_PICKAXE_DECORATION_COLORS.put(toolName, toolData.decorationMaterial.color);
         }
-    
-    
     }
     
     public static void register(IEventBus eventBus)
     {
         System.out.println("Test1");
-        Tools.createToolCombinations();
+        ToolDataSets.createToolDataSets();
         registerTools(); // My own interpretation of where ot place this. Which is after creating the list.
         TOOLS.register(eventBus);
     }

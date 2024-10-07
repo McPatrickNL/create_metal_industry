@@ -7,16 +7,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Tools
+public class ToolDataSets
 {
     
-    public static ArrayList<Tool> pickaxes = new ArrayList<Tool>(List.of());
+    public static ArrayList<ToolData> pickaxeDataSets = new ArrayList<ToolData>(List.of());
     public static Materials rod;
     public static Materials head;
     public static Materials coating;
     public static Materials decoration;
     
-    public static void createToolCombinations()
+    public static void createToolDataSets()
     {
         rod = new Materials();
         head = new Materials();
@@ -34,7 +34,7 @@ public class Tools
                 heads.forEach( head ->
                         coatings.forEach( coating ->
                                 decorations.forEach( decoration ->
-                                        addToolCombination(rod, head, coating, decoration)
+                                        addPickaxeDataSet(rod, head, coating, decoration)
                                 )
                         )
                 )
@@ -42,64 +42,64 @@ public class Tools
         
     }
     
-    public static void addToolCombination(Material rod, Material head, Material coating,
-                                          Material decoration)
+    public static void addPickaxeDataSet(Material rod, Material head, Material coating,
+                                         Material decoration)
     {
-        String codeName = CodeName(rod, head, coating, decoration);
-        String inGameName = InGameName(rod, head, coating, decoration);
+        String codeName = codeName(rod, head, coating, decoration);
+        String inGameName = inGameName(rod, head, coating, decoration);
         ResourceLocation rodTexture = rod.texture;
         ResourceLocation headTexture = head.texture;
         ResourceLocation coatingTexture = coating.texture;
         ResourceLocation decorationTexture = decoration.texture;
-        int miningLevel = MiningLevel(rod, head, coating, decoration);
-        int durability = Durability(rod, head, coating, decoration);
-        int miningSpeed = MiningSpeed(rod, head, coating, decoration);
-        double durabilityModifier = DurabilityModifier(rod, head, coating, decoration);
-        double miningSpeedModifier = MiningSpeedModifer(rod, head, coating, decoration);
-        double attackSpeedModifier = AttackSpeedModifier(rod, head, coating, decoration);
+        int miningLevel = miningLevel(rod, head, coating, decoration);
+        int durability = durability(rod, head, coating, decoration);
+        int miningSpeed = miningSpeed(rod, head, coating, decoration);
+        double durabilityModifier = durabilityModifier(rod, head, coating, decoration);
+        double miningSpeedModifier = miningSpeedModifer(rod, head, coating, decoration);
+        double attackSpeedModifier = attackSpeedModifier(rod, head, coating, decoration);
         
         System.out.println(inGameName);
-        pickaxes.add(new Pickaxe(rod, head, coating, decoration));
+        pickaxeDataSets.add(new PickaxeData(rod, head, coating, decoration));
     }
     
-    public static String InGameName(Material rod, Material head, Material coating,
+    public static String inGameName(Material rod, Material head, Material coating,
                                     Material decoration)
     {
         return "ToolTest: " + head.inGameNameGeneric + " pickaxe with " + rod.inGameNameGeneric + " rod, " + coating.inGameNameGeneric +
                 " coating and " + decoration.inGameNameGeneric + " decoration.";
     }
     
-    private static String CodeName(Material rod, Material head, Material coating, Material decoration)
+    private static String codeName(Material rod, Material head, Material coating, Material decoration)
     {
         return "pickaxe_" + rod.codeName + "_" + head.codeName + "_" + coating.codeName + "_" + decoration.codeName;
     }
     
-    private static int MiningLevel(Material rod, Material head, Material coating, Material decoration)
+    private static int miningLevel(Material rod, Material head, Material coating, Material decoration)
     {
         return 1;
     }
     
-    private static int Durability(Material rod, Material head, Material coating, Material decoration)
+    private static int durability(Material rod, Material head, Material coating, Material decoration)
     {
         return 1;
     }
     
-    private static int MiningSpeed(Material rod, Material head, Material coating, Material decoration)
+    private static int miningSpeed(Material rod, Material head, Material coating, Material decoration)
     {
         return 1;
     }
     
-    private static double DurabilityModifier(Material rod, Material head, Material coating, Material decoration)
+    private static double durabilityModifier(Material rod, Material head, Material coating, Material decoration)
     {
         return 1;
     }
     
-    private static double MiningSpeedModifer(Material rod, Material head, Material coating, Material decoration)
+    private static double miningSpeedModifer(Material rod, Material head, Material coating, Material decoration)
     {
         return 1;
     }
     
-    private static double AttackSpeedModifier(Material rod, Material head, Material coating, Material decoration)
+    private static double attackSpeedModifier(Material rod, Material head, Material coating, Material decoration)
     {
         return 1;
     }

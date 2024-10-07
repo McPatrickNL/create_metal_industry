@@ -1,8 +1,12 @@
 package net.patrick.create_metal_industries;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.color.item.ItemColor;
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.color.item.ItemColors;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -13,6 +17,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.RegistryObject;
 import net.patrick.create_metal_industries.block.ModBlocks;
 import net.patrick.create_metal_industries.fluid.ModFluidTypes;
 import net.patrick.create_metal_industries.fluid.ModFluids;
@@ -106,9 +111,48 @@ public class CreateMetalIndustries
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-            //ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_SOAP_WATER.get(), RenderType.translucent());
-            //ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_SOAP_WATER.get(), RenderType.translucent());
+            event.enqueueWork(() -> {
+                ItemColors itemColors = Minecraft.getInstance().getItemColors();
+                
+                // Ensure the pickaxe is registered properly
+                if (ToolItems.REGISTERED_PICKAXES.containsKey("brass_brass_brass_amethyst")) {
+                    RegistryObject<Item> pickaxeItem = ToolItems.REGISTERED_PICKAXES.get("brass_brass_brass_amethyst");
+                    
+                    itemColors.register((stack, tintIndex) -> {
+                        if (tintIndex == 0) {
+                            return ToolItems.REGISTERED_PICKAXE_ROD_COLORS.get("brass_brass_brass_amethyst"); // Red for layer0
+                        } else if (tintIndex == 1) {
+                            return ToolItems.REGISTERED_PICKAXE_HEAD_COLORS.get("brass_brass_brass_amethyst"); // Green for layer1
+                        } else if (tintIndex == 2) {
+                            return ToolItems.REGISTERED_PICKAXE_COATING_COLORS.get("brass_brass_brass_amethyst"); // Blue for layer2
+                        } else if (tintIndex == 3) {
+                            return ToolItems.REGISTERED_PICKAXE_DECORATION_COLORS.get("brass_brass_brass_amethyst"); // White for layer3
+                        }
+                        return 0xFFFFFF; // Default color (white)
+                    }, pickaxeItem.get());
+                } else {
+                    System.out.println("Error: Pickaxe not found in REGISTERED_PICKAXES");
+                }
+            });
             
+//            Minecraft.getInstance().getItemColors().register(
+//                    (stack, tintIndex) -> {
+//
+//                            if (tintIndex == 0) {
+//                                return 0xFF0000; // Red for layer0
+//                            } else if (tintIndex == 1) {
+//                                return 0x00FF00; // Green for layer1
+//                            } else if (tintIndex == 2) {
+//                                return 0x0000FF; // Blue for layer2
+//                            } else if (tintIndex == 3) {
+//                                return 0xFFFFFF; // White for layer3
+//                            }
+//                            return 0xFFFFFF; // Default color (white)
+//
+//                    },
+//                    ToolItems.REGISTERED_PICKAXES.get(0).get()/*ToolItems.TOOLS.getRegistryKey().toString()*/
+//            );
+
             // Molten metals
             // todo x copy this
             ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_MOLTEN_BRASS.get(), RenderType.solid());

@@ -4,7 +4,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Tier;
 import net.patrick.create_metal_industries.item.tool.material.Material;
 
-public abstract class Tool
+public abstract class ToolData
 {
     public String codeName;
     public String inGameName;
@@ -23,7 +23,7 @@ public abstract class Tool
     public double attackSpeedModifier;
     public Tier tier; ////// todo is this the right import?.
     
-    public Tool(Material rodMaterial, Material headMaterial, Material coatingMaterial, Material decorationMaterial)
+    public ToolData(Material rodMaterial, Material headMaterial, Material coatingMaterial, Material decorationMaterial)
     {
         // Materials
         this.rodMaterial = rodMaterial;

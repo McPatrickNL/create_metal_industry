@@ -68,7 +68,7 @@ public class CreativeModeTabs
                         pOutput.accept(ToolItems.BRASS_HOE.get());
                         
                         // Generated Tools
-                        for (Map.Entry<String, RegistryObject<Item>> entry : ToolItems.REGISTERED_TOOLS.entrySet())
+                        for (Map.Entry<String, RegistryObject<Item>> entry : ToolItems.REGISTERED_PICKAXES.entrySet())
                         {
                             //System.out.println("wa");
                             pOutput.accept(entry.getValue().get());

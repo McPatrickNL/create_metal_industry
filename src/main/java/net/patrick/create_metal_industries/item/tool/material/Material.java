@@ -18,6 +18,7 @@ public class Material
     public double attackSpeedModifier;
     public double toolRangeModifier;    // no actual use yet
     public Tier tier;
+    public int color;
     
     // todo convert to a map?
     // todo Convert them all to lists???
@@ -44,7 +45,7 @@ public class Material
     public Material(String codeName, String inGameNameGeneric, String inGameNameCoated, ResourceLocation texture,
                     int miningLevel, int baseDurability, int miningSpeed,
                     double durabilityModifier, double miningSpeedModifier, double attackSpeedModifier, double toolRangeModifier,
-                    Tier tier)
+                    Tier tier, int color)
     {
         this.codeName = codeName;
         this.inGameNameGeneric = inGameNameGeneric;
@@ -58,6 +59,7 @@ public class Material
         this.attackSpeedModifier = attackSpeedModifier;
         this.toolRangeModifier = toolRangeModifier;
         this.tier = tier;
+        this.color = color;
     }
     
 }
