@@ -62,8 +62,32 @@ public class ToolItems
             REGISTERED_PICKAXES.put(toolName, registeredTool);
             REGISTERED_PICKAXE_ROD_COLORS.put(toolName, toolData.rodMaterial.color);
             REGISTERED_PICKAXE_HEAD_COLORS.put(toolName, toolData.headMaterial.color);
-            REGISTERED_PICKAXE_COATING_COLORS.put(toolName, toolData.coatingMaterial.color);
-            REGISTERED_PICKAXE_DECORATION_COLORS.put(toolName, toolData.decorationMaterial.color);
+            REGISTERED_PICKAXE_COATING_COLORS.put(toolName, coatingColor(toolData));
+            REGISTERED_PICKAXE_DECORATION_COLORS.put(toolName, decorationColor(toolData));
+        }
+    }
+    
+    public static int coatingColor(ToolData toolData)
+    {
+        if (toolData.coatingMaterial.color == 0x000000)
+        {
+            return toolData.headMaterial.color;
+        }
+        else
+        {
+            return toolData.coatingMaterial.color;
+        }
+    }
+    
+    public static int decorationColor(ToolData toolData)
+    {
+        if (toolData.decorationMaterial.color == 0x000000)
+        {
+            return toolData.rodMaterial.color;
+        }
+        else
+        {
+            return toolData.decorationMaterial.color;
         }
     }
     

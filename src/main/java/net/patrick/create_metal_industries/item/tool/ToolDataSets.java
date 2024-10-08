@@ -15,6 +15,8 @@ public class ToolDataSets
     public static Materials head;
     public static Materials coating;
     public static Materials decoration;
+    public static int i = 0;
+    public static int x = 0;
     
     public static void createToolDataSets()
     {
@@ -27,7 +29,7 @@ public class ToolDataSets
         ArrayList<Material> coatings = coating.getCoatingMaterials();
         ArrayList<Material> decorations = decoration.getDecorationMaterials();
         
-        System.out.println("Number of tools: " + rods.size()*heads.size()*coatings.size()*
+        System.out.println("Number of tools expected: " + rods.size()*heads.size()*coatings.size()*
                 decorations.size());
         
         rods.forEach( rod ->
@@ -39,34 +41,48 @@ public class ToolDataSets
                         )
                 )
         );
+        System.out.println("Number of tools created: " + i);
+        System.out.println("Number of tools skipped: " + x);
+        System.out.println("Number of tools total: " + (i + x));
         
     }
     
     public static void addPickaxeDataSet(Material rod, Material head, Material coating,
                                          Material decoration)
     {
-        String codeName = codeName(rod, head, coating, decoration);
-        String inGameName = inGameName(rod, head, coating, decoration);
-        ResourceLocation rodTexture = rod.texture;
-        ResourceLocation headTexture = head.texture;
-        ResourceLocation coatingTexture = coating.texture;
-        ResourceLocation decorationTexture = decoration.texture;
-        int miningLevel = miningLevel(rod, head, coating, decoration);
-        int durability = durability(rod, head, coating, decoration);
-        int miningSpeed = miningSpeed(rod, head, coating, decoration);
-        double durabilityModifier = durabilityModifier(rod, head, coating, decoration);
-        double miningSpeedModifier = miningSpeedModifer(rod, head, coating, decoration);
-        double attackSpeedModifier = attackSpeedModifier(rod, head, coating, decoration);
+        if (!(coating == head))
+        {
+            String codeName = codeName(rod, head, coating, decoration);
+            String inGameName = inGameName(rod, head, coating, decoration);
+            ResourceLocation rodTexture = rod.texture;
+            ResourceLocation headTexture = head.texture;
+            ResourceLocation coatingTexture = coating.texture;
+            ResourceLocation decorationTexture = decoration.texture;
+            int miningLevel = miningLevel(rod, head, coating, decoration);
+            int durability = durability(rod, head, coating, decoration);
+            int miningSpeed = miningSpeed(rod, head, coating, decoration);
+            double durabilityModifier = durabilityModifier(rod, head, coating, decoration);
+            double miningSpeedModifier = miningSpeedModifer(rod, head, coating, decoration);
+            double attackSpeedModifier = attackSpeedModifier(rod, head, coating, decoration);
+            
+            System.out.println("Tool " + i + ": " + inGameName);
+            i++;
+            pickaxeDataSets.add(new PickaxeData(rod, head, coating, decoration));
+        }
+        else
+        {
+            String inGameName = inGameName(rod, head, coating, decoration);
+            System.out.println("Tool " + x + ": skipped (same coating as head material): " + inGameName);
+            x++;
+        }
         
-        System.out.println(inGameName);
-        pickaxeDataSets.add(new PickaxeData(rod, head, coating, decoration));
     }
     
     public static String inGameName(Material rod, Material head, Material coating,
                                     Material decoration)
     {
-        return "ToolTest: " + head.inGameNameGeneric + " pickaxe with " + rod.inGameNameGeneric + " rod, " + coating.inGameNameGeneric +
-                " coating and " + decoration.inGameNameGeneric + " decoration.";
+        return "ToolTest: " + head.inGameNameGeneric + "pickaxe with " + rod.inGameNameGeneric + " rod, " + coating.inGameNameGeneric +
+                " coating and " + decoration.inGameNameGeneric + "decoration.";
     }
     
     private static String codeName(Material rod, Material head, Material coating, Material decoration)

@@ -26,6 +26,8 @@ public class Materials
     static ResourceLocation emeraldTexture = new ResourceLocation("minecraft","item/emerald");
     static ResourceLocation diamondTexture = new ResourceLocation("minecraft","item/diamond");
     static ResourceLocation amethystTexture = new ResourceLocation("minecraft","item/amethyst_shard");
+    static ResourceLocation enderPearlTexture = new ResourceLocation("minecraft","item/ender_pearl");
+    static ResourceLocation netherStarTexture = new ResourceLocation("minecraft","item/nether_star");
     
     
     static Material none = new Material(
@@ -36,11 +38,11 @@ public class Materials
     static Material wood = new Material(
             "wood", "Wooden ", "Holded ", woodTexture,
             1, 100, 1, 0.8, 0.2, 2,
-            1,  Tiers.WOOD, 0x000000); // set proper color
+            1,  Tiers.WOOD, 0x675631); // set proper color
     static Material stone = new Material(
             "stone", "Stone ", "Petrified ", stoneTexture,
             1, 100, 1, 0.8, 0.2, 2,
-            1,  Tiers.STONE, 0x000000); // set proper color
+            1,  Tiers.STONE, 0x636363); // set proper color
     static Material gold = new Material(
             "gold", "Gold ", "Gilded ", goldTexture,
             1, 100, 1, 0.8, 0.2, 2,
@@ -70,24 +72,32 @@ public class Materials
     static Material mithril = new Material(
             "mithril", "Mithril ", "Enriched ", netheriteTexture,
             1, 100, 1, 0.8, 0.2, 2,
-            1,  Tiers.NETHERITE, 0xEFEFEF);
+            1,  Tiers.NETHERITE, 0xbefbe8);
     
     static Material netherQuartz = new Material(
             "nether_quartz", "Nether Quartz ", "Spiked ", netherQuartzTexture,
             1, 100, 1, 0.8, 0.2, 2,
-            1,  Tiers.DIAMOND, 0x111111);
+            1,  Tiers.DIAMOND, 0xd4caba);
     static Material emerald = new Material(
             "emerald", "Emerald ", "Emered ", emeraldTexture,
             1, 100, 1, 0.8, 0.2, 2,
-            1,  Tiers.DIAMOND, 0x111111);
+            1,  Tiers.DIAMOND, 0x17dd62);
     static Material diamond = new Material(
             "diamond", "Diamond ", "Expensive ", diamondTexture,
             1, 100, 1, 0.8, 0.2, 2,
-            1,  Tiers.DIAMOND, 0x111111);
+            1,  Tiers.DIAMOND, 0x4aedd9);
     static Material amethyst = new Material(
             "amethyst", "Amethyst ", "Athysted ", amethystTexture,
             1, 100, 1, 0.8, 0.2, 2,
-            1,  Tiers.DIAMOND, 0x111111);
+            1,  Tiers.DIAMOND, 0x8d6acc);
+    static Material enderPearl = new Material(
+            "ender_pearl", "Ender Pearl ", "Endered ", enderPearlTexture,
+            1, 100, 1, 0.8, 0.2, 2,
+            1,  Tiers.DIAMOND, 0x258474);
+    static Material netherStar = new Material(
+            "nether_star", "Nether Star ", "Starred ", enderPearlTexture,
+            1, 100, 1, 0.8, 0.2, 2,
+            1,  Tiers.DIAMOND, 0xfdffa8);
     
     private ArrayList<Material> rodMaterials;
     private ArrayList<Material> headMaterials;
