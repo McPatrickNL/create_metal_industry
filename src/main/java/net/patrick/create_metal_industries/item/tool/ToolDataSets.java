@@ -11,23 +11,17 @@ public class ToolDataSets
 {
     
     public static ArrayList<ToolData> pickaxeDataSets = new ArrayList<ToolData>(List.of());
-    public static Materials rod;
-    public static Materials head;
-    public static Materials coating;
-    public static Materials decoration;
+    public static Materials materials;
     public static int i = 0;
     public static int x = 0;
     
     public static void createToolDataSets()
     {
-        rod = new Materials();
-        head = new Materials();
-        coating = new Materials();
-        decoration = new Materials();
-        ArrayList<Material> rods = rod.getRodMaterials();
-        ArrayList<Material> heads = head.getHeadMaterials();
-        ArrayList<Material> coatings = coating.getCoatingMaterials();
-        ArrayList<Material> decorations = decoration.getDecorationMaterials();
+        materials = new Materials();
+        ArrayList<Material> rods = materials.getRodMaterials();
+        ArrayList<Material> heads = materials.getHeadMaterials();
+        ArrayList<Material> coatings = materials.getCoatingMaterials();
+        ArrayList<Material> decorations = materials.getDecorationMaterials();
         
         System.out.println("Number of tools expected: " + rods.size()*heads.size()*coatings.size()*
                 decorations.size());
@@ -81,8 +75,8 @@ public class ToolDataSets
     public static String inGameName(Material rod, Material head, Material coating,
                                     Material decoration)
     {
-        return "ToolTest: " + head.inGameNameGeneric + "pickaxe with " + rod.inGameNameGeneric + " rod, " + coating.inGameNameGeneric +
-                " coating and " + decoration.inGameNameGeneric + "decoration.";
+        return "ToolTest: " + head.inGameNameGeneric + "pickaxe with " + rod.inGameNameGeneric + "rod, " + coating.inGameNameGeneric +
+                "coating and " + decoration.inGameNameGeneric + "decoration.";
     }
     
     private static String codeName(Material rod, Material head, Material coating, Material decoration)

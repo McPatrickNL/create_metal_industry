@@ -113,14 +113,11 @@ public class Materials
         coatingMaterials = new ArrayList<Material>(List.of(
                 none, gold, zinc, copper, iron, brass, netherite, mithril));
         decorationMaterials = new ArrayList<Material>(List.of(
-                none, netherQuartz, emerald, diamond, amethyst));
+                none, netherQuartz, emerald, diamond, amethyst, enderPearl, netherStar));
     }
     
     // Getters
-    public ArrayList<Material> getRodMaterials()
-    {
-        return rodMaterials;
-    }
+    public ArrayList<Material> getRodMaterials() {return rodMaterials;}
     
     public ArrayList<Material> getHeadMaterials()
     {
