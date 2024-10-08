@@ -1,7 +1,6 @@
 package net.patrick.create_metal_industries;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.color.item.ItemColor;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.color.item.ItemColors;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -24,11 +23,8 @@ import net.patrick.create_metal_industries.fluid.ModFluids;
 import net.patrick.create_metal_industries.item.CreativeModeTabs;
 import net.patrick.create_metal_industries.item.Items;
 import net.patrick.create_metal_industries.item.ToolItems;
-import net.patrick.create_metal_industries.item.tool.ToolData;
-import net.patrick.create_metal_industries.item.tool.ToolDataSets;
 import org.slf4j.Logger;
 
-import javax.tools.Tool;
 import java.util.Map;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -116,63 +112,36 @@ public class CreateMetalIndustries
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-            event.enqueueWork(() -> {
+            event.enqueueWork(() ->
+            {
                 ItemColors itemColors = Minecraft.getInstance().getItemColors();
                 
                 for (Map.Entry<String, RegistryObject<Item>> tool : ToolItems.REGISTERED_PICKAXES.entrySet())
                 {
                     RegistryObject<Item> pickaxeItem = ToolItems.REGISTERED_PICKAXES.get(tool.getKey());
-                    itemColors.register((stack, tintIndex) -> {
-                        if (tintIndex == 0) {
+                    itemColors.register((stack, tintIndex) ->
+                    {
+                        if (tintIndex == 0)
+                        {
                             return ToolItems.REGISTERED_PICKAXE_ROD_COLORS.get(tool.getKey()); // Red for layer0
-                        } else if (tintIndex == 1) {
+                        }
+                        else if (tintIndex == 1)
+                        {
                             return ToolItems.REGISTERED_PICKAXE_HEAD_COLORS.get(tool.getKey()); // Green for layer1
-                        } else if (tintIndex == 2) {
+                        }
+                        else if (tintIndex == 2)
+                        {
                             return ToolItems.REGISTERED_PICKAXE_COATING_COLORS.get(tool.getKey()); // Blue for layer2
-                        } else if (tintIndex == 3) {
+                        }
+                        else if (tintIndex == 3)
+                        {
                             return ToolItems.REGISTERED_PICKAXE_DECORATION_COLORS.get(tool.getKey()); // White for layer3
                         }
                         return 0xFFFFFF; // Default color (white)
                     }, pickaxeItem.get());
                 }
-                
-                // Ensure the pickaxe is registered properly
-//                if (ToolItems.REGISTERED_PICKAXES.containsKey("brass_brass_brass_amethyst")) {
-//                    RegistryObject<Item> pickaxeItem = ToolItems.REGISTERED_PICKAXES.get("brass_brass_brass_amethyst");
-//
-//                    itemColors.register((stack, tintIndex) -> {
-//                        if (tintIndex == 0) {
-//                            return ToolItems.REGISTERED_PICKAXE_ROD_COLORS.get("brass_brass_brass_amethyst"); // Red for layer0
-//                        } else if (tintIndex == 1) {
-//                            return ToolItems.REGISTERED_PICKAXE_HEAD_COLORS.get("brass_brass_brass_amethyst"); // Green for layer1
-//                        } else if (tintIndex == 2) {
-//                            return ToolItems.REGISTERED_PICKAXE_COATING_COLORS.get("brass_brass_brass_amethyst"); // Blue for layer2
-//                        } else if (tintIndex == 3) {
-//                            return ToolItems.REGISTERED_PICKAXE_DECORATION_COLORS.get("brass_brass_brass_amethyst"); // White for layer3
-//                        }
-//                        return 0xFFFFFF; // Default color (white)
-//                    }, pickaxeItem.get());
-//                }
             });
             
-//            Minecraft.getInstance().getItemColors().register(
-//                    (stack, tintIndex) -> {
-//
-//                            if (tintIndex == 0) {
-//                                return 0xFF0000; // Red for layer0
-//                            } else if (tintIndex == 1) {
-//                                return 0x00FF00; // Green for layer1
-//                            } else if (tintIndex == 2) {
-//                                return 0x0000FF; // Blue for layer2
-//                            } else if (tintIndex == 3) {
-//                                return 0xFFFFFF; // White for layer3
-//                            }
-//                            return 0xFFFFFF; // Default color (white)
-//
-//                    },
-//                    ToolItems.REGISTERED_PICKAXES.get(0).get()/*ToolItems.TOOLS.getRegistryKey().toString()*/
-//            );
-
             // Molten metals
             // todo x copy this
             ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_MOLTEN_BRASS.get(), RenderType.solid());
