@@ -12,8 +12,9 @@ public class ToolDataSets
     
     public static ArrayList<ToolData> pickaxeDataSets = new ArrayList<ToolData>(List.of());
     public static Materials materials;
-    public static int i = 0;
-    public static int x = 0;
+    public static int iToolsCreated = 0;
+    public static int iToolsSkipped = 0;
+    public static int iToolsTotal = 0;
     
     public static void createToolDataSets()
     {
@@ -23,8 +24,9 @@ public class ToolDataSets
         ArrayList<Material> coatings = materials.getCoatingMaterials();
         ArrayList<Material> decorations = materials.getDecorationMaterials();
         
-        System.out.println("Number of tools expected: " + rods.size()*heads.size()*coatings.size()*
-                decorations.size());
+        iToolsTotal = rods.size()*heads.size()*coatings.size()*
+                decorations.size();
+        System.out.println("Number of tools expected: " + iToolsTotal);
         
         rods.forEach( rod ->
                 heads.forEach( head ->
@@ -35,10 +37,10 @@ public class ToolDataSets
                         )
                 )
         );
-        System.out.println("Number of tools created: " + i);
-        System.out.println("Number of tools skipped: " + x);
-        System.out.println("Number of tools total: " + (i + x));
-        
+        System.out.println("Number of tools created: " + iToolsCreated);
+        System.out.println("Number of tools skipped: " + iToolsSkipped);
+        System.out.println("Number of tools total: " + (iToolsCreated + iToolsSkipped));
+        System.out.println("Generation successful: " + ((iToolsTotal == iToolsCreated + iToolsSkipped) ? "yes" : "no"));
     }
     
     public static void addPickaxeDataSet(Material rod, Material head, Material coating,
@@ -59,15 +61,15 @@ public class ToolDataSets
             double miningSpeedModifier = miningSpeedModifer(rod, head, coating, decoration);
             double attackSpeedModifier = attackSpeedModifier(rod, head, coating, decoration);
             
-            System.out.println("Tool " + i + ": " + inGameName);
-            i++;
+            //System.out.println("Tool " + iToolsCreated + ": " + inGameName);
             pickaxeDataSets.add(new PickaxeData(rod, head, coating, decoration));
+            iToolsCreated++;
         }
         else
         {
             String inGameName = inGameName(rod, head, coating, decoration);
-            System.out.println("Tool " + x + ": skipped (same coating as head material): " + inGameName);
-            x++;
+            //System.out.println("Skipped " + iToolsSkipped + ": skipped (same coating as head material): " + inGameName);
+            iToolsSkipped++;
         }
         
     }
