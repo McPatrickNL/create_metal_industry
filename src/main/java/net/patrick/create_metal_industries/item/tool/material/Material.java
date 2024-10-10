@@ -2,8 +2,11 @@ package net.patrick.create_metal_industries.item.tool.material;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Tier;
+import net.patrick.create_metal_industries.item.tool.ToolAbilities;
 
-public class Material
+import java.util.List;
+
+public class Material implements ToolAbilities
 {
     // Move some of those to the child tool material classes. Just generic ones should stay here.
     public String codeName;
@@ -20,16 +23,14 @@ public class Material
     public Tier tier;
     public int color;
     
-    // todo convert to a map?
-    // todo Convert them all to lists???
-    // todo a level for the effects based on number of times the material is used, or this might be a tool property...
-    public boolean veinMiner = false;
-    public boolean multiMiner = false;
-    public boolean trowel = false;
-    public boolean torcher = false;
-    public boolean constructionWand = false;
-    public boolean treeFeller = false;
-    public boolean linkedStorage = false;
+    public boolean veinMiner;
+    public boolean multiMiner;
+    public boolean trowel;
+    public boolean torcher;
+    public boolean constructionWand;
+    public boolean treeFeller;
+    public boolean linkedStorage;
+    public boolean noLavaBurn;
     
     //Just if I want to make the textures specific
     public ResourceLocation textureRod;
@@ -45,7 +46,7 @@ public class Material
     public Material(String codeName, String inGameNameGeneric, String inGameNameCoated, ResourceLocation texture,
                     int miningLevel, int baseDurability, int miningSpeed,
                     double durabilityModifier, double miningSpeedModifier, double attackSpeedModifier, double toolRangeModifier,
-                    Tier tier, int color)
+                    Tier tier, int color, List<String> abilities)
     {
         this.codeName = codeName;
         this.inGameNameGeneric = inGameNameGeneric;
@@ -60,6 +61,43 @@ public class Material
         this.toolRangeModifier = toolRangeModifier;
         this.tier = tier;
         this.color = color;
+        if (!(abilities.isEmpty()))
+        {
+            for (String ability : abilities)
+            {
+                if (ability.equals(sVeinMiner))
+                {
+                    this.veinMiner = true;
+                }
+                if (ability.equals(sMultiMiner))
+                {
+                    this.multiMiner = true;
+                }
+                if (ability.equals(sTrowel))
+                {
+                    this.trowel = true;
+                }
+                if (ability.equals(sTorcher))
+                {
+                    this.torcher = true;
+                }
+                if (ability.equals(sConstructionWand))
+                {
+                    this.constructionWand = true;
+                }
+                if (ability.equals(sTreeFeller))
+                {
+                    this.treeFeller = true;
+                }
+                if (ability.equals(sLinkedStorage))
+                {
+                    this.linkedStorage = true;
+                }
+                if (ability.equals(sNoLavaBurn))
+                {
+                    this.noLavaBurn = true;
+                }
+            }
+        }
     }
-    
 }

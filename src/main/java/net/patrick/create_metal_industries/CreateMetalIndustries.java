@@ -23,6 +23,7 @@ import net.patrick.create_metal_industries.fluid.ModFluids;
 import net.patrick.create_metal_industries.item.CreativeModeTabs;
 import net.patrick.create_metal_industries.item.Items;
 import net.patrick.create_metal_industries.item.ToolItems;
+import net.patrick.create_metal_industries.item.VanillaItemReplacements;
 import org.slf4j.Logger;
 
 import java.util.Map;
@@ -47,6 +48,8 @@ public class CreateMetalIndustries
 
         // Register the Deferred Register to the mod event bus so blocks get registered
         ModBlocks.register(modEventBus);
+        // Register the Deferred Register to the mod event bus so items get registered
+        VanillaItemReplacements.register(modEventBus);
         // Register the Deferred Register to the mod event bus so items get registered
         Items.register(modEventBus);
         // Create Tool items and Register them
@@ -110,6 +113,7 @@ public class CreateMetalIndustries
     public static class ClientModEvents
     {
         @SubscribeEvent
+        @SuppressWarnings("deprecation")
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             event.enqueueWork(() ->

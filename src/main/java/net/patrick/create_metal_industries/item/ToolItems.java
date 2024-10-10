@@ -26,7 +26,6 @@ public class ToolItems
     public static final Map<String, Integer> REGISTERED_PICKAXE_COATING_COLORS = new HashMap<>();
     public static final Map<String, Integer> REGISTERED_PICKAXE_DECORATION_COLORS = new HashMap<>();
     
-    
     public static final RegistryObject<Item> BRASS_SWORD = TOOLS.register("brass_sword",
             () -> new SwordItem(ToolTiers.BRASS, 4, 2, new Item.Properties()));
     public static final RegistryObject<Item> BRASS_PICKAXE = TOOLS.register("brass_pickaxe",
@@ -37,9 +36,6 @@ public class ToolItems
             () -> new ShovelItem(ToolTiers.BRASS, 0, 0, new Item.Properties()));
     public static final RegistryObject<Item> BRASS_HOE = TOOLS.register("brass_hoe",
             () -> new HoeItem(ToolTiers.BRASS, 0, 0, new Item.Properties()));
-    
-    
-    // Test to add items to a list
     
     // Method to register tools dynamically
     public static void registerTools() {
@@ -95,7 +91,7 @@ public class ToolItems
     {
         System.out.println("Test1");
         ToolDataSets.createToolDataSets();
-        registerTools(); // My own interpretation of where ot place this. Which is after creating the list.
+        registerTools();
         TOOLS.register(eventBus);
     }
 }
