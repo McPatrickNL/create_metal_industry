@@ -1,9 +1,16 @@
 package net.patrick.create_metal_industries.item.tool;
 
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.Tier;
 import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class CMIPickaxeItem extends PickaxeItem
 {
@@ -39,4 +46,5 @@ public class CMIPickaxeItem extends PickaxeItem
                 return 0xFFFFFF; // Default color (white)
         }
     }
+    
 }
