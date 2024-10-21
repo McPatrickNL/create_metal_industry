@@ -2,14 +2,14 @@ package net.patrick.create_metal_industries.item.tool;
 
 import net.patrick.create_metal_industries.item.tool.material.Material;
 
-public class PickaxeData extends ToolData
+public class ShovelData extends ToolData
 {
-    public String toolTypeName = "Pickaxe";
-    public String toolCodeTypeName = "pickaxe";
+    public String toolTypeName = "Shovel";
+    public String toolCodeTypeName = "shovel";
     public boolean veinMiner;
     public int veinMinerMaxDepth; // 1 would be every adjacent block of the block that is being mined.
     
-    public PickaxeData(Material rodMaterial, Material headMaterial, Material coatingMaterial, Material decorationMaterial)
+    public ShovelData(Material rodMaterial, Material headMaterial, Material coatingMaterial, Material decorationMaterial)
     {
         super(rodMaterial, headMaterial, coatingMaterial, decorationMaterial);
         
@@ -31,7 +31,7 @@ public class PickaxeData extends ToolData
         // I hope line breaks work in a tool name..... UPDATE: they don't.
         return coatingMaterial.inGameNameCoated +       // "Tainted " or "" if none
                 headMaterial.inGameNameGeneric +        // "Iron "
-                toolTypeName +                          // "Pickaxe"
+                toolTypeName +                          // "Shovel"
                 "with " +                               // "with "
                 rodMaterial.inGameNameGeneric +         // "Copper "
                 "Rod and " +                            // "Rod and "

@@ -1,5 +1,6 @@
 package net.patrick.create_metal_industries.item.tool;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.patrick.create_metal_industries.item.tool.material.*;
 
@@ -12,23 +13,14 @@ import java.util.Map;
 public class DataSets implements Abilities
 {
     public static ArrayList<ToolData> pickaxeDataSets = new ArrayList<ToolData>(List.of());
-    //public static List<ToolAbility> toolAbilities = new ArrayList<ToolAbility>(List.of());
+    public static ArrayList<ToolData> shovelDataSets = new ArrayList<ToolData>(List.of());
+    public static ArrayList<ToolData> axeDataSets = new ArrayList<ToolData>(List.of());
     public static Map<Integer, Boolean> hasAbility;
     public static List<ToolAbility> toolAbilities;
     public static Materials materials;
     public static int iToolsCreated = 0;
     public static int iToolsSkipped = 0;
     public static int iToolsTotal = 0;
-    
-//    public static boolean veinMiner;
-//    public static boolean multiMiner;
-//    public static boolean trowel;
-//    public static boolean torcher;
-//    public static boolean constructionWand;
-//    public static boolean treeFeller;
-//    public static boolean linkedStorage;
-//    public static boolean noLavaBurn;
-    
     
     public static void createToolDataSets()
     {
@@ -40,17 +32,27 @@ public class DataSets implements Abilities
         
         iToolsTotal = rods.size()*heads.size()*coatings.size()*
                 decorations.size();
-        System.out.println("Number of tools expected: " + iToolsTotal);
+        System.out.println("Number of pickaxes expected: " + iToolsTotal);
+        System.out.println("Number of shovels expected: " + iToolsTotal);
+        System.out.println("Number of axes expected: " + iToolsTotal);
+        System.out.println("Number of tools expected: " + iToolsTotal * 3);
         
-        rods.forEach( rod ->
-                heads.forEach( head ->
-                        coatings.forEach( coating ->
-                                decorations.forEach( decoration ->
-                                        addPickaxeDataSet(rod, head, coating, decoration)
-                                )
-                        )
-                )
-        );
+        for (Material rod : rods)
+        {
+            for (Material head : heads)
+            {
+                for (Material coating : coatings)
+                {
+                    for (Material decoration : decorations)
+                    {
+                        addPickaxeDataSet(rod, head, coating, decoration);
+                        addShovelDataSet(rod, head, coating, decoration);
+                        addAxeDataSet(rod, head, coating, decoration);
+                    }
+                }
+            }
+        }
+        
         System.out.println("Number of tools created: " + iToolsCreated);
         System.out.println("Number of tools skipped: " + iToolsSkipped);
         System.out.println("Number of tools total: " + (iToolsCreated + iToolsSkipped));
@@ -62,8 +64,8 @@ public class DataSets implements Abilities
     {
         if (!(coating == head))
         {
-            String codeName = codeName(rod, head, coating, decoration);
-            String inGameName = inGameName(rod, head, coating, decoration);
+            String codeName = codeName("Pickaxe", rod, head, coating, decoration);
+            String inGameName = inGameName("pickaxe", rod, head, coating, decoration);
             ResourceLocation rodTexture = rod.texture;
             ResourceLocation headTexture = head.texture;
             ResourceLocation coatingTexture = coating.texture;
@@ -81,23 +83,79 @@ public class DataSets implements Abilities
         }
         else
         {
-            String inGameName = inGameName(rod, head, coating, decoration);
-            //System.out.println("Skipped " + iToolsSkipped + ": skipped (same coating as head material): " + inGameName);
             iToolsSkipped++;
         }
         
     }
     
-    public static String inGameName(Material rod, Material head, Material coating,
+    public static void addShovelDataSet(Material rod, Material head, Material coating,
+                                         Material decoration)
+    {
+        if (!(coating == head))
+        {
+            String codeName = codeName("Shovel", rod, head, coating, decoration);
+            String inGameName = inGameName("shovel", rod, head, coating, decoration);
+            ResourceLocation rodTexture = rod.texture;
+            ResourceLocation headTexture = head.texture;
+            ResourceLocation coatingTexture = coating.texture;
+            ResourceLocation decorationTexture = decoration.texture;
+            int miningLevel = miningLevel(rod, head, coating, decoration);
+            int durability = durability(rod, head, coating, decoration);
+            int miningSpeed = miningSpeed(rod, head, coating, decoration);
+            double durabilityModifier = durabilityModifier(rod, head, coating, decoration);
+            double miningSpeedModifier = miningSpeedModifer(rod, head, coating, decoration);
+            double attackSpeedModifier = attackSpeedModifier(rod, head, coating, decoration);
+            
+            //System.out.println("Tool " + iToolsCreated + ": " + inGameName);
+            shovelDataSets.add(new ShovelData(rod, head, coating, decoration));
+            iToolsCreated++;
+        }
+        else
+        {
+            iToolsSkipped++;
+        }
+        
+    }
+    
+    public static void addAxeDataSet(Material rod, Material head, Material coating,
+                                         Material decoration)
+    {
+        if (!(coating == head))
+        {
+            String codeName = codeName("Axe", rod, head, coating, decoration);
+            String inGameName = inGameName("axe", rod, head, coating, decoration);
+            ResourceLocation rodTexture = rod.texture;
+            ResourceLocation headTexture = head.texture;
+            ResourceLocation coatingTexture = coating.texture;
+            ResourceLocation decorationTexture = decoration.texture;
+            int miningLevel = miningLevel(rod, head, coating, decoration);
+            int durability = durability(rod, head, coating, decoration);
+            int miningSpeed = miningSpeed(rod, head, coating, decoration);
+            double durabilityModifier = durabilityModifier(rod, head, coating, decoration);
+            double miningSpeedModifier = miningSpeedModifer(rod, head, coating, decoration);
+            double attackSpeedModifier = attackSpeedModifier(rod, head, coating, decoration);
+            
+            //System.out.println("Tool " + iToolsCreated + ": " + inGameName);
+            axeDataSets.add(new AxeData(rod, head, coating, decoration));
+            iToolsCreated++;
+        }
+        else
+        {
+            iToolsSkipped++;
+        }
+        
+    }
+    
+    public static String inGameName(String toolName, Material rod, Material head, Material coating,
                                     Material decoration)
     {
-        return "ToolTest: " + head.inGameNameGeneric + "pickaxe with " + rod.inGameNameGeneric + "rod, " + coating.inGameNameGeneric +
+        return head.inGameNameGeneric + toolName + " with " + rod.inGameNameGeneric + "rod, " + coating.inGameNameGeneric +
                 "coating and " + decoration.inGameNameGeneric + "decoration.";
     }
     
-    private static String codeName(Material rod, Material head, Material coating, Material decoration)
+    private static String codeName(String toolName, Material rod, Material head, Material coating, Material decoration)
     {
-        return "pickaxe_" + rod.codeName + "_" + head.codeName + "_" + coating.codeName + "_" + decoration.codeName;
+        return toolName + "_" + rod.codeName + "_" + head.codeName + "_" + coating.codeName + "_" + decoration.codeName;
     }
     
     private static int miningLevel(Material rod, Material head, Material coating, Material decoration)

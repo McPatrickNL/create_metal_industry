@@ -146,6 +146,54 @@ public class CreateMetalIndustries
                         return 0xFFFFFF; // Default color (white)
                     }, pickaxeItem.get());
                 }
+                for (Map.Entry<String, RegistryObject<Item>> tool : ToolItems.REGISTERED_SHOVELS.entrySet())
+                {
+                    RegistryObject<Item> shovelItem = ToolItems.REGISTERED_SHOVELS.get(tool.getKey());
+                    itemColors.register((stack, tintIndex) ->
+                    {
+                        if (tintIndex == 0)
+                        {
+                            return ToolItems.REGISTERED_SHOVEL_ROD_COLORS.get(tool.getKey()); // Red for layer0
+                        }
+                        else if (tintIndex == 1)
+                        {
+                            return ToolItems.REGISTERED_SHOVEL_HEAD_COLORS.get(tool.getKey()); // Green for layer1
+                        }
+                        else if (tintIndex == 2)
+                        {
+                            return ToolItems.REGISTERED_SHOVEL_COATING_COLORS.get(tool.getKey()); // Blue for layer2
+                        }
+                        else if (tintIndex == 3)
+                        {
+                            return ToolItems.REGISTERED_SHOVEL_DECORATION_COLORS.get(tool.getKey()); // White for layer3
+                        }
+                        return 0xFFFFFF; // Default color (white)
+                    }, shovelItem.get());
+                }
+                for (Map.Entry<String, RegistryObject<Item>> tool : ToolItems.REGISTERED_AXES.entrySet())
+                {
+                    RegistryObject<Item> axeItem = ToolItems.REGISTERED_AXES.get(tool.getKey());
+                    itemColors.register((stack, tintIndex) ->
+                    {
+                        if (tintIndex == 0)
+                        {
+                            return ToolItems.REGISTERED_AXE_ROD_COLORS.get(tool.getKey()); // Red for layer0
+                        }
+                        else if (tintIndex == 1)
+                        {
+                            return ToolItems.REGISTERED_AXE_HEAD_COLORS.get(tool.getKey()); // Green for layer1
+                        }
+                        else if (tintIndex == 2)
+                        {
+                            return ToolItems.REGISTERED_AXE_COATING_COLORS.get(tool.getKey()); // Blue for layer2
+                        }
+                        else if (tintIndex == 3)
+                        {
+                            return ToolItems.REGISTERED_AXE_DECORATION_COLORS.get(tool.getKey()); // White for layer3
+                        }
+                        return 0xFFFFFF; // Default color (white)
+                    }, axeItem.get());
+                }
             });
             
             // Molten metals

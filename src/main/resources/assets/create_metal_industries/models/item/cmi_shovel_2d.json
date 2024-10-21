@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "create_metal_industries:item/shovel_rod",
+    "layer1": "create_metal_industries:item/shovel_head",
+    "layer2": "create_metal_industries:item/shovel_coating",
+    "layer3": "create_metal_industries:item/shovel_decoration"
+  }
+}

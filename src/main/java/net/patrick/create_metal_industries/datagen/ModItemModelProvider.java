@@ -60,13 +60,32 @@ public class ModItemModelProvider extends ItemModelProvider
         handheldItem(ToolItems.BRASS_SHOVEL);
         handheldItem(ToolItems.BRASS_HOE);
         
-        for (ToolData pickaxe : DataSets.pickaxeDataSets) {
+        for (ToolData pickaxe : DataSets.pickaxeDataSets)
+        {
             System.out.println("TEST6: " + pickaxe.codeName);
             withExistingParent(pickaxe.codeName, new ResourceLocation(CreateMetalIndustries.MOD_ID,"item/cmi_pickaxe_2d"))
                     .texture("layer0", new ResourceLocation(CreateMetalIndustries.MOD_ID, "item/pickaxe_rod"))
                     .texture("layer1", new ResourceLocation(CreateMetalIndustries.MOD_ID, "item/pickaxe_head"))
                     .texture("layer2", new ResourceLocation(CreateMetalIndustries.MOD_ID, "item/pickaxe_coating"))
                     .texture("layer3", new ResourceLocation(CreateMetalIndustries.MOD_ID, "item/pickaxe_decoration"));
+        }
+        for (ToolData shovel : DataSets.shovelDataSets)
+        {
+            System.out.println("TEST6: " + shovel.codeName);
+            withExistingParent(shovel.codeName, new ResourceLocation(CreateMetalIndustries.MOD_ID,"item/cmi_shovel_2d"))
+                    .texture("layer0", new ResourceLocation(CreateMetalIndustries.MOD_ID, "item/shovel_rod"))
+                    .texture("layer1", new ResourceLocation(CreateMetalIndustries.MOD_ID, "item/shovel_head"))
+                    .texture("layer2", new ResourceLocation(CreateMetalIndustries.MOD_ID, "item/shovel_coating"))
+                    .texture("layer3", new ResourceLocation(CreateMetalIndustries.MOD_ID, "item/shovel_decoration"));
+        }
+        for (ToolData shovel : DataSets.axeDataSets)
+        {
+            System.out.println("TEST6: " + shovel.codeName);
+            withExistingParent(shovel.codeName, new ResourceLocation(CreateMetalIndustries.MOD_ID,"item/cmi_axe_2d"))
+                    .texture("layer0", new ResourceLocation(CreateMetalIndustries.MOD_ID, "item/axe_rod"))
+                    .texture("layer1", new ResourceLocation(CreateMetalIndustries.MOD_ID, "item/axe_head"))
+                    .texture("layer2", new ResourceLocation(CreateMetalIndustries.MOD_ID, "item/axe_coating"))
+                    .texture("layer3", new ResourceLocation(CreateMetalIndustries.MOD_ID, "item/axe_decoration"));
         }
         
         //////////////////////////////////////////////////

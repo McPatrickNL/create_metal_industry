@@ -6,10 +6,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.patrick.create_metal_industries.CreateMetalIndustries;
-import net.patrick.create_metal_industries.item.tool.CMIPickaxeItem;
-import net.patrick.create_metal_industries.item.tool.ToolData;
-import net.patrick.create_metal_industries.item.tool.DataSets;
-import net.patrick.create_metal_industries.item.tool.ToolTiers;
+import net.patrick.create_metal_industries.item.tool.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,6 +22,16 @@ public class ToolItems
     public static final Map<String, Integer> REGISTERED_PICKAXE_HEAD_COLORS = new HashMap<>();
     public static final Map<String, Integer> REGISTERED_PICKAXE_COATING_COLORS = new HashMap<>();
     public static final Map<String, Integer> REGISTERED_PICKAXE_DECORATION_COLORS = new HashMap<>();
+    public static final Map<String, RegistryObject<Item>> REGISTERED_SHOVELS = new HashMap<>();
+    public static final Map<String, Integer> REGISTERED_SHOVEL_ROD_COLORS = new HashMap<>();
+    public static final Map<String, Integer> REGISTERED_SHOVEL_HEAD_COLORS = new HashMap<>();
+    public static final Map<String, Integer> REGISTERED_SHOVEL_COATING_COLORS = new HashMap<>();
+    public static final Map<String, Integer> REGISTERED_SHOVEL_DECORATION_COLORS = new HashMap<>();
+    public static final Map<String, RegistryObject<Item>> REGISTERED_AXES = new HashMap<>();
+    public static final Map<String, Integer> REGISTERED_AXE_ROD_COLORS = new HashMap<>();
+    public static final Map<String, Integer> REGISTERED_AXE_HEAD_COLORS = new HashMap<>();
+    public static final Map<String, Integer> REGISTERED_AXE_COATING_COLORS = new HashMap<>();
+    public static final Map<String, Integer> REGISTERED_AXE_DECORATION_COLORS = new HashMap<>();
     
     public static final RegistryObject<Item> BRASS_SWORD = TOOLS.register("brass_sword",
             () -> new SwordItem(ToolTiers.BRASS, 4, 2, new Item.Properties()));
@@ -38,11 +45,13 @@ public class ToolItems
             () -> new HoeItem(ToolTiers.BRASS, 0, 0, new Item.Properties()));
     
     // Method to register tools dynamically
-    public static void registerTools() {
+    public static void registerTools()
+    {
         
         // todo convert tool dataset into a list of actual tools first, extending the PickaxeItem class etc.
         
-        for (ToolData toolData : DataSets.pickaxeDataSets) {  // Iterate over tools in the list
+        for (ToolData toolData : DataSets.pickaxeDataSets)
+        {  // Iterate over tools in the list
 
             String toolName = toolData.codeName;  // "brass_pickaxe"  // Use codeName as the registry name
             System.out.println("TEST4: " + toolName);
@@ -51,7 +60,7 @@ public class ToolItems
                     () -> new CMIPickaxeItem(ToolTiers.BRASS, 1,
                             -2.8f,
                             toolData.rodMaterial, toolData.headMaterial, toolData.coatingMaterial, toolData.decorationMaterial,
-                            new Item.Properties(), toolData.pickaxeAbilities)
+                            new Item.Properties(), toolData.toolAbilities)
             );
 
             // Store the registered tool in the map for later access
@@ -60,6 +69,48 @@ public class ToolItems
             REGISTERED_PICKAXE_HEAD_COLORS.put(toolName, toolData.headMaterial.color);
             REGISTERED_PICKAXE_COATING_COLORS.put(toolName, coatingColor(toolData));
             REGISTERED_PICKAXE_DECORATION_COLORS.put(toolName, decorationColor(toolData));
+        }
+        
+        for (ToolData toolData : DataSets.shovelDataSets)
+        {  // Iterate over tools in the list
+
+            String toolName = toolData.codeName;  // "brass_pickaxe"  // Use codeName as the registry name
+            System.out.println("TEST4: " + toolName);
+            // Register the tool and store it in the map for future reference
+            RegistryObject<Item> registeredTool = TOOLS.register(toolName,
+                    () -> new CMIPickaxeItem(ToolTiers.BRASS, 1,
+                            -2.8f,
+                            toolData.rodMaterial, toolData.headMaterial, toolData.coatingMaterial, toolData.decorationMaterial,
+                            new Item.Properties(), toolData.toolAbilities)
+            );
+
+            // Store the registered tool in the map for later access
+            REGISTERED_SHOVELS.put(toolName, registeredTool);
+            REGISTERED_SHOVEL_ROD_COLORS.put(toolName, toolData.rodMaterial.color);
+            REGISTERED_SHOVEL_HEAD_COLORS.put(toolName, toolData.headMaterial.color);
+            REGISTERED_SHOVEL_COATING_COLORS.put(toolName, coatingColor(toolData));
+            REGISTERED_SHOVEL_DECORATION_COLORS.put(toolName, decorationColor(toolData));
+        }
+        
+        for (ToolData toolData : DataSets.axeDataSets)
+        {  // Iterate over tools in the list
+
+            String toolName = toolData.codeName;  // "brass_pickaxe"  // Use codeName as the registry name
+            System.out.println("TEST4: " + toolName);
+            // Register the tool and store it in the map for future reference
+            RegistryObject<Item> registeredTool = TOOLS.register(toolName,
+                    () -> new CMIAxeItem(ToolTiers.BRASS, 1,
+                            -2.8f,
+                            toolData.rodMaterial, toolData.headMaterial, toolData.coatingMaterial, toolData.decorationMaterial,
+                            new Item.Properties(), toolData.toolAbilities)
+            );
+
+            // Store the registered tool in the map for later access
+            REGISTERED_AXES.put(toolName, registeredTool);
+            REGISTERED_AXE_ROD_COLORS.put(toolName, toolData.rodMaterial.color);
+            REGISTERED_AXE_HEAD_COLORS.put(toolName, toolData.headMaterial.color);
+            REGISTERED_AXE_COATING_COLORS.put(toolName, coatingColor(toolData));
+            REGISTERED_AXE_DECORATION_COLORS.put(toolName, decorationColor(toolData));
         }
     }
     

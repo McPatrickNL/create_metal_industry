@@ -73,6 +73,16 @@ public class CreativeModeTabs
                             //System.out.println("wa");
                             pOutput.accept(entry.getValue().get());
                         }
+                        for (Map.Entry<String, RegistryObject<Item>> entry : ToolItems.REGISTERED_SHOVELS.entrySet())
+                        {
+                            //System.out.println("wa");
+                            pOutput.accept(entry.getValue().get());
+                        }
+                        for (Map.Entry<String, RegistryObject<Item>> entry : ToolItems.REGISTERED_AXES.entrySet())
+                        {
+                            //System.out.println("wa");
+                            pOutput.accept(entry.getValue().get());
+                        }
                         
                     })
                     .build());

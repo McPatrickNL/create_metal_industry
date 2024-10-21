@@ -28,7 +28,7 @@ public abstract class ToolData implements Abilities
     public double miningSpeedModifier;
     public double attackSpeedModifier;
     public Tier tier; ////// todo is this the right import?.
-    public List<ToolAbility> pickaxeAbilities;
+    public List<ToolAbility> toolAbilities;
     
     public ToolData(Material rodMaterial, Material headMaterial, Material coatingMaterial, Material decorationMaterial)
     {
@@ -53,8 +53,8 @@ public abstract class ToolData implements Abilities
         this.tier = rodMaterial.tier;
         
         // Special abilities list
-        pickaxeAbilities = new ArrayList<ToolAbility>(List.of());
-        this.pickaxeAbilities = setPickaxeAbilities(rodMaterial, headMaterial, coatingMaterial, decorationMaterial);
+        toolAbilities = new ArrayList<ToolAbility>(List.of());
+        this.toolAbilities = setPickaxeAbilities(rodMaterial, headMaterial, coatingMaterial, decorationMaterial);
         
     }
     
