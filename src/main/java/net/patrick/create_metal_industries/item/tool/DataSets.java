@@ -4,17 +4,31 @@ import net.minecraft.resources.ResourceLocation;
 import net.patrick.create_metal_industries.item.tool.material.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
-public class ToolDataSets
+public class DataSets implements Abilities
 {
-    
     public static ArrayList<ToolData> pickaxeDataSets = new ArrayList<ToolData>(List.of());
+    //public static List<ToolAbility> toolAbilities = new ArrayList<ToolAbility>(List.of());
+    public static Map<Integer, Boolean> hasAbility;
+    public static List<ToolAbility> toolAbilities;
     public static Materials materials;
     public static int iToolsCreated = 0;
     public static int iToolsSkipped = 0;
     public static int iToolsTotal = 0;
+    
+//    public static boolean veinMiner;
+//    public static boolean multiMiner;
+//    public static boolean trowel;
+//    public static boolean torcher;
+//    public static boolean constructionWand;
+//    public static boolean treeFeller;
+//    public static boolean linkedStorage;
+//    public static boolean noLavaBurn;
+    
     
     public static void createToolDataSets()
     {

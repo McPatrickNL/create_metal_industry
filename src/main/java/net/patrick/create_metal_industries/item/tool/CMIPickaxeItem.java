@@ -11,23 +11,28 @@ import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.state.BlockState;
+import net.patrick.create_metal_industries.item.tool.material.Material;
+
+import java.util.List;
 
 public class CMIPickaxeItem extends PickaxeItem
 {
-    private final int rodColor;
-    private final int headColor;
-    private final int coatingColor;
-    private final int decorationColor;
+    private final Material rodMaterial;
+    private final Material headMaterial;
+    private final Material coatingMaterial;
+    private final Material decorationMaterial;
+    private final List<ToolAbility> pickaxeAbilities;
     
     public CMIPickaxeItem(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier,
-                          int rodColor, int headColor, int coatingColor, int decorationColor,
-                          Properties pProperties)
+                          Material rodMaterial, Material headMaterial, Material coatingMaterial, Material decorationMaterial,
+                          Properties pProperties, List<ToolAbility> pickaxeAbilities)
     {
         super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties);
-        this.rodColor = rodColor;
-        this.headColor = headColor;
-        this.coatingColor = coatingColor;
-        this.decorationColor = decorationColor;
+        this.rodMaterial = rodMaterial;
+        this.headMaterial = headMaterial;
+        this.coatingMaterial = coatingMaterial;
+        this.decorationMaterial = decorationMaterial;
+        this.pickaxeAbilities = pickaxeAbilities;
     }
     
     public int getColor(ItemStack stack, int tintIndex) {
@@ -35,16 +40,21 @@ public class CMIPickaxeItem extends PickaxeItem
         // tintIndex 0 for layer0, tintIndex 1 for layer1, etc.
         switch (tintIndex) {
             case 0:
-                return this.rodColor; // Red for layer 0
+                return this.rodMaterial.color; // Red for layer 0
             case 1:
-                return this.headColor; // Green for layer 1
+                return this.headMaterial.color; // Green for layer 1
             case 2:
-                return this.coatingColor; // Blue for layer 2
+                return this.coatingMaterial.color; // Blue for layer 2
             case 3:
-                return this.decorationColor; // White for layer 3
+                return this.decorationMaterial.color; // White for layer 3
             default:
                 return 0xFFFFFF; // Default color (white)
         }
+    }
+    
+    public List<ToolAbility> getPickaxeAbilities(ItemStack stack)
+    {
+        return this.pickaxeAbilities;
     }
     
 }

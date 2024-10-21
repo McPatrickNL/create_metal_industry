@@ -116,6 +116,8 @@ public class CreateMetalIndustries
         @SuppressWarnings("deprecation")
         public static void onClientSetup(FMLClientSetupEvent event)
         {
+            KeyBindings.registerKeyBindings();
+            
             event.enqueueWork(() ->
             {
                 ItemColors itemColors = Minecraft.getInstance().getItemColors();

@@ -2,13 +2,13 @@ package net.patrick.create_metal_industries.item.tool.material;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Tiers;
-import net.patrick.create_metal_industries.item.tool.ToolAbilities;
+import net.patrick.create_metal_industries.item.tool.Abilities;
 import net.patrick.create_metal_industries.item.tool.ToolTiers;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Materials implements ToolAbilities
+public class Materials implements Abilities
 {
     static ResourceLocation woodTexture = new ResourceLocation("minecraft","block/stripped_spruce_log");
     static ResourceLocation stoneTexture = new ResourceLocation("minecraft","block/smooth_stone");
@@ -91,7 +91,7 @@ public class Materials implements ToolAbilities
             "mithril", "Mithril ", "Enriched ", netheriteTexture,
             1, 100, 1, 0.8, 0.2, 2,
             1,  Tiers.NETHERITE, 0xbefbe8,
-            List.of());
+            List.of(new MaterialAbility(veinMinerCodeName, veinMinerID, 2)));
     
     // Decoration materials
     static Material netherQuartz = new Material(

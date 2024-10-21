@@ -2,11 +2,11 @@ package net.patrick.create_metal_industries.item.tool.material;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Tier;
-import net.patrick.create_metal_industries.item.tool.ToolAbilities;
+import net.patrick.create_metal_industries.item.tool.Abilities;
 
 import java.util.List;
 
-public class Material implements ToolAbilities
+public class Material implements Abilities
 {
     // Move some of those to the child tool material classes. Just generic ones should stay here.
     public String codeName;
@@ -22,15 +22,7 @@ public class Material implements ToolAbilities
     public double toolRangeModifier;    // no actual use yet
     public Tier tier;
     public int color;
-    
-    public boolean veinMiner;
-    public boolean multiMiner;
-    public boolean trowel;
-    public boolean torcher;
-    public boolean constructionWand;
-    public boolean treeFeller;
-    public boolean linkedStorage;
-    public boolean noLavaBurn;
+    public List<MaterialAbility> materialAbilities;
     
     //Just if I want to make the textures specific
     public ResourceLocation textureRod;
@@ -46,7 +38,7 @@ public class Material implements ToolAbilities
     public Material(String codeName, String inGameNameGeneric, String inGameNameCoated, ResourceLocation texture,
                     int miningLevel, int baseDurability, int miningSpeed,
                     double durabilityModifier, double miningSpeedModifier, double attackSpeedModifier, double toolRangeModifier,
-                    Tier tier, int color, List<String> abilities)
+                    Tier tier, int color, List<MaterialAbility> materialAbilities)
     {
         this.codeName = codeName;
         this.inGameNameGeneric = inGameNameGeneric;
@@ -61,43 +53,6 @@ public class Material implements ToolAbilities
         this.toolRangeModifier = toolRangeModifier;
         this.tier = tier;
         this.color = color;
-        if (!(abilities.isEmpty()))
-        {
-            for (String ability : abilities)
-            {
-                if (ability.equals(sVeinMiner))
-                {
-                    this.veinMiner = true;
-                }
-                if (ability.equals(sMultiMiner))
-                {
-                    this.multiMiner = true;
-                }
-                if (ability.equals(sTrowel))
-                {
-                    this.trowel = true;
-                }
-                if (ability.equals(sTorcher))
-                {
-                    this.torcher = true;
-                }
-                if (ability.equals(sConstructionWand))
-                {
-                    this.constructionWand = true;
-                }
-                if (ability.equals(sTreeFeller))
-                {
-                    this.treeFeller = true;
-                }
-                if (ability.equals(sLinkedStorage))
-                {
-                    this.linkedStorage = true;
-                }
-                if (ability.equals(sNoLavaBurn))
-                {
-                    this.noLavaBurn = true;
-                }
-            }
-        }
+        this.materialAbilities = materialAbilities;
     }
 }

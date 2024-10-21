@@ -12,7 +12,7 @@ import net.patrick.create_metal_industries.CreateMetalIndustries;
 import net.patrick.create_metal_industries.item.Items;
 import net.patrick.create_metal_industries.item.ToolItems;
 import net.patrick.create_metal_industries.item.tool.ToolData;
-import net.patrick.create_metal_industries.item.tool.ToolDataSets;
+import net.patrick.create_metal_industries.item.tool.DataSets;
 
 // https://youtu.be/enzKJWq0vNI?t=406
 public class ModItemModelProvider extends ItemModelProvider
@@ -60,7 +60,7 @@ public class ModItemModelProvider extends ItemModelProvider
         handheldItem(ToolItems.BRASS_SHOVEL);
         handheldItem(ToolItems.BRASS_HOE);
         
-        for (ToolData pickaxe : ToolDataSets.pickaxeDataSets) {
+        for (ToolData pickaxe : DataSets.pickaxeDataSets) {
             System.out.println("TEST6: " + pickaxe.codeName);
             withExistingParent(pickaxe.codeName, new ResourceLocation(CreateMetalIndustries.MOD_ID,"item/cmi_pickaxe_2d"))
                     .texture("layer0", new ResourceLocation(CreateMetalIndustries.MOD_ID, "item/pickaxe_rod"))

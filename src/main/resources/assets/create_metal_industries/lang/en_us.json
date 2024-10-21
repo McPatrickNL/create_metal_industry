@@ -48,5 +48,10 @@
 
   "creativetab.liquids_tab": "Liquids",
   "creativetab.create_metal_industries_tab": "Create: Metal Industries",
-  "creativetab.create_metal_industries_tools_tab": "Create: Metal Industries Tools"
+  "creativetab.create_metal_industries_tools_tab": "Create: Metal Industries Tools",
+
+
+  "######## KEYS ########": "",
+  "key.category.create_metal_industries": "Create: Metal Industries",
+  "key.create_metal_industries.special_ability": "Tool Special Ability"
 }

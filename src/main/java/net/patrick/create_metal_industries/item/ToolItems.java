@@ -8,7 +8,7 @@ import net.minecraftforge.registries.RegistryObject;
 import net.patrick.create_metal_industries.CreateMetalIndustries;
 import net.patrick.create_metal_industries.item.tool.CMIPickaxeItem;
 import net.patrick.create_metal_industries.item.tool.ToolData;
-import net.patrick.create_metal_industries.item.tool.ToolDataSets;
+import net.patrick.create_metal_industries.item.tool.DataSets;
 import net.patrick.create_metal_industries.item.tool.ToolTiers;
 
 import java.util.HashMap;
@@ -42,7 +42,7 @@ public class ToolItems
         
         // todo convert tool dataset into a list of actual tools first, extending the PickaxeItem class etc.
         
-        for (ToolData toolData : ToolDataSets.pickaxeDataSets) {  // Iterate over tools in the list
+        for (ToolData toolData : DataSets.pickaxeDataSets) {  // Iterate over tools in the list
 
             String toolName = toolData.codeName;  // "brass_pickaxe"  // Use codeName as the registry name
             System.out.println("TEST4: " + toolName);
@@ -50,8 +50,8 @@ public class ToolItems
             RegistryObject<Item> registeredTool = TOOLS.register(toolName,
                     () -> new CMIPickaxeItem(ToolTiers.BRASS, 1,
                             -2.8f,
-                            0xFF0000, 0x00FF00, 0x0000FF, 0xFFFFFF,
-                            new Item.Properties())
+                            toolData.rodMaterial, toolData.headMaterial, toolData.coatingMaterial, toolData.decorationMaterial,
+                            new Item.Properties(), toolData.pickaxeAbilities)
             );
 
             // Store the registered tool in the map for later access
@@ -90,7 +90,7 @@ public class ToolItems
     public static void register(IEventBus eventBus)
     {
         System.out.println("Test1");
-        ToolDataSets.createToolDataSets();
+        DataSets.createToolDataSets();
         registerTools();
         TOOLS.register(eventBus);
     }
