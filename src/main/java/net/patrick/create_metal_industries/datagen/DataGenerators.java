@@ -4,6 +4,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -22,13 +23,9 @@ public class DataGenerators
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
         
-        generator.addProvider(event.includeServer(), new ModRecipeProvider(packOutput));
-        
         generator.addProvider(event.includeClient(), new ModItemModelProvider(packOutput, existingFileHelper));
-        //generator.addProvider(event.includeClient(), new ModToolModelProvider(packOutput, existingFileHelper));
         
-        //can't have two item model providers
-        //generator.addProvider(event.includeClient(), new ModToolModelProvider(packOutput, existingFileHelper));
+        generator.addProvider(event.includeServer(), new ModRecipeProvider(packOutput));
         
     }
 }
