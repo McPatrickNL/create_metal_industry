@@ -14,6 +14,7 @@ public class CMIShovelItem extends ShovelItem
     private final Material coatingMaterial;
     private final Material decorationMaterial;
     private final List<ToolAbility> shovelAbilities;
+    private final int toolLevel;
     
     public CMIShovelItem(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier,
                          Material rodMaterial, Material headMaterial, Material coatingMaterial, Material decorationMaterial,
@@ -25,6 +26,7 @@ public class CMIShovelItem extends ShovelItem
         this.coatingMaterial = coatingMaterial;
         this.decorationMaterial = decorationMaterial;
         this.shovelAbilities = shovelAbilities;
+        this.toolLevel = setToolLevel(rodMaterial, headMaterial, coatingMaterial, decorationMaterial);
     }
     
     public int getColor(ItemStack stack, int tintIndex) {
@@ -44,7 +46,20 @@ public class CMIShovelItem extends ShovelItem
         }
     }
     
-    public List<ToolAbility> getShovelAbilities(ItemStack stack)
+    public int getToolLevel()
+    {
+        return toolLevel;
+    }
+    
+    private int setToolLevel(Material rodMaterial, Material headMaterial, Material coatingMaterial, Material decorationMaterial)
+    {
+        return Math.max(Math.max(rodMaterial.miningLevel,
+                        headMaterial.miningLevel),
+                Math.max(coatingMaterial.miningLevel,
+                        decorationMaterial.miningLevel));
+    }
+    
+    public List<ToolAbility> getToolAbilities(ItemStack stack)
     {
         return this.shovelAbilities;
     }

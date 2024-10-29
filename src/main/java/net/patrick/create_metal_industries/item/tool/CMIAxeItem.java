@@ -14,6 +14,7 @@ public class CMIAxeItem extends AxeItem
     private final Material coatingMaterial;
     private final Material decorationMaterial;
     private final List<ToolAbility> axeAbilities;
+    private final int toolLevel;
     
     public CMIAxeItem(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier,
                       Material rodMaterial, Material headMaterial, Material coatingMaterial, Material decorationMaterial,
@@ -25,6 +26,7 @@ public class CMIAxeItem extends AxeItem
         this.coatingMaterial = coatingMaterial;
         this.decorationMaterial = decorationMaterial;
         this.axeAbilities = axeAbilities;
+        this.toolLevel = setToolLevel(rodMaterial, headMaterial, coatingMaterial, decorationMaterial);
     }
     
     public int getColor(ItemStack stack, int tintIndex) {
@@ -44,7 +46,20 @@ public class CMIAxeItem extends AxeItem
         }
     }
     
-    public List<ToolAbility> getAxeAbilities(ItemStack stack)
+    public int getToolLevel()
+    {
+        return toolLevel;
+    }
+    
+    private int setToolLevel(Material rodMaterial, Material headMaterial, Material coatingMaterial, Material decorationMaterial)
+    {
+        return Math.max(Math.max(rodMaterial.miningLevel,
+                        headMaterial.miningLevel),
+                Math.max(coatingMaterial.miningLevel,
+                        decorationMaterial.miningLevel));
+    }
+    
+    public List<ToolAbility> getToolAbilities(ItemStack stack)
     {
         return this.axeAbilities;
     }

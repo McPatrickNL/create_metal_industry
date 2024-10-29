@@ -51,18 +51,19 @@ public class ToolItems
         // todo convert tool dataset into a list of actual tools first, extending the PickaxeItem class etc.
         
         for (ToolData toolData : DataSets.pickaxeDataSets)
-        {  // Iterate over tools in the list
-
-            String toolName = toolData.codeName;  // "brass_pickaxe"  // Use codeName as the registry name
-            System.out.println("TEST4: " + toolName);
-            // Register the tool and store it in the map for future reference
+        {
+            // Use codeName as the registry name
+            String toolName = toolData.codeName;
+            //System.out.println("TEST4: " + toolName);
+            
+            // Register the tools
             RegistryObject<Item> registeredTool = TOOLS.register(toolName,
-                    () -> new CMIPickaxeItem(ToolTiers.BRASS, 1,
-                            -2.8f,
+                    () -> new CMIPickaxeItem(Tiers.NETHERITE, (int)toolData.attackDamageModifier,
+                            2, // this doesn't seem to work...
                             toolData.rodMaterial, toolData.headMaterial, toolData.coatingMaterial, toolData.decorationMaterial,
                             new Item.Properties(), toolData.toolAbilities)
             );
-
+            
             // Store the registered tool in the map for later access
             REGISTERED_PICKAXES.put(toolName, registeredTool);
             REGISTERED_PICKAXE_ROD_COLORS.put(toolName, toolData.rodMaterial.color);
@@ -72,11 +73,12 @@ public class ToolItems
         }
         
         for (ToolData toolData : DataSets.shovelDataSets)
-        {  // Iterate over tools in the list
-
-            String toolName = toolData.codeName;  // "brass_pickaxe"  // Use codeName as the registry name
-            System.out.println("TEST4: " + toolName);
-            // Register the tool and store it in the map for future reference
+        {
+            // Use codeName as the registry name
+            String toolName = toolData.codeName;
+            //System.out.println("TEST4: " + toolName);
+            
+            // Register the tools
             RegistryObject<Item> registeredTool = TOOLS.register(toolName,
                     () -> new CMIPickaxeItem(ToolTiers.BRASS, 1,
                             -2.8f,
@@ -93,16 +95,17 @@ public class ToolItems
         }
         
         for (ToolData toolData : DataSets.axeDataSets)
-        {  // Iterate over tools in the list
-
-            String toolName = toolData.codeName;  // "brass_pickaxe"  // Use codeName as the registry name
-            System.out.println("TEST4: " + toolName);
-            // Register the tool and store it in the map for future reference
+        {
+            // Use codeName as the registry name
+            String toolName = toolData.codeName;
+            //System.out.println("TEST4: " + toolName);
+            
+            // Register the tools
             RegistryObject<Item> registeredTool = TOOLS.register(toolName,
                     () -> new CMIAxeItem(ToolTiers.BRASS, 1,
                             -2.8f,
                             toolData.rodMaterial, toolData.headMaterial, toolData.coatingMaterial, toolData.decorationMaterial,
-                            new Item.Properties(), toolData.toolAbilities)
+                            new Item.Properties(), toolData.toolAbilities)// todo move the toolData.abilities to be a property of the CMIAxeItem (and shovel/pickaxe)
             );
 
             // Store the registered tool in the map for later access

@@ -27,6 +27,7 @@ public abstract class ToolData implements Abilities
     public int miningSpeed; // no use - see tiers
     public double miningSpeedModifier;
     public double attackSpeedModifier;
+    public double attackDamageModifier;
     public Tier tier; ////// todo is this the right import?.
     public List<ToolAbility> toolAbilities;
     
@@ -47,6 +48,7 @@ public abstract class ToolData implements Abilities
         // Attributes
         this.miningSpeedModifier = MiningSpeed(rodMaterial, headMaterial, coatingMaterial, decorationMaterial);
         this.attackSpeedModifier = AttackSpeed(rodMaterial, headMaterial, coatingMaterial, decorationMaterial);
+        this.attackDamageModifier = AttackDamage(rodMaterial, headMaterial, coatingMaterial, decorationMaterial);
         
         // Tier
         // todo function to determine the highest tier amongst the applied materials
@@ -71,17 +73,30 @@ public abstract class ToolData implements Abilities
                                 decorationMaterial.attackSpeedModifier));
     }
     
+    private double AttackDamage(Material rodMaterial, Material headMaterial, Material coatingMaterial, Material decorationMaterial)
+    {
+        // All values multiplied and multiplied again by the highest factor
+        return rodMaterial.attackDamageModifier*
+                headMaterial.attackDamageModifier*
+                coatingMaterial.attackDamageModifier*
+                decorationMaterial.attackDamageModifier*
+                Math.max(Math.max(rodMaterial.attackDamageModifier,
+                                headMaterial.attackDamageModifier),
+                        Math.max(coatingMaterial.attackDamageModifier,
+                                decorationMaterial.attackDamageModifier));
+    }
+    
     private double MiningSpeed(Material rodMaterial, Material headMaterial, Material coatingMaterial, Material decorationMaterial)
     {
         // All values multiplied and multiplied again by the highest factor
-        return rodMaterial.miningSpeedModifier*
-                headMaterial.miningSpeedModifier*
-                coatingMaterial.miningSpeedModifier*
-                decorationMaterial.miningSpeedModifier*
-                Math.max(Math.max(rodMaterial.miningSpeedModifier,
-                                headMaterial.miningSpeedModifier),
-                        Math.max(coatingMaterial.miningSpeedModifier,
-                                decorationMaterial.miningSpeedModifier));
+        return rodMaterial.attackDamageModifier *
+                headMaterial.attackDamageModifier *
+                coatingMaterial.attackDamageModifier *
+                decorationMaterial.attackDamageModifier *
+                Math.max(Math.max(rodMaterial.attackDamageModifier,
+                                headMaterial.attackDamageModifier),
+                        Math.max(coatingMaterial.attackDamageModifier,
+                                decorationMaterial.attackDamageModifier));
     }
     
     private static List<ToolAbility> setPickaxeAbilities(Material rod, Material head, Material coating, Material decoration)
@@ -139,10 +154,10 @@ public abstract class ToolData implements Abilities
                     {
                         miningReachLevel += materialAbility.abilityLevel;
                     }
-//                    if (materialAbility.abilityID == treeFellerID)
-//                    {
-//                        treeFellerLevel += materialAbility.abilityLevel;
-//                    }
+                    if (materialAbility.abilityID == treeFellerID)
+                    {
+                        treeFellerLevel += materialAbility.abilityLevel;
+                    }
                     if (materialAbility.abilityID == linkedStorageID)
                     {
                         linkedStorageLevel += materialAbility.abilityLevel;
@@ -161,7 +176,7 @@ public abstract class ToolData implements Abilities
         currentToolAbilities.add(new ToolAbility(magneticCodeName, magneticID, magneticLevel));
         currentToolAbilities.add(new ToolAbility(torcherCodeName, torcherID, torcherLevel));
         currentToolAbilities.add(new ToolAbility(miningReachCodeName, miningReachID, miningReachLevel));
-//        currentToolAbilities.add(new ToolAbility(treeFellerCodeName, treeFellerID, treeFellerLevel));
+        currentToolAbilities.add(new ToolAbility(treeFellerCodeName, treeFellerID, treeFellerLevel));
         currentToolAbilities.add(new ToolAbility(linkedStorageCodeName, linkedStorageID, linkedStorageLevel));
         currentToolAbilities.add(new ToolAbility(noLavaBurnCodeName, noLavaBurnID, noLavaBurnLevel));
         
@@ -174,7 +189,7 @@ public abstract class ToolData implements Abilities
         currentToolHasAbility.put(magneticID, magneticLevel>0);
         currentToolHasAbility.put(torcherID, torcherLevel>0);
         currentToolHasAbility.put(miningReachID, miningReachLevel>0);
-//        currentToolHasAbility.put(treeFellerID, treeFellerLevel>0);
+        currentToolHasAbility.put(treeFellerID, treeFellerLevel>0);
         currentToolHasAbility.put(linkedStorageID, linkedStorageLevel>0);
         currentToolHasAbility.put(noLavaBurnID, noLavaBurnLevel>0);
         

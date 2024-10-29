@@ -1,16 +1,8 @@
 package net.patrick.create_metal_industries.item.tool;
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.Tier;
-import net.minecraft.client.renderer.item.ItemProperties;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.state.BlockState;
 import net.patrick.create_metal_industries.item.tool.material.Material;
 
 import java.util.List;
@@ -22,6 +14,7 @@ public class CMIPickaxeItem extends PickaxeItem
     private final Material coatingMaterial;
     private final Material decorationMaterial;
     private final List<ToolAbility> pickaxeAbilities;
+    private final int toolLevel;
     
     public CMIPickaxeItem(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier,
                           Material rodMaterial, Material headMaterial, Material coatingMaterial, Material decorationMaterial,
@@ -33,6 +26,7 @@ public class CMIPickaxeItem extends PickaxeItem
         this.coatingMaterial = coatingMaterial;
         this.decorationMaterial = decorationMaterial;
         this.pickaxeAbilities = pickaxeAbilities;
+        this.toolLevel = setToolLevel(rodMaterial, headMaterial, coatingMaterial, decorationMaterial);
     }
     
     public int getColor(ItemStack stack, int tintIndex) {
@@ -52,7 +46,20 @@ public class CMIPickaxeItem extends PickaxeItem
         }
     }
     
-    public List<ToolAbility> getPickaxeAbilities(ItemStack stack)
+    public int getToolLevel()
+    {
+        return toolLevel;
+    }
+    
+    private int setToolLevel(Material rodMaterial, Material headMaterial, Material coatingMaterial, Material decorationMaterial)
+    {
+        return Math.max(Math.max(rodMaterial.miningLevel,
+                        headMaterial.miningLevel),
+                Math.max(coatingMaterial.miningLevel,
+                        decorationMaterial.miningLevel));
+    }
+    
+    public List<ToolAbility> getToolAbilities(ItemStack stack)
     {
         return this.pickaxeAbilities;
     }

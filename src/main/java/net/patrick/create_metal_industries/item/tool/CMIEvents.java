@@ -1,7 +1,6 @@
 package net.patrick.create_metal_industries.item.tool;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -25,7 +24,6 @@ public class CMIEvents implements Abilities
     public static void onBreakSpeed(PlayerEvent.BreakSpeed event)
     {
         Player player = event.getEntity();
-//        Msg(player,"=============== Event: BreakSpeed ===============");
         BlockState blockState = event.getState();
         int playerPosY;
         int seaLevel = 64 - -64; // +64 from y = 0;
@@ -34,14 +32,38 @@ public class CMIEvents implements Abilities
         float defaultDestroySpeed;
         float newDestroySpeed;
         float blockPosY;
+        int toolLevel;
         
         if (heldItem.getItem() instanceof CMIPickaxeItem)
         {
-            defaultDestroySpeed = heldItem.getItem().getDestroySpeed(heldItem, blockState);
+            toolLevel = ((CMIPickaxeItem) heldItem.getItem()).getToolLevel();
+            defaultDestroySpeed = ((CMIPickaxeItem) heldItem.getItem()).getAttackDamage();
             playerPosY = event.getEntity().blockPosition().getY();
             heightFromBedrock = playerPosY - -64;
-            newDestroySpeed = defaultDestroySpeed * ( (float) heightFromBedrock / seaLevel );
-            
+            newDestroySpeed = defaultDestroySpeed * ((float) heightFromBedrock * 2 / seaLevel * toolLevel);
+            //Msg(player, "speed:" + newDestroySpeed);
+            event.setNewSpeed(newDestroySpeed);
+        }
+        
+        if (heldItem.getItem() instanceof CMIShovelItem)
+        {
+            toolLevel = ((CMIShovelItem) heldItem.getItem()).getToolLevel();
+            defaultDestroySpeed = ((CMIShovelItem) heldItem.getItem()).getAttackDamage();
+            playerPosY = event.getEntity().blockPosition().getY();
+            heightFromBedrock = playerPosY - -64;
+            newDestroySpeed = defaultDestroySpeed * ((float) heightFromBedrock * 2 / seaLevel * toolLevel);
+            //Msg(player, "speed:" + newDestroySpeed);
+            event.setNewSpeed(newDestroySpeed);
+        }
+        
+        if (heldItem.getItem() instanceof CMIAxeItem)
+        {
+            toolLevel = ((CMIAxeItem) heldItem.getItem()).getToolLevel();
+            defaultDestroySpeed = ((CMIAxeItem) heldItem.getItem()).getAttackDamage();
+            playerPosY = event.getEntity().blockPosition().getY();
+            heightFromBedrock = playerPosY - -64;
+            newDestroySpeed = defaultDestroySpeed * ((float) heightFromBedrock * 2 / seaLevel * toolLevel);
+            //Msg(player, "speed:" + newDestroySpeed);
             event.setNewSpeed(newDestroySpeed);
         }
     }
@@ -50,86 +72,279 @@ public class CMIEvents implements Abilities
     public static void onBlockBreakEvent(BlockEvent.BreakEvent event)
     {
         Player player = event.getPlayer();
-        Msg(player, "=============== Event: BlockEvent.BreakEvent ===============");
         Level world = (Level) event.getLevel();
         BlockPos origin = event.getPos();
         BlockState blockState = world.getBlockState(origin);
         ItemStack heldItem = player.getItemInHand(event.getPlayer().getUsedItemHand());
         
-        // Check if the player is holding the right key and the correct tool for the block
-        if (KeyBindings.toolSpecialAbilityKey.isDown() && heldItem.isCorrectToolForDrops(blockState)) {
-            
-            // Get the list of abilities of the pickaxe
-            List<ToolAbility> pickaxeAbilities = ((CMIPickaxeItem) heldItem.getItem()).getPickaxeAbilities(heldItem);
-            
-            // Find the veinMiner ability based on its ID
+        if (KeyBindings.toolSpecialAbilityKey.isDown() && heldItem.isCorrectToolForDrops(blockState) && heldItem.getItem() instanceof CMIPickaxeItem)
+        {
+            List<ToolAbility> pickaxeAbilities = ((CMIPickaxeItem) heldItem.getItem()).getToolAbilities(heldItem);
             ToolAbility veinMinerAbility = pickaxeAbilities.stream()
                     .filter(ability -> ability.abilityID == veinMinerID)
                     .findFirst()
                     .orElse(null);
             
-            // Set default radius, and update if veinMiner ability is found
-            int radius = 0; // Default radius in case veinMiner is not present
+            int blockLimit = 0;
+            int blocksPerLevel = 16; // Set how many blocks per ability level
+            
+            // Determine the block limit based on the treeFeller ability level
             if (veinMinerAbility != null) {
-                radius = veinMinerAbility.abilityLevel; // Set radius to the veinMiner ability level
+                blockLimit = veinMinerAbility.abilityLevel * blocksPerLevel;
             }
             
-            // Find similar blocks within the set radius
-            List<BlockPos> similarBlocks = findSimilarBlocks(world, origin, blockState, radius);
-            
-            // Highlight and break blocks
-            for (BlockPos pos : similarBlocks) {
-                highlightBlock(world, pos); // Visual indication
-                world.destroyBlock(pos, true, player); // Break block
-            }
-            
-            Msg(player, "Mined " + similarBlocks.size() + " blocks");
-        }
-    }
-    
-    // Recursive method to find similar blocks around the mined block
-    public static List<BlockPos> findSimilarBlocks(Level world, BlockPos origin, BlockState originalState, int radius)
-    {
-        List<BlockPos> foundBlocks = new ArrayList<>();
-        Set<BlockPos> visited = new HashSet<>();
-        Queue<BlockPos> toCheck = new LinkedList<>();
-        
-        toCheck.add(origin);
-        visited.add(origin);
-        
-        while (!toCheck.isEmpty() && foundBlocks.size() < 100) // Limit to 100 blocks to prevent overload
-        {
-            BlockPos current = toCheck.poll();
-            BlockState state = world.getBlockState(current);
-            
-            if (state.getBlock() == originalState.getBlock())
-            {
-                foundBlocks.add(current);
-                
-                // Check surrounding blocks
-                for (Direction direction : Direction.values())
+            // Only proceed if the blockLimit is greater than zero
+            if (blockLimit > 0) {
+                if (!findSimilarBlocks(player, world, origin, blockState, blockLimit, true))
                 {
-                    BlockPos neighbor = current.relative(direction);
-                    if (!visited.contains(neighbor) && neighbor.distSqr(origin) <= radius * radius)
-                    {
-                        toCheck.add(neighbor);
-                        visited.add(neighbor);
-                    }
+                    // not used because mining from the start always involves the origin
+                    //event.setCanceled(true);
                 }
             }
         }
         
-        return foundBlocks;
+        if (KeyBindings.toolSpecialAbilityKey.isDown() && heldItem.isCorrectToolForDrops(blockState) && heldItem.getItem() instanceof CMIAxeItem)
+        {
+            List<ToolAbility> axeAbilities = ((CMIAxeItem) heldItem.getItem()).getToolAbilities(heldItem);
+            ToolAbility treeFellerAbility = axeAbilities.stream()
+                    .filter(ability -> ability.abilityID == treeFellerID)
+                    .findFirst()
+                    .orElse(null);
+            
+            int blockLimit = 0;
+            int blocksPerLevel = 8; // Set how many blocks per ability level
+            
+            // Determine the block limit based on the treeFeller ability level
+            if (treeFellerAbility != null) {
+                blockLimit = treeFellerAbility.abilityLevel * blocksPerLevel;
+            }
+            
+            // Only proceed if the blockLimit is greater than zero
+            if (blockLimit > 0) {
+                if (!findSimilarBlocks(player, world, origin, blockState, blockLimit, false))
+                {
+                    Msg(player, "THIS IS A TEST");
+                    event.setCanceled(true);
+                }
+            }
+            
+        }
     }
     
-    // Method to highlight a block (e.g., using particles)
+    // ====== TREE FELLER ====== //
+    
+    public static boolean findSimilarBlocks(Player player, Level world, BlockPos origin, BlockState originalState, int blockLimit,
+                                            boolean mineFromBeginning)
+    {
+        //Msg(player, "Started searching the surroundings of this block");
+        //Msg(player, "Origin coördinates: X = " + origin.getX() + ", Y = " + origin.getY() + ", Z = " + origin.getZ());
+        
+        Map<Integer, Map<Integer, BlockPos>> foundBlocksLists = new HashMap<>();
+        
+        // A map with all the BlockPos found, with incrementing integer (highest value is always furthest away)
+        // Only matches
+        Map<Integer, BlockPos> foundBlocks = new HashMap<>();
+        
+        // A map with all blocks that have already been checked to prevent duplicates.
+        // Matches AND other
+        Map<Integer, BlockPos> checkedBlocks = new HashMap<>();
+        
+        // A map to put all the blocks surrounding the currently checked blocks in
+        // Next layer of blocks to check
+        // Not needed because I directly process the blocks as I check which are surrounding the current layer.
+        Map<Integer, BlockPos> toCheckBlocks = new HashMap<>();
+        
+        // A map to with the last round of matching blocks
+        Map<Integer, BlockPos> lastFoundBlocks = new HashMap<>();
+        
+        // A map to with the last round of matching blocks
+        Map<Integer, BlockPos> blocksToMine = new HashMap<>();
+        
+        // Put the origin in the new maps
+        checkedBlocks.put(0, origin);
+        foundBlocks.put(0, origin);
+        lastFoundBlocks.put(0, origin);
+        foundBlocksLists.put(0, lastFoundBlocks); // make 1 a dynamic integer
+        toCheckBlocks.put(0, origin);
+        
+        int numBlocksFound = 1; // start as 1 because that's the origin
+        int numLastBlocksFound = 0; // start as 0 because it resets every iteration
+        int blocksChecked = 1; // start as 1 because that's the origin
+        int iCurrentLayer = 0; // start as 0 because I first have to check the origin inside the main loop
+        int failSafe = 256; // Max number of blocks to index to prevent overloading
+        boolean stop = false;
+        BlockPos currentPos;
+        boolean mineOrigin = false;
+        
+        // add a super loop (while loop?)
+        
+        boolean continueSearching = true;
+        //Msg(player, "About to enter the while loop");
+        while (continueSearching)
+        {
+            //Msg(player, "Current layer: " + iCurrentLayer);
+            //Msg(player, "toCheckBlocks size: " + toCheckBlocks.size());
+            // Loop all blocks that were found in the latest iteration
+            for(BlockPos previouslyFoundBlock : toCheckBlocks.values())
+            {
+                //Msg(player, "prevFoundBl: X = " + previouslyFoundBlock.getX() + ", Y = " + previouslyFoundBlock.getY() + ", Z = " + previouslyFoundBlock.getZ());
+                // Offset combinations for surrounding blocks in a 3x3x3 cube
+                for (int x = -1; x <= 1 && !stop; x++) {
+                    for (int y = -1; y <= 1 && !stop; y++) {
+                        for (int z = -1; z <= 1 && !stop; z++) {
+                            // check all blocks surrounding the previously found block
+                            currentPos = previouslyFoundBlock.offset(x,y,z);
+                            //Msg(player, "currentPos: X = " + currentPos.getX() + ", Y = " + currentPos.getY() + ", Z = " + currentPos.getZ());
+                            
+                            // Skip the current block (0,0,0) since it's not a surrounding block
+                            // Also skip if it has already been checked and added to the checkedBlocks map
+                            if ((x != 0 || y != 0 || z != 0) && !checkedBlocks.containsValue(currentPos))
+                            {
+                                //Msg(player, "It's a match!"); // confirmed working
+                                // add it to the checkedBlocks map and increment the counter
+                                checkedBlocks.put(blocksChecked, currentPos);
+                                blocksChecked++;
+                                
+                                // Check to see if it's a match
+                                if (world.getBlockState(currentPos).getBlock() == originalState.getBlock())
+                                {
+                                    lastFoundBlocks.put(numLastBlocksFound, currentPos);
+                                    numLastBlocksFound++;
+                                    //Msg(player, "lastFoundBlocks size: " + lastFoundBlocks.size());
+                                    foundBlocks.put(numBlocksFound, currentPos);
+                                    numBlocksFound++;
+                                    if(numBlocksFound >= failSafe)
+                                    {
+                                        stop = true;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                if(stop)
+                {
+                    break; // exit for loop, continue While loop
+                }
+            }
+            numLastBlocksFound = 0;
+            if (lastFoundBlocks.isEmpty() || stop) // search till empty or overload
+            {
+                //Msg(player, "lastFoundBlocks is empty, end while loop");
+                continueSearching = false;
+            }
+            iCurrentLayer++;
+            foundBlocksLists.put(iCurrentLayer, new HashMap<Integer,BlockPos>(lastFoundBlocks));
+            toCheckBlocks.clear();
+            toCheckBlocks.putAll(lastFoundBlocks);
+            lastFoundBlocks.clear();
+        }
+        
+        if(mineFromBeginning)
+        {
+            mineOrigin = MineFirstBlocks(player, world, origin, originalState, foundBlocksLists, blockLimit, numBlocksFound, iCurrentLayer);
+        }
+        else // mine from end
+        {
+            mineOrigin = MineLastBlocks(player, world, origin, originalState, foundBlocksLists, blockLimit, numBlocksFound, iCurrentLayer);
+        }
+        
+        return mineOrigin;
+    }
+    
+    public static boolean MineLastBlocks(Player player, Level world, BlockPos origin, BlockState originalState,
+                                         Map<Integer, Map<Integer, BlockPos>> foundBlocksLists,
+                                         int numBlocksToMine, int numBlocksFound, int numLayers)
+    {
+        // A map to with the last round of matching blocks
+        Map<Integer, BlockPos> blocksToMine = new HashMap<>();
+        
+        boolean mineOrigin = false;
+        
+        // Find some blocks to mine
+        int toMineBlocks = numBlocksToMine;
+        if(toMineBlocks >= numBlocksFound)
+        {
+            toMineBlocks=numBlocksFound-1;
+            mineOrigin = true;
+        }
+        
+        //Msg(player, "Found " + numBlocksFound + ", about to mine " + toMineBlocks + " blocks and origin");
+        
+        while(toMineBlocks > 0)
+        {
+            for(var foundBlock : foundBlocksLists.get(numLayers).entrySet())
+            {
+                blocksToMine.put(toMineBlocks, foundBlock.getValue());
+                toMineBlocks--;
+            }
+            numLayers--;
+        }
+        
+        // Loop through the list of found tree blocks and destroy each block
+        for (BlockPos pos : blocksToMine.values()) {
+            highlightBlock(world, pos); // Highlight the block before destroying
+            if( pos != origin)
+            {
+                world.destroyBlock(pos, true, player); // Destroy the block and drop the items
+            }
+        }
+        
+        return mineOrigin;
+    }
+    
+    public static boolean MineFirstBlocks(Player player, Level world, BlockPos origin, BlockState originalState,
+                                         Map<Integer, Map<Integer, BlockPos>> foundBlocksLists,
+                                         int numBlocksToMine, int numBlocksFound, int numLayers)
+    {
+        // A map to with the last round of matching blocks
+        Map<Integer, BlockPos> blocksToMine = new HashMap<>();
+        
+        boolean mineOrigin = false;
+        
+        // Find some blocks to mine
+        int toMineBlocks = numBlocksToMine;
+        if(toMineBlocks >= numBlocksFound)
+        {
+            toMineBlocks=numBlocksFound-1;
+            mineOrigin = true;
+        }
+        
+        Msg(player, "Found " + numBlocksFound + ", about to mine " + toMineBlocks + " blocks and origin");
+        
+        int currentBlock = 0;
+        int currentLayer = 0;
+        while(currentBlock < toMineBlocks)
+        {
+            for(var foundBlock : foundBlocksLists.get(currentLayer).entrySet())
+            {
+                blocksToMine.put(currentBlock, foundBlock.getValue());
+                currentBlock++;
+            }
+            currentLayer++;
+            if(currentLayer > numLayers)
+            {
+                Msg(player, "Searching for layer " + currentLayer + ", max layers: " + numLayers);
+                break;
+            }
+        }
+        
+        // Loop through the list of found tree blocks and destroy each block
+        for (BlockPos pos : blocksToMine.values()) {
+            highlightBlock(world, pos); // Highlight the block before destroying
+            if( pos != origin)
+            {
+                world.destroyBlock(pos, true, player); // Destroy the block and drop the items
+            }
+        }
+        
+        return mineOrigin;
+    }
+    
     public static void highlightBlock(Level world, BlockPos pos)
     {
         if (world instanceof ServerLevel serverLevel)
         {
-            // Example: Spawn particles to highlight the block
-//            serverLevel.sendParticles(ParticleTypes.HAPPY_VILLAGER, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
-//                    10, 0.5, 0.5, 0.5, 0.1);
             serverLevel.sendParticles(ParticleTypes.END_ROD, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
                     10, 0.5, 0.5, 0.5, 0.1);
         }

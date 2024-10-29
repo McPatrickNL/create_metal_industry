@@ -32,56 +32,56 @@ public class Materials implements Abilities
     // EMPTY MATERIAL
     static Material none = new Material(
             "no", "no ", "", noTexture,
-            1, 100, 1, 0.8, 0.2, 2,
+            1, 100, 1, 0.8, 1, 1,
             1, Tiers.WOOD, 0x000000,
             List.of());
     
     // BASIC MATERIALS
     static Material wood = new Material(
             "wood", "Wooden ", "Holded ", woodTexture,
-            1, 100, 1, 0.8, 0.2, 2,
+            1, 100, 1, 0.8, 1.1, 1.1,
             1,  Tiers.WOOD, 0x675631,
-            List.of());
+            List.of(new MaterialAbility(treeFellerCodeName, treeFellerID, 1)));
     
     static Material stone = new Material(
             "stone", "Stone ", "Petrified ", stoneTexture,
-            1, 100, 1, 0.8, 0.2, 2,
+            1, 100, 1, 0.8, 1.2, 1.2,
             1,  Tiers.STONE, 0x636363,
             List.of());
     
     static Material gold = new Material(
             "gold", "Gold ", "Gilded ", goldTexture,
-            1, 100, 1, 0.8, 0.2, 2,
+            1, 100, 1, 0.8, 3, 3,
             1,  Tiers.GOLD, 0xFFC81E,
             List.of());
     
     static Material zinc = new Material(
             "zinc", "Zinc ", "Galvanized ", zincTexture,
-            1, 100, 1, 0.8, 0.2, 2,
+            2, 100, 1, 0.8, 1.4, 1.4,
             1,  Tiers.GOLD, 0x256E5F,
             List.of());
     
     static Material copper = new Material(
             "copper", "Copper ", "Cupred ", copperTexture,
-            1, 100, 1, 0.8, 0.2, 2,
+            3, 100, 1, 0.8, 1.6, 1.6,
             1,  Tiers.IRON, 0xFF6C40,
             List.of());
     
     static Material iron = new Material(
             "iron", "Iron ", "Ferred ", ironTexture,
-            1, 100, 1, 0.8, 0.2, 2,
+            3, 100, 1, 0.8, 1.7, 1.7,
             1,  Tiers.IRON, 0xFF4140,
             List.of());
     
     static Material brass = new Material(
             "brass", "Brass ", "Brazed ", brassTexture,
-            1, 100, 1, 0.8, 0.2, 2,
+            4, 100, 1, 0.8, 1.9, 1.9,
             1,  ToolTiers.BRASS, 0xFF9B2F,
             List.of());
     
     static Material netherite = new Material(
             "netherite", "Netherite ", "Tainted ", netheriteTexture,
-            1, 100, 1, 0.8, 0.2, 2,
+            5, 100, 1, 0.8, 2.5, 2.5,
             1,  Tiers.NETHERITE, 0x473F40,
             List.of());
     
@@ -89,44 +89,44 @@ public class Materials implements Abilities
     // todo set Mithril texture
     static Material mithril = new Material(
             "mithril", "Mithril ", "Enriched ", netheriteTexture,
-            1, 100, 1, 0.8, 0.2, 2,
+            5, 100, 1, 0.8, 2.5, 2.5,
             1,  Tiers.NETHERITE, 0xbefbe8,
             List.of(new MaterialAbility(veinMinerCodeName, veinMinerID, 2)));
     
     // Decoration materials
     static Material netherQuartz = new Material(
             "nether_quartz", "Nether Quartz ", "Spiked ", netherQuartzTexture,
-            1, 100, 1, 0.8, 0.2, 2,
+            3, 100, 1, 0.8, 2, 2,
             1,  Tiers.DIAMOND, 0xd4caba,
             List.of());
     
     static Material emerald = new Material(
             "emerald", "Emerald ", "Emered ", emeraldTexture,
-            1, 100, 1, 0.8, 0.2, 2,
+            4, 100, 1, 0.8, 2.5, 2.5,
             1,  Tiers.DIAMOND, 0x17dd62,
             List.of());
     
     static Material diamond = new Material(
             "diamond", "Diamond ", "Expensive ", diamondTexture,
-            1, 100, 1, 0.8, 0.2, 2,
+            5, 100, 1, 0.8, 2.7, 2.7,
             1,  Tiers.DIAMOND, 0x4aedd9,
             List.of());
     
     static Material amethyst = new Material(
             "amethyst", "Amethyst ", "Athysted ", amethystTexture,
-            1, 100, 1, 0.8, 0.2, 2,
+            3, 100, 1, 0.8, 2.5, 2.5,
             1,  Tiers.DIAMOND, 0x8d6acc,
             List.of());
     
     static Material enderPearl = new Material(
             "ender_pearl", "Ender Pearl ", "Endered ", enderPearlTexture,
-            1, 100, 1, 0.8, 0.2, 2,
+            3, 100, 1, 0.8, 2, 2,
             1,  Tiers.DIAMOND, 0x258474,
             List.of());
     
     static Material netherStar = new Material(
-            "nether_star", "Nether Star ", "Starred ", enderPearlTexture,
-            1, 100, 1, 0.8, 0.2, 2,
+            "nether_star", "Nether Star ", "Starred ", netherStarTexture,
+            6, 100, 1, 0.8, 3, 3,
             1,  Tiers.DIAMOND, 0xfdffa8,
             List.of());
     
