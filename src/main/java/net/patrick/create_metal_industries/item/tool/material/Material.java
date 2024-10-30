@@ -1,10 +1,12 @@
 package net.patrick.create_metal_industries.item.tool.material;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Tier;
 import net.patrick.create_metal_industries.item.tool.Abilities;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class Material implements Abilities
 {
@@ -23,6 +25,7 @@ public class Material implements Abilities
     public Tier tier;
     public int color;
     public List<MaterialAbility> materialAbilities;
+    public ChatFormatting textFormat;
     
     //Just if I want to make the textures specific
     public ResourceLocation textureRod;
@@ -38,7 +41,7 @@ public class Material implements Abilities
     public Material(String codeName, String inGameNameGeneric, String inGameNameCoated, ResourceLocation texture,
                     int miningLevel, int baseDurability, int miningSpeed,
                     double durabilityModifier, double attackDamageModifier, double attackSpeedModifier, double toolRangeModifier,
-                    Tier tier, int color, List<MaterialAbility> materialAbilities)
+                    Tier tier, int color, List<MaterialAbility> materialAbilities, ChatFormatting textFormat)
     {
         this.codeName = codeName;
         this.inGameNameGeneric = inGameNameGeneric;
@@ -54,5 +57,6 @@ public class Material implements Abilities
         this.tier = tier;
         this.color = color;
         this.materialAbilities = materialAbilities;
+        this.textFormat = textFormat;
     }
 }

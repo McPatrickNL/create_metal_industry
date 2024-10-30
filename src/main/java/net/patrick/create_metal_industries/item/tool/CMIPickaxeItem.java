@@ -1,13 +1,19 @@
 package net.patrick.create_metal_industries.item.tool;
 
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 import net.patrick.create_metal_industries.item.tool.material.Material;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class CMIPickaxeItem extends PickaxeItem
+public class CMIPickaxeItem extends PickaxeItem implements CMITool
 {
     private final Material rodMaterial;
     private final Material headMaterial;
@@ -51,17 +57,44 @@ public class CMIPickaxeItem extends PickaxeItem
         return toolLevel;
     }
     
-    private int setToolLevel(Material rodMaterial, Material headMaterial, Material coatingMaterial, Material decorationMaterial)
-    {
-        return Math.max(Math.max(rodMaterial.miningLevel,
-                        headMaterial.miningLevel),
-                Math.max(coatingMaterial.miningLevel,
-                        decorationMaterial.miningLevel));
-    }
-    
     public List<ToolAbility> getToolAbilities(ItemStack stack)
     {
         return this.pickaxeAbilities;
     }
     
+    public float getCustomMiningSpeed() {
+        return this.getAttackDamage();
+    }
+    
+    @Override
+    public Material getRodMaterial()
+    {
+        return rodMaterial;
+    }
+    
+    @Override
+    public Material getHeadMaterial()
+    {
+        return headMaterial;
+    }
+    
+    @Override
+    public Material getCoatingMaterial()
+    {
+        return coatingMaterial;
+    }
+    
+    @Override
+    public Material getDecorationMaterial()
+    {
+        return decorationMaterial;
+    }
+    
+    @Override
+    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+        
+        List<Component> pNewTooltipComponents = CMIToolTip.getToolTip(pStack, pLevel, pTooltipComponents, pIsAdvanced, toolLevel);
+        
+        super.appendHoverText(pStack, pLevel, pNewTooltipComponents, pIsAdvanced);
+    }
 }

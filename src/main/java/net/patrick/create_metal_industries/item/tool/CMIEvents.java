@@ -5,6 +5,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -26,46 +27,51 @@ public class CMIEvents implements Abilities
         Player player = event.getEntity();
         BlockState blockState = event.getState();
         int playerPosY;
-        int seaLevel = 64 - -64; // +64 from y = 0;
-        int heightFromBedrock; // player pos height from bedrock
+        int distFromBedrock; // player pos height from bedrock
         ItemStack heldItem = player.getMainHandItem();
         float defaultDestroySpeed;
-        float newDestroySpeed;
-        float blockPosY;
         int toolLevel;
         
-        if (heldItem.getItem() instanceof CMIPickaxeItem)
+        if (heldItem.getItem() instanceof CMIPickaxeItem tool)
         {
-            toolLevel = ((CMIPickaxeItem) heldItem.getItem()).getToolLevel();
-            defaultDestroySpeed = ((CMIPickaxeItem) heldItem.getItem()).getAttackDamage();
+            toolLevel = tool.getToolLevel();
+            defaultDestroySpeed = tool.getAttackDamage();
             playerPosY = event.getEntity().blockPosition().getY();
-            heightFromBedrock = playerPosY - -64;
-            newDestroySpeed = defaultDestroySpeed * ((float) heightFromBedrock * 2 / seaLevel * toolLevel);
-            //Msg(player, "speed:" + newDestroySpeed);
-            event.setNewSpeed(newDestroySpeed);
+            distFromBedrock = playerPosY - -64;
+            event.setNewSpeed(calculateDestroySpeed(toolLevel, defaultDestroySpeed, distFromBedrock));
         }
         
-        if (heldItem.getItem() instanceof CMIShovelItem)
+        if (heldItem.getItem() instanceof CMIShovelItem tool)
         {
-            toolLevel = ((CMIShovelItem) heldItem.getItem()).getToolLevel();
-            defaultDestroySpeed = ((CMIShovelItem) heldItem.getItem()).getAttackDamage();
+            toolLevel = tool.getToolLevel();
+            defaultDestroySpeed = tool.getAttackDamage();
             playerPosY = event.getEntity().blockPosition().getY();
-            heightFromBedrock = playerPosY - -64;
-            newDestroySpeed = defaultDestroySpeed * ((float) heightFromBedrock * 2 / seaLevel * toolLevel);
-            //Msg(player, "speed:" + newDestroySpeed);
-            event.setNewSpeed(newDestroySpeed);
+            distFromBedrock = playerPosY - -64;
+            event.setNewSpeed(calculateDestroySpeed(toolLevel, defaultDestroySpeed, distFromBedrock));
         }
         
-        if (heldItem.getItem() instanceof CMIAxeItem)
+        if (heldItem.getItem() instanceof CMIAxeItem tool)
         {
-            toolLevel = ((CMIAxeItem) heldItem.getItem()).getToolLevel();
-            defaultDestroySpeed = ((CMIAxeItem) heldItem.getItem()).getAttackDamage();
+            toolLevel = tool.getToolLevel();
+            defaultDestroySpeed = tool.getAttackDamage();
             playerPosY = event.getEntity().blockPosition().getY();
-            heightFromBedrock = playerPosY - -64;
-            newDestroySpeed = defaultDestroySpeed * ((float) heightFromBedrock * 2 / seaLevel * toolLevel);
-            //Msg(player, "speed:" + newDestroySpeed);
-            event.setNewSpeed(newDestroySpeed);
+            distFromBedrock = playerPosY - -64;
+            event.setNewSpeed(calculateDestroySpeed(toolLevel, defaultDestroySpeed, distFromBedrock));
         }
+    }
+    
+    public static float calculateDestroySpeed(int toolLevel, float defaultSpeed, int distFromBedrock)
+    {
+        //float newSpeed;
+        int seaLevel = 64 - -64;
+        //int WorldLevels = 8; // split the world in this number of layers
+        //int layerHeight = seaLevel / WorldLevels;
+        return defaultSpeed * ((float) distFromBedrock * 2 / seaLevel * toolLevel) / 3; // old method
+        
+        //int nativeLevel =
+        
+        //newSpeed =
+        //return newSpeed;
     }
     
     @SubscribeEvent
