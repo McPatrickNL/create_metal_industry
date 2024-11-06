@@ -15,11 +15,12 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.patrick.create_metal_industries.CreateMetalIndustries;
 import net.patrick.create_metal_industries.KeyBindings;
+import net.patrick.create_metal_industries.item.tool.material.Material;
 
 import java.util.*;
 
 @Mod.EventBusSubscriber(modid = CreateMetalIndustries.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
-public class CMIEvents implements Abilities
+public class CMIEvents implements Abilities, CMIWorldLayers
 {
     @SubscribeEvent
     public static void onBreakSpeed(PlayerEvent.BreakSpeed event)
@@ -32,46 +33,53 @@ public class CMIEvents implements Abilities
         float defaultDestroySpeed;
         int toolLevel;
         
-        if (heldItem.getItem() instanceof CMIPickaxeItem tool)
+        if (heldItem.getItem() instanceof CMITool tool)
         {
-            toolLevel = tool.getToolLevel();
-            defaultDestroySpeed = tool.getAttackDamage();
-            playerPosY = event.getEntity().blockPosition().getY();
-            distFromBedrock = playerPosY - -64;
-            event.setNewSpeed(calculateDestroySpeed(toolLevel, defaultDestroySpeed, distFromBedrock));
-        }
-        
-        if (heldItem.getItem() instanceof CMIShovelItem tool)
-        {
-            toolLevel = tool.getToolLevel();
-            defaultDestroySpeed = tool.getAttackDamage();
-            playerPosY = event.getEntity().blockPosition().getY();
-            distFromBedrock = playerPosY - -64;
-            event.setNewSpeed(calculateDestroySpeed(toolLevel, defaultDestroySpeed, distFromBedrock));
-        }
-        
-        if (heldItem.getItem() instanceof CMIAxeItem tool)
-        {
-            toolLevel = tool.getToolLevel();
-            defaultDestroySpeed = tool.getAttackDamage();
-            playerPosY = event.getEntity().blockPosition().getY();
-            distFromBedrock = playerPosY - -64;
-            event.setNewSpeed(calculateDestroySpeed(toolLevel, defaultDestroySpeed, distFromBedrock));
+            event.setNewSpeed(tool.calculateDestroySpeed(player, tool, (int)player.getY()));
         }
     }
     
-    public static float calculateDestroySpeed(int toolLevel, float defaultSpeed, int distFromBedrock)
+    public static float calculateDestroySpeed(CMITool tool, int yLevel)
     {
-        //float newSpeed;
-        int seaLevel = 64 - -64;
-        //int WorldLevels = 8; // split the world in this number of layers
-        //int layerHeight = seaLevel / WorldLevels;
-        return defaultSpeed * ((float) distFromBedrock * 2 / seaLevel * toolLevel) / 3; // old method
+        Material rodMaterial = tool.getRodMaterial();
+        Material headMaterial = tool.getHeadMaterial();
+        Material coatingMaterial = tool.getCoatingMaterial();
+        Material decorationMaterial = tool.getDecorationMaterial();
         
-        //int nativeLevel =
+        int rodSpeed = rodMaterial.miningSpeed;
+        int headSpeed = headMaterial.miningSpeed;
+        int coatingSpeed = coatingMaterial.miningSpeed;
+        int decorationSpeed = decorationMaterial.miningSpeed;
+        float globalSpeedModifier = 1;
+        float toolSpeed = (rodSpeed + headSpeed + coatingSpeed + decorationSpeed) * globalSpeedModifier;
         
-        //newSpeed =
-        //return newSpeed;
+        int distFromBedrock = yLevel + 64 + 3; // + 3 to compensate for the player being able to reach down from his level
+        int currentLayer = yToLayerMap.get(distFromBedrock);
+        int toolLevel = tool.getToolLevel();
+        int layerMaxY = layerMaxYMap.get(currentLayer);
+        int layerMinY = layerMinYMap.get(currentLayer);
+        float layerDifference = layerMaxY - layerMinY;
+        
+        if(currentLayer == toolLevel)
+        {
+            return toolSpeed;
+        }
+        else if (currentLayer == toolLevel - 1)
+        {
+            return toolSpeed / ( 100 * (layerMaxY - distFromBedrock) / layerDifference );
+        }
+        else if (currentLayer <= toolLevel - 1)
+        {
+            return toolSpeed / 100;
+        }
+        else if (currentLayer == toolLevel + 1)
+        {
+            return toolSpeed * ( 3 * (distFromBedrock - layerMinY) / layerDifference );
+        }
+        else
+        {
+            return toolSpeed * 3;
+        }
     }
     
     @SubscribeEvent

@@ -7,6 +7,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import net.patrick.create_metal_industries.CreateMetalIndustries;
+import net.patrick.create_metal_industries.block.ModBlocks;
 
 import java.util.Map;
 
@@ -19,6 +20,9 @@ public class CreativeModeTabs
                     .title(Component.translatable("creativetab.create_metal_industries_tab"))
                     .displayItems((pParameters, pOutput) ->
                     {
+                        // Test light block
+                        pOutput.accept(ModBlocks.MITHRILITE.get());
+                        
                         // Empty bucket
                         pOutput.accept(net.minecraft.world.item.Items.BUCKET);
                         

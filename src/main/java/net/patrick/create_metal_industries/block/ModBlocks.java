@@ -5,6 +5,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -22,10 +23,8 @@ public class ModBlocks
             DeferredRegister.create(ForgeRegistries.BLOCKS, CreateMetalIndustries.MOD_ID);
     
     
-    //public static final RegistryObject<Block> SAPPHIRE_BLOCK = registerBlock("sapphire_block",
-    //        () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).sound(SoundType.AMETHYST)));
-    //public static final RegistryObject<Block> RAW_SAPPHIRE_BLOCK = registerBlock("raw_sapphire_block",
-    //        () -> new Block(BlockBehaviour.Properties.copy(Blocks.RAW_IRON_BLOCK)));
+    public static final RegistryObject<Block> MITHRILITE = registerBlock("mithrilite",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.TORCH).sound(SoundType.SMALL_AMETHYST_BUD)));
     
     //public static final RegistryObject<LiquidBlock> SOAP_WATER_BLOCK = BLOCKS.register("soap_water_block",
     //        () -> new LiquidBlock(ModFluids.SOURCE_SOAP_WATER, BlockBehaviour.Properties.

@@ -7,6 +7,9 @@
   "block.create_metal_industries.sapphire_block": "Block of Sapphire",
   "block.create_metal_industries.raw_sapphire_block": "Block of Raw Sapphire",
 
+  "######## BLOCKS ########": "",
+  "block.create_metal_industries.mithrilite": "Mithrilite",
+
   "######## BUCKETS ########": "",
   "item.create_metal_industries.molten_brass_bucket": "Molten Brass Bucket",
   "item.create_metal_industries.molten_copper_bucket": "Molten Copper Bucket",
